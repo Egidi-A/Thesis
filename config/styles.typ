@@ -103,11 +103,9 @@
   
   // Stili per note a piè di pagina
   set footnote(numbering: "1")
-  show footnote.entry: it => {
-    text(size: 10pt)[
-      #super[#it.note.number]#h(0.2em)#it.note.body
-    ]
-  }
+  show footnote.entry: it => [
+    #super[#it.note]#h(0.2em)#it.body
+  ]
   
   // Applica il corsivo automatico alle parole straniere
   show: with-foreign-words

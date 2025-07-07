@@ -15,7 +15,7 @@
   figure-counter.step()
   figure(
     content,
-    caption: [#supplement #figure-counter.display(): #caption],
+    caption: context [#supplement #figure-counter.display(): #caption],
     kind: kind,
     supplement: supplement,
   )
@@ -31,7 +31,7 @@
   table-counter.step()
   figure(
     table(columns: columns, rows: rows, content),
-    caption: [Tabella #table-counter.display(): #caption],
+    caption: context [Tabella #table-counter.display(): #caption],
     kind: "Tabella",
     supplement: "Tabella",
   )
@@ -42,7 +42,7 @@
   equation-counter.step()
   math.equation(
     block: true,
-    numbering: n => [(#equation-counter.display())],
+    numbering: n => context equation-counter.display(),
     content
   )
 }
@@ -97,7 +97,7 @@
 }
 
 #let gls(term) = {
-  link(<glossary>)[#text(style: "italic")[#term]]
+  text(style: "italic")[#term]
 }
 
 // Funzione per note a margine
@@ -114,11 +114,15 @@
   caption: none,
   label: none,
 ) = {
-  figure(
+  let fig = figure(
     raw(content, lang: lang, block: true),
     caption: caption,
     kind: "Codice",
     supplement: "Listato",
   ) 
-  if label != none { label }
+  if label != none {
+    [#fig #label]
+  } else {
+    fig
+  }
 }

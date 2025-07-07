@@ -29,7 +29,7 @@ Recentemente Trizeta è entrata a far parte di SYS-DAT Group: è un gruppo di az
 
 == Prodotti e servizi <sec:prodotti>
 
-Come già indicato nella @sec:intro-azienda, Trizeta intrattiene relazioni commerciali esclusivamente di tipo B2B#footnote[Business to business]: questa visione si riflette inevitabilmente sui prodotti offerti e sull'insieme dei requisiti utente soddisfatti dai prodotti commercializzati.
+Come già indicato nella /*@sec:intro-azienda*/, Trizeta intrattiene relazioni commerciali esclusivamente di tipo B2B#footnote[Business to business]: questa visione si riflette inevitabilmente sui prodotti offerti e sull'insieme dei requisiti utente soddisfatti dai prodotti commercializzati.
 
 Di seguito, un breve elenco di software che ho potuto visionare personalmente e, relativamente all'ultima voce in lista, studiare ai fini di comprendere meglio le finalità dello stage e la visione dell'azienda:
 
