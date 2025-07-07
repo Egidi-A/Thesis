@@ -58,7 +58,7 @@ Riporto le notazioni utilizzate in seguito per identificare gli obiettivi del pr
 
 Le sigle precedentemente indicate saranno seguite da una coppia sequenziale di numeri, identificativo del requisito:
 
-*Requisiti obbligatori:*
+==== *Requisiti obbligatori:*
 - *O01*: Esplorazione approfondita di diverse strategie di migrazione, dalla conversione sintattica diretta all'utilizzo di tecnologie di intelligenza artificiale generativa
 - *O02*: Sviluppo di strumenti specifici che automatizzino il più possibile il processo di conversione
 - *O03*: Raggiungimento di conversione automatica del codice COBOL di almeno tre sezioni su quattro
@@ -70,12 +70,12 @@ Le sigle precedentemente indicate saranno seguite da una coppia sequenziale di n
 - *O09*: Sviluppo di un prototipo funzionante del sistema di conversione
 - *O10*: Creazione di un #foreign("README") esplicativo per permettere l'utilizzo del sistema
 
-*Requisiti desiderabili:*
+==== *Requisiti desiderabili:*
 - *D01*: Raggiungimento di una copertura del 100% nella conversione automatica del codice prodotto autonomamente
 - *D02*: Gestione efficace di costrutti COBOL complessi o non direttamente traducibili
 - *D03*: Implementazione di meccanismi di ottimizzazione del codice Java generato
 
-*Requisiti facoltativi:*
+==== *Requisiti facoltativi:*
 - *F01*: Integrazione con sistemi di analisi statica per la verifica della qualità del codice generato
 - *F02*: Sviluppo di un sistema di #foreign("reporting") dettagliato sulle conversioni effettuate
 - *F03*: Implementazione di funzionalità avanzate di #foreign("refactoring") del codice Java prodotto
@@ -84,13 +84,13 @@ Le sigle precedentemente indicate saranno seguite da una coppia sequenziale di n
 
 Il progetto si focalizzava sullo sviluppo di un sistema di migrazione automatica e questo aspetto caratterizzava le condizioni imposte per lo svolgimento del lavoro.
 
-*Vincoli temporali:*
+==== *Vincoli temporali:*
 - Durata complessiva dello #foreign("stage"): 320 ore
 - Periodo: dal 05 maggio al 27 giugno 2025
 - Modalità di lavoro ibrida: 2 giorni a settimana in sede, 3 giorni in modalità telematica
 - Orario lavorativo: 9:00 - 18:00
 
-*Vincoli tecnologici:*
+==== *Vincoli tecnologici:*
 - Il sistema doveva essere sviluppato utilizzando tecnologie moderne e supportate
 - Necessità di preservare integralmente la #foreign("business logic") contenuta nei programmi COBOL originali
 - La soluzione doveva essere scalabile, capace di gestire progetti di diverse dimensioni
@@ -103,7 +103,7 @@ Il progetto si focalizzava sullo sviluppo di un sistema di migrazione automatica
   caption: "Utilizzo di BitBucket per il versionamento del codice",
 ) <fig:bitbucket-git>
 
-*Vincoli metodologici:*
+==== *Vincoli metodologici:*
 - Adozione dei principi #foreign("Agile") con #foreign("sprint") settimanali
 - #foreign("Stand-up") giornalieri per allineamento costante
 - Revisioni settimanali degli obiettivi con adattamento del piano di lavoro
@@ -112,23 +112,23 @@ Il progetto si focalizzava sullo sviluppo di un sistema di migrazione automatica
 
 La pianificazione del progetto seguiva un approccio flessibile, con revisioni settimanali che permettevano di adattare il percorso in base ai progressi ottenuti. La distribuzione delle attività era stata organizzata come segue:
 
-*Prima fase - analisi e apprendimento COBOL (2 settimane - 80 ore):*
+==== *Prima fase - analisi e apprendimento COBOL (2 settimane - 80 ore):*
 - Studio approfondito del linguaggio COBOL e delle sue peculiarità
 - Analisi di sistemi COBOL
 - Creazione di programmi COBOL di test con complessità crescente
 - Implementazione dell'interfacciamento con #foreign("database") relazionali
 
-*Seconda fase - sviluppo del sistema di migrazione (4 settimane - 160 ore):*
+==== *Seconda fase - sviluppo del sistema di migrazione (4 settimane - 160 ore):*
 - Analisi dei #foreign("pattern") di traduzione COBOL-Java del codice prodotto in fase precedente
 - Sviluppo di uno #foreign("script") o utilizzo di #foreign("tool") esistenti per automatizzare la traduzione del codice COBOL in Java equivalente
 - Gestione della traduzione dei costrutti sintattici, logica di controllo e interazioni con il #foreign("database")
 - Definizione della percentuale di automazione raggiungibile e la gestione di costrutti COBOL complessi o non direttamente traducibili
 
-*Terza fase - #foreign("testing") e validazione (1 settimana - 40 ore):*
+==== *Terza fase - #foreign("testing") e validazione (1 settimana - 40 ore):*
 - #foreign("Test") funzionali sul codice Java generato
 - Confronto comportamentale con le applicazioni COBOL originali
 
-*Quarta fase - documentazione e consegna (1 settimana - 40 ore):*
+==== *Quarta fase - documentazione e consegna (1 settimana - 40 ore):*
 - Documentazione completa del sistema sviluppato
 - Preparazione del materiale di consegna
 - Presentazione finale dei risultati
@@ -161,17 +161,17 @@ La scelta di intraprendere questo #foreign("stage") presso Miriade è stata guid
 
 Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di competenze pratiche nel campo della modernizzazione di sistemi #foreign("legacy") e gestione progetti:
 
-*Obiettivi tecnici principali:*
+=== Obiettivi tecnici principali:
 - Comprendere la struttura e la logica dei programmi COBOL attraverso lo sviluppo di applicazioni di test
 - Esplorare approcci concreti alla migrazione del codice, sia deterministici che basati su AI
 - Produrre un prototipo funzionante di sistema di conversione, anche se limitato
 
-*Competenze da sviluppare:*
+=== Competenze da sviluppare:
 - Familiarità di base con il linguaggio COBOL e le sue peculiarità sintattiche
 - Comprensione pratica delle sfide nella traduzione tra paradigmi di programmazione diversi
 - Esperienza nell'utilizzo di tecnologie emergenti come l'AI generativa applicata al codice
 
-*Crescita professionale attesa:*
+=== Crescita professionale attesa:
 - Sviluppare autonomia nella gestione di un progetto aziendale, dalla pianificazione all'implementazione
 - Acquisire capacità di #foreign("problem solving") in contesti reali, con vincoli temporali e tecnologici definiti
 - Migliorare le competenze comunicative attraverso l'interazione con il #foreign("team") e la presentazione dei progressi
