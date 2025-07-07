@@ -1,0 +1,94 @@
+# italics.toml - Configurazione parole straniere da mettere in corsivo
+
+[foreign_words.english_tech]
+# Termini tecnici inglesi
+words = [
+    "software", "hardware", "firmware", "middleware",
+    "frontend", "backend", "fullstack",
+    "framework", "library", "toolkit", "plugin",
+    "web", "app", "application", "webapp",
+    "interface", "user", "experience", "design",
+    "pattern", "antipattern", "best practice",
+    "test", "testing", "unit test", "integration test",
+    "debug", "debugging", "bug", "hotfix", "patch",
+    "repository", "commit", "push", "pull", "merge", "branch",
+    "fork", "clone", "checkout", "rebase",
+    "database", "query", "schema", "migration",
+    "server", "client", "endpoint", "webhook",
+    "api", "rest", "restful", "graphql", "soap",
+    "cache", "cookie", "session", "token",
+    "cloud", "container", "docker", "kubernetes",
+    "microservice", "monolith", "serverless",
+    "deployment", "pipeline", "continuous integration",
+    "continuous deployment", "devops",
+]
+
+[foreign_words.english_business]
+# Termini business inglesi
+words = [
+    "business", "management", "system",
+    "enterprise", "resource", "planning",
+    "supply", "chain", "warehouse",
+    "digital", "asset", "quality", "control",
+    "manufacturing", "execution", "stakeholder",
+    "meeting", "deadline", "milestone",
+    "budget", "workflow", "process",
+    "outsourcing", "consulting", "audit",
+]
+
+[foreign_words.programming_languages]
+# Linguaggi di programmazione e tecnologie
+words = [
+    "javascript", "typescript", "python", "java",
+    "angular", "react", "vue", "svelte",
+    "nodejs", "express", "django", "flask",
+    "html", "css", "sass", "scss",
+    "json", "xml", "yaml", "toml",
+    "sql", "nosql", "mongodb", "postgresql",
+    "git", "github", "gitlab", "bitbucket",
+]
+
+[foreign_words.methodologies]
+# Metodologie di sviluppo
+words = [
+    "agile", "scrum", "kanban", "waterfall",
+    "sprint", "backlog", "standup", "retrospective",
+    "user story", "epic", "task", "subtask",
+    "product owner", "scrum master", "team lead",
+]
+
+[foreign_words.network]
+# Termini di rete
+words = [
+    "http", "https", "ftp", "ssh",
+    "tcp", "udp", "ip", "dns",
+    "firewall", "proxy", "vpn", "ssl",
+    "router", "switch", "gateway",
+    "bandwidth", "latency", "throughput",
+]
+
+[foreign_words.latin]
+# Locuzioni latine
+words = [
+    "et al.", "i.e.", "e.g.", "vs.", "etc.",
+    "circa", "sic", "ad hoc", "de facto",
+    "modus operandi", "status quo", "quid pro quo",
+    "a priori", "a posteriori", "in situ",
+]
+
+[foreign_words.italian_tech]
+# Termini tecnici che potrebbero essere inglesi ma vanno in corsivo
+words = [
+    "online", "offline", "download", "upload",
+    "backup", "update", "upgrade", "setup",
+    "login", "logout", "username", "password",
+    "email", "spam", "phishing", "malware",
+    "screenshot", "desktop", "laptop", "smartphone",
+    "touchscreen", "wireless", "bluetooth",
+]
+
+[foreign_words.custom]
+# Termini personalizzati aggiunti dall'utente
+words = [
+    # Aggiungi qui termini specifici per la tua tesi
+]

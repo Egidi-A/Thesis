@@ -1,6 +1,7 @@
 // config/styles.typ - Stili personalizzati per la tesi
 
 #import "functions.typ": *
+#import "foreign-words.typ": with-foreign-words
 
 // Funzione principale per applicare tutti gli stili
 #let apply-thesis-styles(doc) = {
@@ -107,6 +108,9 @@
       #super[#it.note.number]#h(0.2em)#it.note.body
     ]
   }
+  
+  // Applica il corsivo automatico alle parole straniere
+  show: with-foreign-words
   
   doc
 }

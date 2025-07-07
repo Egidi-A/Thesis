@@ -1,30 +1,5 @@
 // config/functions.typ - Funzioni helper per la tesi
 
-// Dizionario parole straniere da mettere in corsivo
-#let foreign-words = (
-  // Inglese
-  "software", "hardware", "frontend", "backend", "framework",
-  "web", "app", "application", "interface", "user", "experience",
-  "design", "pattern", "test", "testing", "debug", "debugging",
-  "repository", "commit", "push", "pull", "merge", "branch",
-  "database", "query", "server", "client", "api", "rest",
-  "javascript", "typescript", "angular", "react", "vue",
-  "html", "css", "json", "xml", "http", "https",
-  "agile", "scrum", "sprint", "backlog", "stakeholder",
-  "business", "management", "system", "enterprise", "resource",
-  "planning", "supply", "chain", "warehouse", "digital",
-  "asset", "quality", "control", "manufacturing", "execution",
-  
-  // Latino
-  "et al.", "i.e.", "e.g.", "vs.", "etc.",
-)
-
-// Funzione per applicare il corsivo alle parole straniere
-#let auto-italic(content) = {
-  show regex(foreign-words.join("|")): text.with(style: "italic")
-  content
-}
-
 // Contatori personalizzati
 #let figure-counter = counter("custom-figure")
 #let table-counter = counter("custom-table")

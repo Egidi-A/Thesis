@@ -1,14 +1,14 @@
 // config/metadata.typ - Metadati della tesi
 
 // Informazioni tesi
-#let thesis-title = "Titolo della Tesi"
-#let thesis-subtitle = "Sottotitolo della tesi"
-#let thesis-author = "Nome Cognome"
-#let thesis-matricola = "1234567"
-#let thesis-relatore = "Prof. Nome Cognome"
+#let thesis-title = "Archeologia Digitale e Rinascimento del Codice"
+#let thesis-subtitle = "Modernizzazione dei Sistemi Legacy attraverso la Migrazione Automatizzata COBOL-Java"
+#let thesis-author = "Annalisa Egidi"
+#let thesis-matricola = "1216745"
+#let thesis-relatore = "Prof. Tullio Vardanega"
 #let thesis-correlatore = none // Opzionale
 #let thesis-corso = "Informatica"
-#let thesis-anno = "2023/2024"
+#let thesis-anno = "2024/2025"
 
 // Informazioni università
 #let university-name = "Università degli Studi di Padova"
