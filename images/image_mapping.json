@@ -1,8 +1,62 @@
 {
-  "logo.png": {
+  "agile.png": {
+    "id": "img_001",
+    "path": "images\\agile.png",
+    "caption": "",
+    "label": "<fig:agile>"
+  },
+  "analytics.png": {
     "id": "img_002",
+    "path": "images\\analytics.png",
+    "caption": "",
+    "label": "<fig:analytics>"
+  },
+  "Bitbucket.png": {
+    "id": "img_003",
+    "path": "images\\Bitbucket.png",
+    "caption": "",
+    "label": "<fig:Bitbucket>"
+  },
+  "COBOL cli.png": {
+    "id": "img_004",
+    "path": "images\\COBOL cli.png",
+    "caption": "",
+    "label": "<fig:COBOL cli>"
+  },
+  "logo.png": {
+    "id": "img_006",
     "path": "images\\logo.png",
     "caption": "",
     "label": "<fig:logo>"
+  },
+  "miriade.png": {
+    "id": "img_007",
+    "path": "images\\miriade.png",
+    "caption": "",
+    "label": "<fig:miriade>"
+  },
+  "MOB5.jpeg": {
+    "id": "img_008",
+    "path": "images\\MOB5.jpeg",
+    "caption": "",
+    "label": "<fig:MOB5>"
+  },
+  "MOB5.svg": {
+    "id": "img_009",
+    "path": "images\\MOB5.svg",
+    "caption": "",
+    "label": "<fig:MOB5>"
+  },
+  "monolitic and microsevices application.png": {
+    "id": "img_010",
+    "path": "images\\monolitic and microsevices application.png",
+    "caption": "",
+    "label": "<fig:monolitic and microsevices application>"
+  },
+  "videoframe_3640.png": {
+    "id": "img_011",
+    "path": "images\\videoframe_3640.png",
+    "caption": "",
+    "label": "<fig:videoframe_3640>"
   }
 }

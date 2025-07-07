@@ -1,68 +1,110 @@
 // chapters/chapter1.typ - Capitolo 1
 
 #import "../config/functions.typ": *
+#import "../config/foreign-words.typ": foreign
 
-= Contesto di svolgimento delle attività <cap:contesto>
 
-Questo capitolo introduce #gls("Trizeta"), azienda ospitante del tirocinio, e fornisce informazioni relative al settore in cui essa opera (quindi anche ai beni e servizi offerti), al suo rapporto con l'introduzione di novità / con il miglioramento di processi e strumenti già in uso ed ai processi in essa utilizzati.
+= Miriade: un ecosistema di innovazione tecnologica <cap:miriade>
 
-Le informazioni riportate di seguito sono frutto di osservazioni personali, dialoghi avuti nel corso del tirocinio e ricerche svolte in totale autonomia.
+Miriade, come realtà nel panorama #acronym("IT") italiano, si distingue per il suo approccio innovativo rispetto all'ecosistema completo del dato e alle soluzioni informatiche correlate. L'azienda, che ho avuto l'opportunità di conoscere durante il mio percorso di #foreign("stage"), si caratterizza per una filosofia aziendale orientata all'innovazione continua e all'investimento nel capitale umano, elementi che la rendono un ambiente particolarmente stimolante per la crescita professionale di figure #foreign("junior").
 
-== Introduzione all'azienda ospitante <sec:intro-azienda>
-
-#define-term("Trizeta", "Software house specializzata nella consulenza e nello sviluppo di prodotti per aziende")
+#define-term("Miriade", "Azienda specializzata nell'analisi dati e nelle soluzioni informatiche")
 #define-acronym("IT", "Information Technology")
+#define-acronym("AI", "Artificial Intelligence")
+#define-acronym("LLM", "Large Language Models")
 
-Trizeta è una #gls("software house"), ovvero un'azienda che si occupa dello sviluppo e della commercializzazione di software, specializzata nella consulenza e nello sviluppo di prodotti per aziende che desiderano l'automazione (totale o parziale) delle proprie attività industriali (compresa la gestione del magazzino); essa consente inoltre alle aziende clienti di gestire le proprie risorse digitali multimediali (i cosiddetti #gls("digital assets")).
+== L'azienda nel panorama informatico e sociale <sec:panorama-informatico>
 
-#numbered-figure(
-  // Qui andrebbe l'immagine dell'interfaccia
-  rect(width: 100%, height: 200pt, fill: gray.lighten(80%))[
-    Interfaccia di un gestionale Trizeta
-  ],
-  caption: "Interfaccia di un gestionale Trizeta",
-) <fig:interfaccia-trizeta>
+Miriade si posiziona strategicamente nel settore dell'analisi dati e delle soluzioni informatiche, operando con quattro aree funzionali principali: #foreign("Analytics"), #foreign("Data"), #foreign("System Application") e #foreign("Operation"). L'azienda ha costruito nel tempo una solida reputazione nel mercato attraverso la capacità di fornire soluzioni innovative che rispondono non solo alle esigenze tecniche dei clienti, ma che prestano particolare attenzione alle relazioni umane e alle realtà del territorio.
 
-L'azienda è ubicata a Monselice (Padova) e dispone all'incirca di una decina di dipendenti #acronym("IT") (informatici) tra loro eterogenei per anni di esperienza nel settore informatico, età anagrafica, e #gls("stack tecnologico") abitualmente utilizzato (tecnologie utilizzate e ambito di utilizzo delle stesse).
+Ciò che distingue #gls("Miriade") nel contesto competitivo è la sua vision aziendale, che integra le competenze tecnologiche con una forte responsabilità sociale. L'azienda implementa attivamente azioni a supporto di società e cooperative del territorio, dimostrando come l'innovazione tecnologica possa essere un veicolo di sviluppo sociale ed economico locale. Questa attenzione alla dimensione sociale si riflette anche nell'approccio alle risorse umane, con una particolare propensione a individuare e coltivare giovani energie fin dalle scuole e università attraverso tirocini curricolari che permettono una crescita personale durante il percorso di studi.
 
-Recentemente Trizeta è entrata a far parte di SYS-DAT Group: è un gruppo di aziende specializzate nello sviluppo e manutenzione di prodotti software rivolti ad aziende appartenenti a vari settori quali il settore moda (settore di origine di SYS-DAT, azienda fondatrice del gruppo) ed il settore alimentare.
-
-== Prodotti e servizi <sec:prodotti>
-
-Come già indicato nella /*@sec:intro-azienda*/, Trizeta intrattiene relazioni commerciali esclusivamente di tipo B2B#footnote[Business to business]: questa visione si riflette inevitabilmente sui prodotti offerti e sull'insieme dei requisiti utente soddisfatti dai prodotti commercializzati.
-
-Di seguito, un breve elenco di software che ho potuto visionare personalmente e, relativamente all'ultima voce in lista, studiare ai fini di comprendere meglio le finalità dello stage e la visione dell'azienda:
-
-#define-acronym("WMS", "Warehouse Management System")
-#define-acronym("ERP", "Enterprise Resource Planning")
-
-- *ADeWMS*: è un #acronym("WMS") (gestionale relativo al contenuto e alle attività di magazzino) in grado di integrarsi con software #acronym("ERP") (gestionale per tutti i processi aziendali) e gestire ordini commerciali, consegne e relativa documentazione;
+La clientela di Miriade spazia tra i medi e grandi clienti, includendo sia realtà del settore privato che pubblico. Questa diversificazione del portfolio clienti permette all'azienda di confrontarsi con problematiche tecnologiche variegate, mantenendo una costante spinta all'innovazione e all'adattamento delle soluzioni proposte.
 
 #numbered-figure(
-  rect(width: 100%, height: 150pt, fill: gray.lighten(80%))[
-    Attività gestite da un software WMS
-  ],
-  caption: "Funzionalità di un software WMS",
-) <fig:wms>
+  image("../images/MOB5.svg", width: 80%),
+  caption: "Vista del sito web aziendale di Miriade",
+) <fig:sito-miriade>
 
-#define-acronym("DAM", "Digital Asset Management")
+== Metodologie e tecnologie all'avanguardia <sec:metodologie-tecnologie>
 
-- *P4NDOR4*: è un #acronym("DAM") (gestionale per digital assets, risorse digitali, aziendali) con possibilità di richiedere delle risorse direttamente a Trizeta;
+L'approccio metodologico di Miriade si fonda sull'adozione dell'#gls("Agile") come filosofia operativa pervasiva, che permea tutti i processi aziendali e guida l'organizzazione del lavoro quotidiano. Durante il mio #foreign("stage"), ho potuto osservare direttamente come questa metodologia venga implementata attraverso #foreign("stand-up") giornalieri e #foreign("sprint") settimanali, creando un ambiente di lavoro dinamico e orientato agli obiettivi.
 
-#define-acronym("MES", "Manufacturing Execution System")
+#define-term("Agile", "Metodologia di sviluppo software iterativa e incrementale")
+#define-term("Kanban", "Sistema di gestione del workflow visuale")
+#define-term("Scrum", "Framework Agile per la gestione di progetti complessi")
 
-- *ADeMES*: è un #acronym("MES") (software di gestione delle attività produttive aziendali) di particolare interesse in quanto direttamente coinvolto ai fini del tirocinio.
+L'azienda utilizza sia #gls("Kanban") che #gls("Scrum"), adattando la metodologia alle specifiche esigenze progettuali e alle preferenze del cliente. Questa flessibilità metodologica dimostra la maturità organizzativa di Miriade e la sua capacità di adattare i processi alle diverse situazioni operative. Ho potuto constatare personalmente come gli #foreign("stand-up") mattutini fossero momenti fondamentali per l'allineamento del #foreign("team"), permettendo una comunicazione trasparente sullo stato di avanzamento delle attività e una rapida identificazione di eventuali impedimenti.
 
-== Processi interni <sec:processi>
+Lo #gls("stack tecnologico") adottato riflette l'attenzione dell'azienda per gli strumenti di collaborazione e versionamento. L'#foreign("Atlassian Suite") costituisce la spina dorsale dell'infrastruttura collaborativa aziendale, utilizzata in modo strutturato e pervasivo per diverse finalità:
 
-Il team aziendale utilizza un modello di ciclo di vita del software detto #gls("agile"), ovvero ha una visione orientata all'ottimizzazione del flusso di lavoro (evitando tempi morti e uso di risorse senza ottenere valore in cambio), e consentire una risposta rapida alle variazioni delle esigenze del cliente anche in stadi avanzati dello sviluppo.
+#define-term("stack tecnologico", "Insieme di tecnologie software utilizzate per sviluppare un'applicazione")
 
-=== Gestione di progetto
+- *#foreign("Confluence")* per la gestione della #foreign("knowledge base") aziendale e la documentazione tecnica
+- *#foreign("Jira")* per il #foreign("tracking") delle attività e la gestione dei progetti  
+- *#foreign("Bitbucket")* per il versionamento del codice e la collaborazione nello sviluppo
 
-In relazione alla gestione di progetto, ho potuto assistere (direttamente o indirettamente) alle seguenti attività:
+Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione.
 
-- *Definizione degli obiettivi e delle risorse*: la definizione degli obiettivi e delle risorse di progetto avviene dopo dialogo diretto con le industrie clienti coinvolte nel progetto: in questa occasione si cerca di analizzare a fondo i risultati desiderati e le modalità di raggiungimento degli stessi;
+La formazione continua sulle tecnologie emergenti è parte integrante della cultura aziendale. L'area #foreign("Analytics"), in particolare, mantiene un #foreign("focus") costante sull'esplorazione e implementazione di soluzioni basate su #acronym("AI") e #acronym("LLM"), che rappresentano il naturale proseguimento di quello che precedentemente veniva incasellato come "#foreign("big data")" ed è parte integrante della strategia aziendale.
 
-- *Pianificazione*: la pianificazione delle attività avviene a partire dalla definizione degli obiettivi e delle risorse di progetto (previo dialogo, come precedentemente indicato) basandosi su esperienze pregresse e sulla disponibilità di capitale umano e risorse economiche;
+#numbered-figure(
+  image("../images/Bitbucket.png",width: 80%),
+  caption: "Ecosistema Atlassian utilizzato in azienda",
+) <fig:atlassian-ecosystem>
 
-- *Comunicazione con gli stakeholders*#footnote[Portatori d'interesse]: la comunicazione con i "portatori d'interesse" (coloro i quali hanno interesse nella buona riuscita del progetto) avviene tramite colloquio (preferibilmente in presenza, online in caso di necessità) ed è fondamentale per dare prova di avanzamento tangibile nei modi e tempi indicati o, in caso contrario, motivare eventuali discrepanze tra la pianificazione e la realtà.
+== Architettura organizzativa <sec:architettura-organizzativa>
+
+L'architettura organizzativa di Miriade si distingue per la sua struttura "piatta". L'azienda ha adottato un modello organizzativo che prevede solo due livelli gerarchici: l'amministratore delegato e i responsabili di area. Questa scelta strutturale facilita la comunicazione diretta e riduce le barriere comunicative, creando un ambiente di lavoro agile e responsabilizzante.
+
+Le quattro aree funzionali principali - #foreign("Analytics"), #foreign("Data"), #foreign("System Application") e #foreign("Operation") - operano con un alto grado di autonomia, pur mantenendo una forte interconnessione attraverso aree trasversali. Queste aree trasversali, composte da persone provenienti dalle diverse divisioni, si occupano di attività di innovazione a vari livelli, come #foreign("DevOps"), #foreign("Account Management") e #foreign("Research & Development"). Questa struttura matriciale permette una #foreign("cross-fertilizzazione") delle competenze e favorisce l'innovazione continua.
+
+#numbered-figure(
+  image("../images/miriade.png",width: 60%),
+  caption: "Struttura organizzativa delle divisioni Miriade",
+) <fig:divisioni-miriade>
+
+La divisione #foreign("Analytics"), nella quale ho avuto il piacere di lavorare, guidata da Arianna Bellino, conta attualmente 17 persone ed è in veloce crescita. Rappresenta il motore di innovazione dell'azienda, specializzandosi in analisi del dato, dal dato grezzo all'analisi avanzata, anche tramite approcci e tecnologie #acronym("AI") e #acronym("LLM") #foreign("based"), con #foreign("focus") sull'automazione dei processi e alla riduzione delle attività routinarie. I membri del #foreign("team") non hanno ruoli rigidamente definiti, ma piuttosto funzioni che possono evolversi in base alle esigenze progettuali e alle competenze individuali. Ho osservato dipendenti che svolgevano funzioni diverse quali:
+
+- Pianificazione e gestione progetti
+- Attività di prevendita e consulenza
+- Ricerca e sviluppo di nuove soluzioni
+- Sviluppo #foreign("software") e #foreign("data analysis")
+
+Questa fluidità organizzativa crea un ambiente stimolante dove ogni persona può contribuire in modi diversi, favorendo la crescita professionale multidisciplinare. Durante lo stage, ho potuto interagire con colleghi che ricoprivano diverse funzioni, beneficiando della loro esperienza e prospettive diverse.
+
+#numbered-figure(
+  image("../images/analytics.png", width: 60%),
+  caption: "Funzioni e ruoli nella sezione Analytics",
+) <fig:funzioni-analytics>
+
+Il ruolo dello stagista in questo ecosistema aziendale è particolarmente valorizzato. Non viene visto come una risorsa marginale, ma come parte integrante del team, con la possibilità di contribuire attivamente ai progetti e di proporre soluzioni innovative. Il sistema di tutoraggio è strutturato con l'assegnazione di un tutor dell'area specifica e di un mentor che può provenire anche da altre aree. Il tutor segue il percorso tecnico dello stagista, mentre il mentor fornisce supporto a livello emotivo e di inserimento aziendale.
+
+Particolarmente apprezzabili sono gli incontri settimanali chiamati "tiramisù", dedicati ai nuovi entrati in azienda. Durante questi momenti, vengono analizzate le possibili difficoltà relazionali o comunicative riscontrate durante la settimana, con il supporto di una figura dedicata. Questo approccio dimostra l'attenzione dell'azienda non solo alla crescita tecnica, ma anche al benessere e all'integrazione dei propri collaboratori.
+
+== Investimento nel capitale umano e nella ricerca <sec:investimento-capitale-umano>
+
+L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali della strategia aziendale di Miriade. Durante il mio stage, ho potuto constatare come l'azienda non si limiti a dichiarare l'importanza delle risorse umane, ma implementi concretamente politiche e programmi volti alla valorizzazione e crescita delle persone, come ad esempio incontri, riflessioni e azioni sulla Parità di Genere, sulla quale sono certificati come azienda.
+
+#numbered-figure(
+  image("../images/videoframe_3640.png",width: 80%),
+  caption: "Certificazioni e impegni aziendali di Miriade",
+) <fig:certificazioni-miriade>
+
+Il processo di selezione riflette questa filosofia: l'azienda ricerca persone sensibili, elastiche, proattive e autonome, ponendo l'enfasi sulle caratteristiche personali piuttosto che esclusivamente sulle competenze tecniche pregresse, un approccio che permette di costruire #foreign("team") coesi e motivati, capaci di affrontare sfide tecnologiche in continua evoluzione.
+
+I programmi di formazione continua sono strutturati e costanti. L'azienda investe significativamente nella crescita professionale dei propri dipendenti attraverso:
+
+- Corsi di formazione tecnica su nuove tecnologie
+- Certificazioni professionali
+- Partecipazione a conferenze e #foreign("workshop")
+- Sessioni di #foreign("knowledge sharing") interno
+- Progetti di ricerca e sviluppo che permettono sperimentazione
+
+Il rapporto consolidato con le università rappresenta un altro aspetto distintivo dell'approccio di Miriade al capitale umano. Gli #foreign("stage") non sono visti come semplici adempimenti formativi, ma come veri e propri laboratori di sperimentazione tecnologica. Nel mio caso specifico, il progetto di migrazione COBOL-Java è stato scelto appositamente per valutare le capacità di #foreign("problem solving") e apprendimento, con maggiore attenzione al processo seguito piuttosto che al solo risultato finale.
+
+L'equilibrio tra formazione e produttività negli #foreign("stage") è gestito con attenzione. Inizialmente, lo #foreign("stage") è orientato totalmente sulla formazione, per poi evolvere gradualmente verso un bilanciamento equilibrato tra formazione e contributo produttivo quando lo stagista diventa sufficientemente autonomo. Nel mio caso però, trattandosi di #foreign("stage") curricolare per tesi, l'intero percorso è stato focalizzato sulla formazione, permettendomi di esplorare in profondità tecnologie e metodologie senza la pressione di #foreign("deadline") produttive immediate.
+
+L'investimento in risorse #foreign("junior") è visivamente significativo, questo approccio permette all'azienda di formare professionisti allineati con la propria cultura e metodologie.
+
+In conclusione, Miriade si presenta come un ecosistema aziendale dove l'innovazione tecnologica e la valorizzazione del capitale umano si integrano sinergicamente. L'esperienza di stage in questo contesto ha rappresentato un'opportunità unica di crescita professionale, permettendomi di osservare e partecipare a dinamiche aziendali mature e orientate al futuro. La combinazione di una struttura organizzativa agile, metodologie all'avanguardia, forte investimento nelle persone e attenzione alla responsabilità sociale crea un ambiente ideale per affrontare le sfide tecnologiche contemporanee.

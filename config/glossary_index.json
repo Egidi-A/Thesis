@@ -1,3 +1,10 @@
 {
-  "Trizeta": "Software house specializzata nella consulenza e nello sviluppo di prodotti per aziende"
+  "Miriade": "Azienda specializzata nell'analisi dati e nelle soluzioni informatiche",
+  "Agile": "Metodologia di sviluppo software iterativa e incrementale",
+  "Kanban": "Sistema di gestione del workflow visuale",
+  "Scrum": "Framework Agile per la gestione di progetti complessi",
+  "stack tecnologico": "Insieme di tecnologie software utilizzate per sviluppare un'applicazione",
+  "legacy": "Sistemi informatici datati ma ancora in uso",
+  "mainframe": "Computer di grandi dimensioni per elaborazioni complesse",
+  "microservizi": "Architettura software basata su servizi indipendenti"
 }

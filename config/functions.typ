@@ -15,7 +15,7 @@
   figure-counter.step()
   figure(
     content,
-    caption: context [#supplement #figure-counter.display(): #caption],
+    caption: context [#caption],
     kind: kind,
     supplement: supplement,
   )

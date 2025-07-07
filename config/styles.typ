@@ -29,7 +29,7 @@
   // Impostazioni paragrafo
   set par(
     justify: true,
-    leading: 1.5em,
+    leading: 1em,
     first-line-indent: 1em,
   )
   
