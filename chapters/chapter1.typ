@@ -51,7 +51,7 @@ La formazione continua sulle tecnologie emergenti è parte integrante della cult
   caption: "Ecosistema Atlassian - dashboard Jira",
 ) <fig:Atlassian-Jira-videoframe>
 #numbered-figure(
-  image("../images/Bitbucket.png",width: 80%),
+  image("../images/Atlassian-Confluence-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Confluence",
 ) <fig:Atlassian-Confluence-videoframe>
 
