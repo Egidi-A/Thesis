@@ -5,6 +5,12 @@
 #import "config/styles.typ": *
 #import "config/functions.typ": *
 
+#import "appendix/glossary.typ": *
+#import "appendix/bibliography.typ": *
+#import "appendix/acronyms.typ": *
+
+
+
 // Imposta il documento
 #set document(
   title: thesis-title,
