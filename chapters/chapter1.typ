@@ -19,11 +19,6 @@ Ciò che distingue #gls("Miriade") nel contesto competitivo è la sua vision azi
 
 La clientela di Miriade spazia tra i medi e grandi clienti, includendo sia realtà del settore privato che pubblico. Questa diversificazione del portfolio clienti permette all'azienda di confrontarsi con problematiche tecnologiche variegate, mantenendo una costante spinta all'innovazione e all'adattamento delle soluzioni proposte.
 
-#numbered-figure(
-  image("../images/MOB5.svg", width: 80%),
-  caption: "Vista del sito web aziendale di Miriade",
-) <fig:sito-miriade>
-
 == Metodologie e tecnologie all'avanguardia <sec:metodologie-tecnologie>
 
 L'approccio metodologico di Miriade si fonda sull'adozione dell'#gls("Agile") come filosofia operativa pervasiva, che permea tutti i processi aziendali e guida l'organizzazione del lavoro quotidiano. Durante il mio #foreign("stage"), ho potuto osservare direttamente come questa metodologia venga implementata attraverso #foreign("stand-up") giornalieri e #foreign("sprint") settimanali, creando un ambiente di lavoro dinamico e orientato agli obiettivi.
@@ -65,7 +60,7 @@ Le quattro aree funzionali principali - #foreign("Analytics"), #foreign("Data"),
   caption: "Struttura organizzativa delle divisioni Miriade",
 ) <fig:divisioni-miriade>
 
-La divisione #foreign("Analytics"), nella quale ho avuto il piacere di lavorare, guidata da Arianna Bellino, conta attualmente 17 persone ed è in veloce crescita. Rappresenta il motore di innovazione dell'azienda, specializzandosi in analisi del dato, dal dato grezzo all'analisi avanzata, anche tramite approcci e tecnologie #acronym("AI") e #acronym("LLM") #foreign("based"), con #foreign("focus") sull'automazione dei processi e alla riduzione delle attività routinarie. I membri del #foreign("team") non hanno ruoli rigidamente definiti, ma piuttosto funzioni che possono evolversi in base alle esigenze progettuali e alle competenze individuali. Ho osservato dipendenti che svolgevano funzioni diverse quali:
+La divisione #foreign("Analytics"), nella quale ho avuto il piacere di lavorare, guidata da Arianna Bellino, conta attualmente 17 persone ed è in veloce crescita. Rappresenta il motore di innovazione dell'azienda, specializzandosi nella gestione del dato, dal dato grezzo all'analisi avanzata, tramite approcci e tecnologie #acronym("AI") e #acronym("LLM") #foreign("based"), con #foreign("focus") sull'automazione dei processi e alla riduzione delle attività routinarie. I membri del #foreign("team") non hanno ruoli rigidamente definiti, ma piuttosto funzioni che possono evolversi in base alle esigenze progettuali e alle competenze individuali. Ho osservato dipendenti che svolgevano funzioni diverse quali:
 
 - Pianificazione e gestione progetti
 - Attività di prevendita e consulenza
@@ -76,7 +71,7 @@ Questa fluidità organizzativa crea un ambiente stimolante dove ogni persona pu�
 
 #numbered-figure(
   image("../images/analytics.png", width: 60%),
-  caption: "Funzioni e ruoli nella sezione Analytics",
+  caption: "Funzioni nella sezione Analytics",
 ) <fig:funzioni-analytics>
 
 Il ruolo dello stagista in questo ecosistema aziendale è particolarmente valorizzato. Non viene visto come una risorsa marginale, ma come parte integrante del team, con la possibilità di contribuire attivamente ai progetti e di proporre soluzioni innovative. Il sistema di tutoraggio è strutturato con l'assegnazione di un tutor dell'area specifica e di un mentor che può provenire anche da altre aree. Il tutor segue il percorso tecnico dello stagista, mentre il mentor fornisce supporto a livello emotivo e di inserimento aziendale.
@@ -85,10 +80,10 @@ Particolarmente apprezzabili sono gli incontri settimanali chiamati "tiramisù",
 
 == Investimento nel capitale umano e nella ricerca <sec:investimento-capitale-umano>
 
-L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali della strategia aziendale di Miriade. Come si può osservare in #ref-figure(<fig:valori-miriade>), l'azienda di esprime esplicitamente riguardo i valori Durante il mio stage, ho potuto constatare come l'azienda non si limiti a dichiarare l'importanza delle risorse umane, ma implementi concretamente politiche e programmi volti alla valorizzazione e crescita delle persone, come ad esempio incontri, riflessioni e azioni sulla Parità di Genere, sulla quale sono certificati come azienda.
+L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali della strategia aziendale di Miriade. Come si può osservare in #ref-figure(<fig:valori-miriade>), l'azienda si esprime esplicitamente riguardo i valori Durante il mio stage, ho potuto constatare come l'azienda non si limiti a dichiarare l'importanza delle risorse umane, ma implementi concretamente politiche e programmi volti alla valorizzazione e crescita delle persone, come ad esempio incontri, riflessioni e azioni sulla Parità di Genere, sulla quale sono certificati come azienda.
 
 #numbered-figure(
-  image("../images/valori-miriade.png",width: 80%),
+  image("../images/valori-miriade.png",width: 100%),
   caption: "Impegni etici e morali aziendali di Miriade",
 ) <fig:valori-miriade>
 

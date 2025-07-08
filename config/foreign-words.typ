@@ -8,13 +8,19 @@
 #let hw = foreign("hardware")
 #let fw = foreign("framework")
 #let db = foreign("database")
+#let AI = foreign("AI")
+#let LLM = foreign("LLM")
 
 // Macro per termini ricorrenti
 #let webapp = foreign("web app")
 #let frontend = foreign("frontend")
 #let backend = foreign("backend")
 #let fullstack = foreign("full-stack")
-
+#let Artificial = foreign("Artificial")
+#let Intelligence = foreign("Intelligence")
+#let Large = foreign("Large")
+#let Language = foreign("Language")
+#let Model = foreign("Model")
 // Funzione più complessa per gestire il corsivo automatico
 // Questa versione funziona meglio con Typst
 #let with-foreign-words(body) = {

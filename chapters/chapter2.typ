@@ -44,7 +44,7 @@ Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l
   caption: "Confronto tra architettura monolitica dei mainframe e architettura moderna a microservizi",
 ) <fig:confronto-architetture>
 
-La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta quindi non solo una sfida tecnica, ma una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione @newrelic2024java.
+La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta una sfida tecnica e una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione @newrelic2024java.
 
 == Obiettivi e vincoli dello stage <sec:obiettivi-vincoli>
 
@@ -94,7 +94,7 @@ Il progetto si focalizzava sullo sviluppo di un sistema di migrazione automatica
 - Il sistema doveva essere sviluppato utilizzando tecnologie moderne e supportate
 - Necessità di preservare integralmente la #foreign("business logic") contenuta nei programmi COBOL originali
 - La soluzione doveva essere scalabile, capace di gestire progetti di diverse dimensioni
-- Obbligo di utilizzare strumenti di versionamento (#foreign("Git")) e di documentazione continua
+- Utilizzo strumenti di versionamento (#foreign("Git")) e di documentazione continua
 
 #ref-figure(<fig:bitbucket-git>) mostra l'interfaccia di BitBucket utilizzata per il versionamento del progetto, evidenziando l'importanza attribuita alla tracciabilità e alla collaborazione nel processo di sviluppo.
 
@@ -106,13 +106,12 @@ Il progetto si focalizzava sullo sviluppo di un sistema di migrazione automatica
 ) <fig:bitbucket-git>
 
 ==== *Vincoli metodologici:*
-- Adozione dei principi #foreign("Agile") con #foreign("sprint") settimanali
-- #foreign("Stand-up") giornalieri per allineamento costante
+- Adozione dei principi #foreign("Agile") con #foreign("sprint") settimanali e #foreign("stand-up") giornalieri per allineamento costante
 - Revisioni settimanali degli obiettivi con adattamento del piano di lavoro
 
 === Pianificazione concordata <sec:pianificazione>
 
-La pianificazione del progetto seguiva un approccio flessibile, con revisioni settimanali che permettevano di adattare il percorso in base ai progressi ottenuti. La distribuzione delle attività era stata organizzata come segue:
+La pianificazione del progetto seguiva un approccio flessibile, con revisioni settimanali che permettevano di adattare il percorso in base ai progressi ottenuti. La distribuzione delle attività era inizialmente stata organizzata come segue:
 
 ==== *Prima fase - analisi e apprendimento COBOL (2 settimane - 80 ore):*
 - Studio approfondito del linguaggio COBOL e delle sue peculiarità
@@ -135,7 +134,7 @@ La pianificazione del progetto seguiva un approccio flessibile, con revisioni se
 - Preparazione del materiale di consegna
 - Presentazione finale dei risultati
 
-La rappresentazione temporale dettagliata della pianificazione è visualizzata in #ref-figure(<fig:gantt-pianificazione>), che mostra la distribuzione delle attività lungo l'arco temporale dello stage e le milestone principali del progetto.
+La rappresentazione temporale dettagliata della pianificazione è visualizzata in #ref-figure(<fig:gantt-pianificazione>), che mostra la distribuzione delle attività lungo l'arco temporale dello stage.
 
 #numbered-figure(
   image("../images/diagrammaGantt.png"),
@@ -148,7 +147,7 @@ In base a quanto ho potuto osservare e comprendere durante il periodo di #foreig
 
 - *Innovazione tecnologica*: l'interesse dell'azienda non era limitato allo sviluppo di una soluzione tecnica specifica, ma si estendeva all'osservazione dell'approccio metodologico e del metodo di studio che una risorsa #foreign("junior") con formazione universitaria avrebbe applicato a un problema complesso di modernizzazione IT.
 
-- *Creazione di competenze interne*: Il progetto permetteva di sviluppare #foreign("know-how") interno su una problematica di crescente rilevanza, preparando l'azienda a potenziali progetti futuri di modernizzazione per clienti del settore bancario e assicurativo.
+- *Creazione di competenze interne*: Il progetto permetteva di sviluppare #foreign("know-how") interno su una problematica di crescente rilevanza, preparando l'azienda a potenziali progetti futuri.
 
 - *Esplorazione di tecnologie emergenti*: Il progetto era stato concepito per esplorare la possibile applicazione dell'intelligenza artificiale generativa a problemi di modernizzazione del #foreign("software"). Questo ambito, all'intersezione tra #acronym("AI") e #foreign("software engineering"), può rappresentare una frontiera tecnologica di forte attualità e di interesse per un'azienda che opera già attivamente nel campo dell'AI e dei #foreign("Large Language Models").
 
