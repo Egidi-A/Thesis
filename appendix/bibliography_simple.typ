@@ -1,7 +1,9 @@
 // appendix/bibliography_simple.typ - Bibliografia con citazioni semplici
-#import "../config/functions.typ": glossary-list
+#import "../config/functions.typ": *
 
-= Bibliografia <bibliography>
+#align(center)[
+  #unnumbered-heading[Bibliografia] <bibliography>
+]
 
 // Importa e mostra la bibliografia dal file .bib
 #bibliography("../bibliography.bib", title: none, style: "ieee")

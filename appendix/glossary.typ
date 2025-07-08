@@ -1,7 +1,7 @@
-#import "../config/functions.typ": glossary-list
+#import "../config/functions.typ": *
 
 #align(center)[
-  = Glossario <glossary>
+  #unnumbered-heading[Glossario] <glossary>
 ]
 
 // Termini definiti automaticamente nei capitoli

@@ -51,7 +51,7 @@ In questa sottosezione descriverò lo sviluppo del sistema di conversione end-to
 In questa sottosezione analizzerò la creazione automatica della struttura del progetto Java, la configurazione delle dipendenze e del build system, e la generazione della documentazione JavaDoc.
 
 == Risultati raggiunti
-3.6.1 Impatto dell'AI sui tempi di sviluppo
+=== Impatto dell'AI sui tempi di sviluppo
 In questa sottosezione quantificherò la riduzione importanti dei tempi rispetto all'approccio tradizionale, illustrerò il passaggio da mesi a giorni nel processo di conversione e analizzerò i risultati impossibili senza AI.
 
 === Analisi qualitativa dei risultati

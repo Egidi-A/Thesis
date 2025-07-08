@@ -1,9 +1,9 @@
 // appendix/acronyms.typ - Lista degli acronimi
 
-#import "../config/functions.typ": acronym-list
+#import "../config/functions.typ": *
 
 #align(center)[
-  = Lista degli acronimi <acronyms>
+    #unnumbered-heading[Lista degli acronimi] <acronyms>
 ]
 
 // Definiti automaticamente nei capitoli
