@@ -29,38 +29,44 @@
     "caption": "",
     "label": "<fig:COBOL-cli>"
   },
+  "diagrammaGantt.png": {
+    "id": "img_006",
+    "path": "images\\diagrammaGantt.png",
+    "caption": "",
+    "label": "<fig:diagrammaGantt>"
+  },
   "logo-unipd.png": {
-    "id": "img_007",
+    "id": "img_008",
     "path": "images\\logo-unipd.png",
     "caption": "",
     "label": "<fig:logo-unipd>"
   },
   "miriade.png": {
-    "id": "img_008",
+    "id": "img_009",
     "path": "images\\miriade.png",
     "caption": "",
     "label": "<fig:miriade>"
   },
   "MOB5.svg": {
-    "id": "img_009",
+    "id": "img_010",
     "path": "images\\MOB5.svg",
     "caption": "",
     "label": "<fig:MOB5>"
   },
   "monolitic and microsevices application.png": {
-    "id": "img_010",
+    "id": "img_011",
     "path": "images\\monolitic and microsevices application.png",
     "caption": "",
     "label": "<fig:monolitic and microsevices application>"
   },
   "team.png": {
-    "id": "img_011",
+    "id": "img_012",
     "path": "images\\team.png",
     "caption": "",
     "label": "<fig:team>"
   },
   "valori-miriade.png": {
-    "id": "img_012",
+    "id": "img_013",
     "path": "images\\valori-miriade.png",
     "caption": "",
     "label": "<fig:valori-miriade>"

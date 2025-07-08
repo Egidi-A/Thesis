@@ -1,5 +1,3 @@
-// chapters/chapter2.typ - Capitolo 2
-
 #import "../config/functions.typ": *
 #import "../config/foreign-words.typ": foreign
 
@@ -16,10 +14,10 @@ Il progetto di #foreign("stage") proposto da Miriade si inserisce in un contesto
 
 I sistemi legacy basati su #acronym("COBOL") rappresentano ancora oggi una parte significativa dell'infrastruttura informatica di molte organizzazioni, specialmente nel settore bancario, finanziario e assicurativo. Nonostante COBOL sia stato sviluppato negli anni '60, ha una presenza significativa nelle moderne architetture.
 
+#ref-figure(<fig:interfaccia-cobol>) mostra un esempio tipico di interfaccia utente e codice COBOL, che evidenzia il contrasto netto con le moderne interfacce grafiche e paradigmi di programmazione attuali. Questa differenza visuale è solo la punta dell'iceberg delle sfide che comporta il mantenimento di questi sistemi in un ecosistema tecnologico in rapida evoluzione.
+
 #numbered-figure(
-  rect(width: 100%, height: 150pt, fill: gray.lighten(80%))[
-    _Immagine: #foreign("user interface") e codice COBOL per far vedere interfaccia datata_
-  ],
+  image("../images/COBOL-cli.png"),
   caption: "Interfaccia utente e codice COBOL tipici dei sistemi legacy",
 ) <fig:interfaccia-cobol>
 
@@ -37,10 +35,10 @@ I rischi associati al mantenimento di sistemi COBOL #foreign("legacy") nelle inf
 - *Documentazione inadeguata*: La documentazione inadeguata o assente di molti di questi sistemi, sviluppati decenni fa, rende ogni intervento di manutenzione un'operazione ad alto rischio.
 - *Incompatibilità tecnologica*: L'incompatibilità con le moderne pratiche di sviluppo come #foreign("DevOps"), #foreign("continuous integration") e #gls("microservizi") limita in modo significativo la capacità delle organizzazioni di innovare e competere efficacemente nel mercato digitale.
 
+Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l'architettura monolitica tipica dei sistemi #foreign("mainframe") e l'architettura moderna a microservizi evidenzia le sfide architetturali della migrazione. Questa differenza strutturale comporta non solo una riprogettazione tecnica, ma anche un ripensamento completo dei processi operativi e delle modalità di sviluppo.
+
 #numbered-figure(
-  rect(width: 100%, height: 200pt, fill: gray.lighten(80%))[
-    _Confronto tra architettura monolitica dei mainframe e contemporanea a microservizi_
-  ],
+  image("../images/monolitic and microsevices application.png", width: 80%),
   caption: "Confronto tra architettura monolitica dei mainframe e architettura moderna a microservizi",
 ) <fig:confronto-architetture>
 
@@ -96,6 +94,8 @@ Il progetto si focalizzava sullo sviluppo di un sistema di migrazione automatica
 - La soluzione doveva essere scalabile, capace di gestire progetti di diverse dimensioni
 - Obbligo di utilizzare strumenti di versionamento (#foreign("Git")) e di documentazione continua
 
+#ref-figure(<fig:bitbucket-git>) mostra l'interfaccia di BitBucket utilizzata per il versionamento del progetto, evidenziando l'importanza attribuita alla tracciabilità e alla collaborazione nel processo di sviluppo.
+
 #numbered-figure(
   rect(width: 100%, height: 150pt, fill: gray.lighten(80%))[
     _Immagine: utilizzo di BitBucket per versionamento (Git), produzione personale_
@@ -133,10 +133,10 @@ La pianificazione del progetto seguiva un approccio flessibile, con revisioni se
 - Preparazione del materiale di consegna
 - Presentazione finale dei risultati
 
+La rappresentazione temporale dettagliata della pianificazione è visualizzata in #ref-figure(<fig:gantt-pianificazione>), che mostra la distribuzione delle attività lungo l'arco temporale dello stage e le milestone principali del progetto.
+
 #numbered-figure(
-  rect(width: 100%, height: 200pt, fill: gray.lighten(80%))[
-    _Immagine: Diagramma di Gantt pianificazione_
-  ],
+  image("../images/diagrammaGantt.png"),
   caption: "Diagramma di Gantt della pianificazione del progetto",
 ) <fig:gantt-pianificazione>
 
@@ -178,9 +178,9 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 - Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo
 - Sviluppare pensiero critico nella valutazione di soluzioni tecnologiche alternative
 
+#ref-figure(<fig:metodologia-agile>) rappresenta visualmente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
+
 #numbered-figure(
-  rect(width: 100%, height: 150pt, fill: gray.lighten(80%))[
-    _Immagine: metodologia #foreign("Agile"), #foreign("internet")_
-  ],
+  image("../images/agile.png", width: 80%),
   caption: "Rappresentazione della metodologia Agile applicata al progetto",
 ) <fig:metodologia-agile>
