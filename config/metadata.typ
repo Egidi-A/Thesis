@@ -1,8 +1,8 @@
 // config/metadata.typ - Metadati della tesi
 
 // Informazioni tesi
-#let thesis-title = "Archeologia digitale e rinascimento del codice"
-#let thesis-subtitle = "Modernizzazione dei sistemi legacy attraverso la migrazione automatizzata COBOL-Java"
+#let thesis-title = "Archeologia Digitale e Rinascimento del Codice:\nModernizzazione dei Sistemi Legacy attraverso\nla Migrazione Automatizzata COBOL - Java"
+#let thesis-subtitle = none
 #let thesis-author = "Annalisa Egidi"
 #let thesis-matricola = "1216745"
 #let thesis-relatore = "Prof. Tullio Vardanega"

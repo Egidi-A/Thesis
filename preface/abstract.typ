@@ -1,31 +1,32 @@
 // preface/abstract.typ - Sommario della tesi
 
 #import "../config/metadata.typ": *
+#import "../config/foreign-words.typ": foreign
 
 #align(center)[
   = Sommario
 ]
 
-L'elaborato descrive i processi, gli strumenti e le metodologie coinvolte nello sviluppo di una Progressive Web App#footnote[Progressive Web App], ovvero di un'applicazione web sviluppata per fornire un'esperienza simile a quella offerta da un'applicazione nativa, atta all'inserimento manuale di dati relativi al controllo qualità#footnote[Controllo qualità] di filiere produttive#footnote[Filiera produttiva] industriali.
+L'elaborato descrive i processi, gli strumenti e le metodologie coinvolte nello sviluppo di un sistema di migrazione automatizzata per la modernizzazione di sistemi #foreign("legacy"), in particolare sulla conversione di applicazioni COBOL verso Java.
 
 Nel dominio applicativo di interesse dell'elaborato:
 
-- *Controllo qualità*: è un processo atto a garantire che i prodotti / i servizi richiesti soddisfino degli standard prefissati;
+- *Migrazione automatizzata*: è il processo di conversione di sistemi informatici da tecnologie obsolete a moderne architetture, preservando la logica di #foreign("business") originale;
 
-- *Filiera produttiva*: è la sequenza delle lavorazioni, effettuate in successione, aventi come fine la trasformazione delle materie prime in un prodotto finito (ingl. _supply chain_).
+- *#foreign("Legacy Systems")*: sistemi informatici datati ma ancora operativi, spesso critici per le organizzazioni, difficili da mantenere e integrare con tecnologie moderne (ingl. _legacy systems_).
 
-Il prodotto software, sviluppato nel corso del tirocinio presso l'azienda Trizeta S.r.l (d'ora in avanti *Trizeta*) ha la peculiarità di doversi integrare in un software già presente nella suite aziendale e, al tempo stesso, essere in grado di eseguire in maniera del tutto indipendente replicando, all'occorrenza, alcune delle funzionalità presenti in esso.
+Il progetto, sviluppato nel corso del tirocinio presso l'azienda Miriade Srl (d'ora in avanti *Miriade*), ha la peculiarità di aver esplorato inizialmente un approccio tradizionale basato su #foreign("parsing") deterministico per poi scegliere una soluzione innovativa basata su intelligenza artificiale generativa, dimostrando come l'AI possa cambiare drasticamente i tempi e la qualità dei risultati nel campo della modernizzazione #foreign("software").
 
 == Struttura del testo
 
 Il corpo principale della relazione è suddiviso in 4 capitoli:
 
-Il *primo capitolo* descrive il contesto in cui sono state svolte le attività di tirocinio curricolare, concludendo con una riflessione relativa al rapporto tra l'azienda ospitante e l'innovazione all'interno di processi e strumenti aziendali;
+Il *primo capitolo* descrive il contesto aziendale in cui sono state svolte le attività di tirocinio curricolare, presentando Miriade come ecosistema di innovazione tecnologica e analizzando le metodologie e tecnologie all'avanguardia adottate dall'azienda;
 
-Il *secondo capitolo* approfondisce le motivazioni che hanno consentito l'unione delle volontà del proponente e del sottoscritto al fine di acquisire nuove conoscenze e competenze (per il sottoscritto) e risolvere determinati bisogni relativi al dominio aziendale (per *Trizeta*);
+Il *secondo capitolo* approfondisce il progetto di migrazione COBOL - Java, delineando il contesto di attualità dei sistemi #foreign("legacy"), gli obiettivi del progetto e le sfide tecniche identificate nella modernizzazione di applicazioni COBOL verso architetture Java moderne;
 
-Il *terzo capitolo* descrive i processi, gli strumenti e le modalità di esecuzione delle attività lavorative, oltre ai risultati conseguiti;
+Il *terzo capitolo* descrive lo sviluppo del progetto seguendo un approccio cronologico, dal #foreign("parser") tradizionale iniziale al #foreign("pivot") verso l'intelligenza artificiale, documentando le metodologie di lavoro, i risultati raggiunti e l'impatto trasformativo dell'AI sui tempi di sviluppo;
 
-Il *quarto capitolo* esegue una retrospettiva sul progetto, mettendo in relazione le competenze acquisite durante il percorso didattico e le competenze richieste dal tirocinio curricolare.
+Il *quarto capitolo* esegue una retrospettiva sul progetto, analizzando le #foreign("lessons learned"), il valore dell'AI come #foreign("game changer") nella modernizzazione #foreign("software"), la crescita professionale acquisita e le prospettive future di evoluzione della soluzione sviluppata.
 
 #pagebreak()

@@ -5,16 +5,12 @@
 
 #show: frontpage-style
 
-// Logo università (assumendo che ci sia un'immagine)
-#v(2cm)
-// #image("../images/logo.png", width: 60%)
-
 // Nome università
 #text(size: 16pt, weight: "bold")[
   #university-name
 ]
 
-#v(0.5cm)
+#v(0.3cm)
 
 // Dipartimento
 #text(size: 14pt)[
@@ -28,30 +24,24 @@
   #course-name
 ]
 
-#v(4cm)
+#v(1cm)
+// Logo università (assumendo che ci sia un'immagine)
+#image("../images/logo-unipd.png", width: 35%)
+#v(1cm)
 
 // Titolo della tesi
-#text(size: 22pt, weight: "bold")[
+#text(size: 20pt, weight: "bold")[
   #thesis-title
 ]
 
 #v(0.5cm)
-
-// Sottotitolo (se presente)
-#if thesis-subtitle != none [
-  #text(size: 16pt, style: "italic")[
-    #thesis-subtitle
-  ]
-]
-
-#v(1cm)
 
 // Tipo di documento
 #text(size: 14pt)[
   Tesi di laurea
 ]
 
-#v(4cm)
+#v(2cm)
 
 // Informazioni relatore e laureando
 #grid(
@@ -79,7 +69,7 @@
   ]
 )
 
-#v(3cm)
+#v(2cm)
 
 // Anno accademico
 #line(length: 50%, stroke: 0.5pt)
