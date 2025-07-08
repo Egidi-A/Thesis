@@ -11,52 +11,70 @@
     "caption": "",
     "label": "<fig:analytics>"
   },
-  "Bitbucket.png": {
+  "Atlassian-Confluence-videoframe.png": {
     "id": "img_003",
+    "path": "images\\Atlassian-Confluence-videoframe.png",
+    "caption": "",
+    "label": "<fig:Atlassian-Confluence-videoframe>"
+  },
+  "Atlassian-Jira-videoframe.png": {
+    "id": "img_004",
+    "path": "images\\Atlassian-Jira-videoframe.png",
+    "caption": "",
+    "label": "<fig:Atlassian-Jira-videoframe>"
+  },
+  "Bitbucket.png": {
+    "id": "img_005",
     "path": "images\\Bitbucket.png",
     "caption": "",
     "label": "<fig:Bitbucket>"
   },
   "COBOL cli.png": {
-    "id": "img_004",
+    "id": "img_006",
     "path": "images\\COBOL cli.png",
     "caption": "",
     "label": "<fig:COBOL cli>"
   },
-  "logo.png": {
-    "id": "img_006",
-    "path": "images\\logo.png",
+  "logo-unipd.png": {
+    "id": "img_008",
+    "path": "images\\logo-unipd.png",
     "caption": "",
-    "label": "<fig:logo>"
+    "label": "<fig:logo-unipd>"
   },
   "miriade.png": {
-    "id": "img_007",
+    "id": "img_009",
     "path": "images\\miriade.png",
     "caption": "",
     "label": "<fig:miriade>"
   },
   "MOB5.jpeg": {
-    "id": "img_008",
+    "id": "img_010",
     "path": "images\\MOB5.jpeg",
     "caption": "",
     "label": "<fig:MOB5>"
   },
   "MOB5.svg": {
-    "id": "img_009",
+    "id": "img_011",
     "path": "images\\MOB5.svg",
     "caption": "",
     "label": "<fig:MOB5>"
   },
   "monolitic and microsevices application.png": {
-    "id": "img_010",
+    "id": "img_012",
     "path": "images\\monolitic and microsevices application.png",
     "caption": "",
     "label": "<fig:monolitic and microsevices application>"
   },
-  "videoframe_3640.png": {
-    "id": "img_011",
-    "path": "images\\videoframe_3640.png",
+  "team.png": {
+    "id": "img_013",
+    "path": "images\\team.png",
     "caption": "",
-    "label": "<fig:videoframe_3640>"
+    "label": "<fig:team>"
+  },
+  "valori-miriade.png": {
+    "id": "img_014",
+    "path": "images\\valori-miriade.png",
+    "caption": "",
+    "label": "<fig:valori-miriade>"
   }
 }

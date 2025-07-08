@@ -1,10 +1,5 @@
 // config/functions.typ - Funzioni helper per la tesi
 
-// Contatori personalizzati
-#let figure-counter = counter("custom-figure")
-#let table-counter = counter("custom-table")
-#let equation-counter = counter("custom-equation")
-
 // Funzione per figure numerate
 #let numbered-figure(
   content,
@@ -12,10 +7,9 @@
   kind: "Figura",
   supplement: "Figura",
 ) = {
-  figure-counter.step()
   figure(
     content,
-    caption: context [#caption],
+    caption: caption,
     kind: kind,
     supplement: supplement,
   )
@@ -28,10 +22,9 @@
   columns: auto,
   rows: auto,
 ) = {
-  table-counter.step()
   figure(
     table(columns: columns, rows: rows, content),
-    caption: context [Tabella #table-counter.display(): #caption],
+    caption: caption,
     kind: "Tabella",
     supplement: "Tabella",
   )
@@ -39,17 +32,16 @@
 
 // Funzione per equazioni numerate
 #let numbered-equation(content) = {
-  equation-counter.step()
   math.equation(
     block: true,
-    numbering: n => context equation-counter.display(),
+    numbering: "1",
     content
   )
 }
 
 // Funzione per riferimenti incrociati
 #let ref-figure(label) = {
-  link(label)[Figura #ref(label)]
+  link(label)[#ref(label)]
 }
 
 #let ref-table(label) = {

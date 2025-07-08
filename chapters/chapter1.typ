@@ -1,5 +1,3 @@
-// chapters/chapter1.typ - Capitolo 1
-
 #import "../config/functions.typ": *
 #import "../config/foreign-words.typ": foreign
 
@@ -44,20 +42,24 @@ Lo #gls("stack tecnologico") adottato riflette l'attenzione dell'azienda per gli
 - *#foreign("Jira")* per il #foreign("tracking") delle attività e la gestione dei progetti  
 - *#foreign("Bitbucket")* per il versionamento del codice e la collaborazione nello sviluppo
 
-Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione.
+Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione. Le #ref-figure(<fig:Atlassian-Jira-videoframe>) e #ref-figure(<fig:Atlassian-Confluence-videoframe>) mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo software.
 
 La formazione continua sulle tecnologie emergenti è parte integrante della cultura aziendale. L'area #foreign("Analytics"), in particolare, mantiene un #foreign("focus") costante sull'esplorazione e implementazione di soluzioni basate su #acronym("AI") e #acronym("LLM"), che rappresentano il naturale proseguimento di quello che precedentemente veniva incasellato come "#foreign("big data")" ed è parte integrante della strategia aziendale.
 
 #numbered-figure(
+  image("../images/Atlassian-Jira-videoframe.png",width: 80%),
+  caption: "Ecosistema Atlassian - dashboard Jira",
+) <fig:Atlassian-Jira-videoframe>
+#numbered-figure(
   image("../images/Bitbucket.png",width: 80%),
-  caption: "Ecosistema Atlassian utilizzato in azienda",
-) <fig:atlassian-ecosystem>
+  caption: "Ecosistema Atlassian - dashboard Confluence",
+) <fig:Atlassian-Confluence-videoframe>
 
 == Architettura organizzativa <sec:architettura-organizzativa>
 
 L'architettura organizzativa di Miriade si distingue per la sua struttura "piatta". L'azienda ha adottato un modello organizzativo che prevede solo due livelli gerarchici: l'amministratore delegato e i responsabili di area. Questa scelta strutturale facilita la comunicazione diretta e riduce le barriere comunicative, creando un ambiente di lavoro agile e responsabilizzante.
 
-Le quattro aree funzionali principali - #foreign("Analytics"), #foreign("Data"), #foreign("System Application") e #foreign("Operation") - operano con un alto grado di autonomia, pur mantenendo una forte interconnessione attraverso aree trasversali. Queste aree trasversali, composte da persone provenienti dalle diverse divisioni, si occupano di attività di innovazione a vari livelli, come #foreign("DevOps"), #foreign("Account Management") e #foreign("Research & Development"). Questa struttura matriciale permette una #foreign("cross-fertilizzazione") delle competenze e favorisce l'innovazione continua.
+Le quattro aree funzionali principali - #foreign("Analytics"), #foreign("Data"), #foreign("System Application") e #foreign("Operation") - operano con un alto grado di autonomia, pur mantenendo una forte interconnessione attraverso aree trasversali. Queste aree trasversali, composte da persone provenienti dalle diverse divisioni, si occupano di attività di innovazione a vari livelli, come #foreign("DevOps"), #foreign("Account Management") e #foreign("Research & Development"). Questa struttura matriciale permette una #foreign("cross-fertilizzazione") delle competenze e favorisce l'innovazione continua. La rappresentazione visuale in #ref-figure(<fig:divisioni-miriade>) illustra chiaramente questa struttura organizzativa interconnessa.
 
 #numbered-figure(
   image("../images/miriade.png",width: 60%),
@@ -71,7 +73,7 @@ La divisione #foreign("Analytics"), nella quale ho avuto il piacere di lavorare,
 - Ricerca e sviluppo di nuove soluzioni
 - Sviluppo #foreign("software") e #foreign("data analysis")
 
-Questa fluidità organizzativa crea un ambiente stimolante dove ogni persona può contribuire in modi diversi, favorendo la crescita professionale multidisciplinare. Durante lo stage, ho potuto interagire con colleghi che ricoprivano diverse funzioni, beneficiando della loro esperienza e prospettive diverse.
+Questa fluidità organizzativa crea un ambiente stimolante dove ogni persona può contribuire in modi diversi, favorendo la crescita professionale multidisciplinare. Durante lo stage, ho potuto interagire con colleghi che ricoprivano diverse funzioni, beneficiando della loro esperienza e prospettive diverse. La varietà di funzioni all'interno della divisione Analytics è rappresentata in #ref-figure(<fig:funzioni-analytics>), che evidenzia la natura dinamica e multifunzionale del team.
 
 #numbered-figure(
   image("../images/analytics.png", width: 60%),
@@ -84,12 +86,12 @@ Particolarmente apprezzabili sono gli incontri settimanali chiamati "tiramisù",
 
 == Investimento nel capitale umano e nella ricerca <sec:investimento-capitale-umano>
 
-L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali della strategia aziendale di Miriade. Durante il mio stage, ho potuto constatare come l'azienda non si limiti a dichiarare l'importanza delle risorse umane, ma implementi concretamente politiche e programmi volti alla valorizzazione e crescita delle persone, come ad esempio incontri, riflessioni e azioni sulla Parità di Genere, sulla quale sono certificati come azienda.
+L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali della strategia aziendale di Miriade. Come si può osservare in #ref-figure(<fig:valori-miriade>), l'azienda di esprime esplicitamente riguardo i valori Durante il mio stage, ho potuto constatare come l'azienda non si limiti a dichiarare l'importanza delle risorse umane, ma implementi concretamente politiche e programmi volti alla valorizzazione e crescita delle persone, come ad esempio incontri, riflessioni e azioni sulla Parità di Genere, sulla quale sono certificati come azienda.
 
 #numbered-figure(
-  image("../images/videoframe_3640.png",width: 80%),
-  caption: "Certificazioni e impegni aziendali di Miriade",
-) <fig:certificazioni-miriade>
+  image("../images/valori-miriade.png",width: 80%),
+  caption: "Impegni etici e morali aziendali di Miriade",
+) <fig:valori-miriade>
 
 Il processo di selezione riflette questa filosofia: l'azienda ricerca persone sensibili, elastiche, proattive e autonome, ponendo l'enfasi sulle caratteristiche personali piuttosto che esclusivamente sulle competenze tecniche pregresse, un approccio che permette di costruire #foreign("team") coesi e motivati, capaci di affrontare sfide tecnologiche in continua evoluzione.
 
@@ -108,3 +110,4 @@ L'equilibrio tra formazione e produttività negli #foreign("stage") è gestito c
 L'investimento in risorse #foreign("junior") è visivamente significativo, questo approccio permette all'azienda di formare professionisti allineati con la propria cultura e metodologie.
 
 In conclusione, Miriade si presenta come un ecosistema aziendale dove l'innovazione tecnologica e la valorizzazione del capitale umano si integrano sinergicamente. L'esperienza di stage in questo contesto ha rappresentato un'opportunità unica di crescita professionale, permettendomi di osservare e partecipare a dinamiche aziendali mature e orientate al futuro. La combinazione di una struttura organizzativa agile, metodologie all'avanguardia, forte investimento nelle persone e attenzione alla responsabilità sociale crea un ambiente ideale per affrontare le sfide tecnologiche contemporanee.
+
