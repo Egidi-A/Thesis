@@ -1,4 +1,5 @@
 // appendix/bibliography_simple.typ - Bibliografia con citazioni semplici
+#import "../config/functions.typ": glossary-list
 
 = Bibliografia <bibliography>
 

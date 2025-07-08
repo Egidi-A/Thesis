@@ -6,7 +6,6 @@
 #import "config/functions.typ": *
 
 #import "appendix/glossary.typ": *
-#import "appendix/bibliography_simple.typ": *
 #import "appendix/acronyms.typ": *
 
 // Configura le citazioni

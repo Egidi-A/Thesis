@@ -27,6 +27,6 @@ Il *secondo capitolo* approfondisce il progetto di migrazione COBOL - Java, deli
 
 Il *terzo capitolo* descrive lo sviluppo del progetto seguendo un approccio cronologico, dal #foreign("parser") tradizionale iniziale al #foreign("pivot") verso l'intelligenza artificiale, documentando le metodologie di lavoro, i risultati raggiunti e l'impatto trasformativo dell'AI sui tempi di sviluppo;
 
-Il *quarto capitolo* esegue una retrospettiva sul progetto, analizzando le #foreign("lessons learned"), il valore dell'AI come #foreign("game changer") nella modernizzazione #foreign("software"), la crescita professionale acquisita e le prospettive future di evoluzione della soluzione sviluppata.
+Il *quarto capitolo* sviluppa una retrospettiva sul progetto, analizzando le #foreign("lessons learned"), il valore dell'AI come #foreign("game changer") nella modernizzazione #foreign("software"), la crescita professionale acquisita e le prospettive future di evoluzione della soluzione sviluppata.
 
 #pagebreak()

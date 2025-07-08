@@ -43,9 +43,6 @@ Lo #gls("stack tecnologico") adottato riflette l'attenzione dell'azienda per gli
 - *#foreign("Bitbucket")* per il versionamento del codice e la collaborazione nello sviluppo
 
 Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione. Le #ref-figure(<fig:Atlassian-Jira-videoframe>) e #ref-figure(<fig:Atlassian-Confluence-videoframe>) mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo software.
-
-La formazione continua sulle tecnologie emergenti è parte integrante della cultura aziendale. L'area #foreign("Analytics"), in particolare, mantiene un #foreign("focus") costante sull'esplorazione e implementazione di soluzioni basate su #acronym("AI") e #acronym("LLM"), che rappresentano il naturale proseguimento di quello che precedentemente veniva incasellato come "#foreign("big data")" ed è parte integrante della strategia aziendale.
-
 #numbered-figure(
   image("../images/Atlassian-Jira-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Jira",
@@ -54,6 +51,8 @@ La formazione continua sulle tecnologie emergenti è parte integrante della cult
   image("../images/Atlassian-Confluence-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Confluence",
 ) <fig:Atlassian-Confluence-videoframe>
+La formazione continua sulle tecnologie emergenti è parte integrante della cultura aziendale. 
+L'area #foreign("Analytics"), in particolare, mantiene un #foreign("focus") costante sull'esplorazione e implementazione di soluzioni basate su #acronym("AI") e #acronym("LLM"), che rappresentano il naturale proseguimento di quello che precedentemente veniva incasellato come "#foreign("big data")" ed è parte integrante della strategia aziendale.
 
 == Architettura organizzativa <sec:architettura-organizzativa>
 
