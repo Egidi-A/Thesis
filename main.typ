@@ -6,10 +6,11 @@
 #import "config/functions.typ": *
 
 #import "appendix/glossary.typ": *
-#import "appendix/bibliography.typ": *
+#import "appendix/bibliography_simple.typ": *
 #import "appendix/acronyms.typ": *
 
-
+// Configura le citazioni
+#set cite(style: "ieee")
 
 // Imposta il documento
 #set document(
@@ -47,4 +48,4 @@
 // Appendici
 #include "appendix/acronyms.typ"
 #include "appendix/glossary.typ"
-#include "appendix/bibliography.typ"
+#include "appendix/bibliography_simple.typ"

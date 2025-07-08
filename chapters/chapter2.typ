@@ -14,6 +14,8 @@ Il progetto di #foreign("stage") proposto da Miriade si inserisce in un contesto
 
 I sistemi legacy basati su #acronym("COBOL") rappresentano ancora oggi una parte significativa dell'infrastruttura informatica di molte organizzazioni, specialmente nel settore bancario, finanziario e assicurativo. Nonostante COBOL sia stato sviluppato negli anni '60, ha una presenza significativa nelle moderne architetture.
 
+// Esempio di citazione: La persistenza di COBOL è documentata in numerosi studi @bmc2024state.
+
 #ref-figure(<fig:interfaccia-cobol>) mostra un esempio tipico di interfaccia utente e codice COBOL, che evidenzia il contrasto netto con le moderne interfacce grafiche e paradigmi di programmazione attuali. Questa differenza visuale è solo la punta dell'iceberg delle sfide che comporta il mantenimento di questi sistemi in un ecosistema tecnologico in rapida evoluzione.
 
 #numbered-figure(
@@ -23,17 +25,17 @@ I sistemi legacy basati su #acronym("COBOL") rappresentano ancora oggi una parte
 
 La problematica della #foreign("legacy modernization") va ben oltre la semplice obsolescenza tecnologica. Durante il mio #foreign("stage"), attraverso l'analisi della letteratura e il confronto con i professionisti del settore, ho potuto identificare come i costi nascosti del mantenimento di questi sistemi includano:
 
-- La crescente difficoltà nel reperire sviluppatori COBOL qualificati
-- L'integrazione sempre più complessa con tecnologie moderne
-- I rischi operativi derivanti dall'utilizzo di piattaforme #foreign("hardware") e #foreign("software") che i #foreign("vendor") non supportano più attivamente
+- La crescente difficoltà nel reperire sviluppatori COBOL qualificati @cbtnuggets2024cobol
+- L'integrazione sempre più complessa con tecnologie moderne @version1_2024
+- I rischi operativi derivanti dall'utilizzo di piattaforme #foreign("hardware") e #foreign("software") che i #foreign("vendor") non supportano più attivamente @luxoft2023banking
 
 Questi fattori si traducono in costi di manutenzione esponenzialmente crescenti e in una ridotta agilità nel rispondere alle esigenze di #foreign("business") in continua evoluzione.
 
 I rischi associati al mantenimento di sistemi COBOL #foreign("legacy") nelle infrastrutture IT moderne sono molteplici e interconnessi:
 
-- *Carenza di competenze*: La carenza di competenze specializzate crea una forte dipendenza da un #foreign("pool") sempre più ristretto di esperti, spesso prossimi al pensionamento.
-- *Documentazione inadeguata*: La documentazione inadeguata o assente di molti di questi sistemi, sviluppati decenni fa, rende ogni intervento di manutenzione un'operazione ad alto rischio.
-- *Incompatibilità tecnologica*: L'incompatibilità con le moderne pratiche di sviluppo come #foreign("DevOps"), #foreign("continuous integration") e #gls("microservizi") limita in modo significativo la capacità delle organizzazioni di innovare e competere efficacemente nel mercato digitale.
+- *Carenza di competenze*: La carenza di competenze specializzate crea una forte dipendenza da un #foreign("pool") sempre più ristretto di esperti, spesso prossimi al pensionamento @cbtnuggets2024cobol.
+- *Documentazione inadeguata*: La documentazione inadeguata o assente di molti di questi sistemi, sviluppati decenni fa, rende ogni intervento di manutenzione un'operazione ad alto rischio @howtogeek2020cobol.
+- *Incompatibilità tecnologica*: L'incompatibilità con le moderne pratiche di sviluppo come #foreign("DevOps"), #foreign("continuous integration") e #gls("microservizi") limita in modo significativo la capacità delle organizzazioni di innovare e competere efficacemente nel mercato digitale @cast2024cobol.
 
 Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l'architettura monolitica tipica dei sistemi #foreign("mainframe") e l'architettura moderna a microservizi evidenzia le sfide architetturali della migrazione. Questa differenza strutturale comporta non solo una riprogettazione tecnica, ma anche un ripensamento completo dei processi operativi e delle modalità di sviluppo.
 
@@ -42,7 +44,7 @@ Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l
   caption: "Confronto tra architettura monolitica dei mainframe e architettura moderna a microservizi",
 ) <fig:confronto-architetture>
 
-La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta quindi non solo una sfida tecnica, ma una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione.
+La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta quindi non solo una sfida tecnica, ma una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione @newrelic2024java.
 
 == Obiettivi e vincoli dello stage <sec:obiettivi-vincoli>
 
@@ -178,7 +180,7 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 - Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo
 - Sviluppare pensiero critico nella valutazione di soluzioni tecnologiche alternative
 
-#ref-figure(<fig:metodologia-agile>) rappresenta visualmente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
+#ref-figure(<fig:metodologia-agile>) rappresenta visivamente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
 
 #numbered-figure(
   image("../images/agile.png", width: 80%),

@@ -1,3 +1,0 @@
-#align(center)[
-  = Bibliografia <bibliography>
-]
