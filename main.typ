@@ -27,7 +27,7 @@
 #include "preface/abstract.typ"
 
 // Ringraziamenti
-#include "preface/acknowledgments.typ"
+//#include "preface/acknowledgments.typ"
 
 // Indici
 #include "preface/toc.typ"

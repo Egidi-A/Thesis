@@ -17,18 +17,18 @@
 
 #pagebreak()
 
-// Elenco delle tabelle
+/*// Elenco delle tabelle
 #outline(
   title: "Elenco delle tabelle", 
   target: figure.where(kind: "Tabella"),
 )
 
-#pagebreak()
+#pagebreak()*/
 
 // Elenco dei codici (se necessario)
-#outline(
+/*#outline(
   title: "Elenco dei listati",
   target: figure.where(kind: "Codice"),
 )
 
-#pagebreak()
+#pagebreak()*/

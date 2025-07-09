@@ -2,7 +2,7 @@
 #import "../config/functions.typ": *
 
 #align(center)[
-  = Bibliografia <bibliography>
+  = Sitografia <bibliography>
 ]
 
 // Importa e mostra la bibliografia dal file .bib

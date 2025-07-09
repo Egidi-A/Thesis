@@ -1,14 +1,12 @@
 #import "../config/functions.typ": *
-#import "../config/foreign-words.typ": foreign
+#import "../config/foreign-words.typ": *
+#import "../appendix/glossary.typ": *
+#import "../appendix/acronyms.typ": *
 
 = Il progetto di migrazione COBOL-Java <cap:progetto-migrazione>
 
-Il progetto di #foreign("stage") proposto da Miriade si inserisce in un contesto tecnologico di particolare rilevanza per il settore #acronym("IT") contemporaneo: la modernizzazione dei sistemi #gls("legacy"). Durante il mio percorso, ho avuto l'opportunità di confrontarmi con una problematica comune a molte organizzazioni, in particolare nel settore bancario e assicurativo, dove i sistemi COBOL continuano a costituire l'impalcatura portante di infrastrutture critiche per il #foreign("business").
-
-#define-term("legacy", "Sistemi informatici datati ma ancora in uso")
-#define-acronym("COBOL", "Common Business-Oriented Language")
-#define-term("mainframe", "Computer di grandi dimensioni per elaborazioni complesse")
-#define-term("microservizi", "Architettura software basata su servizi indipendenti")
+Il progetto di #foreign("stage") proposto da Miriade si inserisce in un contesto tecnologico di particolare rilevanza per il settore #acronym("IT") contemporaneo: la modernizzazione dei sistemi #gls("legacy"). 
+Durante il mio percorso, ho avuto l'opportunità di confrontarmi con una problematica comune a molte organizzazioni, in particolare nel settore bancario e assicurativo, dove i sistemi COBOL continuano a costituire l'impalcatura portante di infrastrutture critiche per il #foreign("business").
 
 == Contesto di attualità <sec:contesto-attualita>
 
@@ -16,7 +14,7 @@ I sistemi legacy basati su #acronym("COBOL") rappresentano ancora oggi una parte
 
 // Esempio di citazione: La persistenza di COBOL è documentata in numerosi studi @bmc2024state.
 
-#ref-figure(<fig:interfaccia-cobol>) mostra un esempio tipico di interfaccia utente e codice COBOL, che evidenzia il contrasto netto con le moderne interfacce grafiche e paradigmi di programmazione attuali. Questa differenza visuale è solo la punta dell'iceberg delle sfide che comporta il mantenimento di questi sistemi in un ecosistema tecnologico in rapida evoluzione.
+#ref-figure(<fig:interfaccia-cobol>)#footnote("Fonte: https://overcast.blog") mostra un esempio tipico di interfaccia utente e codice COBOL, che evidenzia il contrasto netto con le moderne interfacce grafiche e paradigmi di programmazione attuali. Questa differenza visuale è solo la punta dell'iceberg delle sfide che comporta il mantenimento di questi sistemi in un ecosistema tecnologico in rapida evoluzione.
 
 #numbered-figure(
   image("../images/COBOL-cli.png"),
@@ -37,95 +35,68 @@ I rischi associati al mantenimento di sistemi COBOL #foreign("legacy") nelle inf
 - *Documentazione inadeguata*: La documentazione inadeguata o assente di molti di questi sistemi, sviluppati decenni fa, rende ogni intervento di manutenzione un'operazione ad alto rischio @howtogeek2020cobol.
 - *Incompatibilità tecnologica*: L'incompatibilità con le moderne pratiche di sviluppo come #foreign("DevOps"), #foreign("continuous integration") e #gls("microservizi") limita in modo significativo la capacità delle organizzazioni di innovare e competere efficacemente nel mercato digitale @cast2024cobol.
 
-Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l'architettura monolitica tipica dei sistemi #foreign("mainframe") e l'architettura moderna a microservizi evidenzia le sfide architetturali della migrazione. Questa differenza strutturale comporta non solo una riprogettazione tecnica, ma anche un ripensamento completo dei processi operativi e delle modalità di sviluppo.
+Come illustrato in #ref-figure(<fig:confronto-architetture>)#footnote("Fonte: https://www.atlassian.com"), il contrasto tra l'architettura monolitica tipica dei sistemi #foreign("mainframe") e l'architettura moderna a microservizi evidenzia le sfide architetturali della migrazione. Questa differenza strutturale comporta non solo una riprogettazione tecnica, ma anche un ripensamento completo dei processi operativi e delle modalità di sviluppo.
 
 #numbered-figure(
-  image("../images/monolitic and microsevices application.png", width: 80%),
+  image("../images/monolitic and microsevices application.png", width: 100%),
   caption: "Confronto tra architettura monolitica dei mainframe e architettura moderna a microservizi",
 ) <fig:confronto-architetture>
 
 La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta una sfida tecnica e una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione @newrelic2024java.
 
 == Obiettivi dello stage <sec:obiettivi>
-
-Gli obiettivi del progetto di #foreign("stage") erano stati definiti per affrontare in modo sistematico la problematica della migrazione da COBOL a Java, bilanciando l'ambizione tecnica con la fattibilità pratica nel contesto temporale disponibile.
-
-*Obiettivo principale*
-
-Sviluppare un sistema prototipale di migrazione automatica da COBOL a Java che potesse dimostrare la fattibilità di automatizzare il processo di conversione, preservando la #foreign("business logic") originale e producendo codice Java idiomatico e manutenibile.
-
-*Obiettivi specifici*
-
+Il macro-obiettivo era sviluppare un sistema prototipale di migrazione automatica da COBOL a Java che potesse dimostrare la fattibilità di automatizzare il processo di conversione, preservando la #foreign("business logic") originale e producendo codice Java idiomatico e manutenibile.
+=== Obiettivi principali
 - *Esplorazione tecnologica*: Investigare e valutare diverse strategie di migrazione, dalla conversione sintattica diretta basata su regole deterministiche fino all'utilizzo di tecnologie di intelligenza artificiale generativa, identificando vantaggi e limitazioni di ciascun approccio.
-
 - *Automazione del processo*: Sviluppare strumenti e metodologie che potessero automatizzare il più possibile il processo di conversione, riducendo l'intervento manuale e i conseguenti rischi di errore umano nella traduzione.
-
 - *Qualità del risultato*: Garantire che il codice Java prodotto rispettasse standard di qualità professionale, con particolare attenzione alla leggibilità, manutenibilità e conformità alle convenzioni Java moderne.
-
 - *Accessibilità della soluzione*: Fornire un'interfaccia utente (grafica o da linea di comando) che rendesse il sistema utilizzabile anche da personale non specializzato nella migrazione di codice.
+=== Obiettivi operativi
+Per rendere concreti e misurabili gli obiettivi principali, sono stati definiti obiettivi operativi specifici, classificati secondo tre livelli di priorità:
+#linebreak()
+*Obbligatori*
+- *OO01*: Sviluppare competenza nel linguaggio COBOL attraverso la produzione di almeno un progetto completo che includesse le quattro divisioni fondamentali (#foreign("Identification"), #foreign("Environment"), #foreign("Data") e #foreign("Procedure"))
+- *OO02*: Esplorazione approfondita di diverse strategie di migrazione, dalla conversione sintattica diretta all'utilizzo di tecnologie di intelligenza artificiale generativa
+- *OO03*: Implementare un sistema di conversione automatica che raggiungesse almeno il 75% di copertura delle divisioni
+- *OO04*: Esplorare e documentare approcci distinti alla migrazione
+- *OO05*: Completare la migrazione funzionante di almeno uno dei progetti COBOL sviluppati, validando l'equivalenza funzionale tra codice sorgente e risultato
+- *OO06*: Produrre codice Java che rispettasse le convenzioni del linguaggio, includendo struttura dei #foreign("package"), nomenclatura standard e documentazione #foreign("JavaDoc")
+- *OO07*: Fornire un'interfaccia utilizzabile (grafica o #acronym("CLI")) per l'esecuzione del sistema di conversione
+- *OO08*: Creare documentazione utente completa, includendo un #foreign("README") dettagliato con istruzioni di installazione, configurazione e utilizzo
+*Desiderabili*
+- *OD01*: Raggiungimento di una copertura del 100% nella conversione automatica del codice prodotto autonomamente
+- *OD02*: Gestione efficace di costrutti COBOL complessi o non direttamente traducibili
+- *OD03*: Implementazione di meccanismi di ottimizzazione del codice Java generato
+*Facoltativi*
+- *OF01*: Integrazione con sistemi di analisi statica per la verifica della qualità del codice generato
+- *OF02*: Implementare un sistema di #foreign("reporting") dettagliato che producesse metriche sulla conversione, incluse statistiche di copertura, costrutti non convertiti e interventi manuali necessari
+- *OF03*: Implementazione di funzionalità avanzate di #foreign("refactoring") del codice Java prodotto
 
-== Requisiti del progetto <sec:requisiti>
+=== Metriche di successo
+Per valutare oggettivamente il raggiungimento degli obiettivi, erano state definite le seguenti metriche:
 
-Dall'analisi degli obiettivi sopra descritti e attraverso la discussione con il #foreign("tutor") aziendale, sono stati derivati i seguenti requisiti specifici per il progetto. I requisiti sono stati classificati secondo il loro grado di priorità per fornire una chiara gerarchia implementativa.
-
-Riporto le notazioni utilizzate per identificare i requisiti:
-
-- *O* per i requisiti obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente
-- *D* per i requisiti desiderabili, non vincolanti o strettamente necessari, ma dal riconoscibile valore aggiunto
-- *F* per i requisiti facoltativi, rappresentanti valore aggiunto non strettamente competitivo
-
-Le sigle precedentemente indicate sono seguite da una coppia sequenziale di numeri, identificativo del requisito:
-
-*Requisiti obbligatori*
-
-- *O01*: Esplorazione approfondita di diverse strategie di migrazione, dalla conversione sintattica diretta all'utilizzo di tecnologie di intelligenza artificiale generativa
-- *O02*: Sviluppo di strumenti specifici che automatizzino il più possibile il processo di conversione
-- *O03*: Raggiungimento di conversione automatica del codice COBOL di almeno tre sezioni su quattro
-- *O04*: Produzione di almeno un progetto COBOL
-- *O05*: Migrazione completa di almeno uno dei progetti COBOL sviluppati nella fase iniziale dello stage
-- *O06*: Fornitura di un'interfaccia (grafica o da linea di comando) per l'interazione con il sistema
-- *O07*: Produzione di codice Java idiomatico e manutenibile che preservi la #foreign("business logic") originale
-- *O08*: Generazione di documentazione #foreign("JavaDoc") professionale per il codice prodotto
-- *O09*: Sviluppo di un prototipo funzionante del sistema di conversione
-- *O10*: Creazione di un #foreign("README") esplicativo per permettere l'utilizzo del sistema
-
-*Requisiti desiderabili*
-
-- *D01*: Raggiungimento di una copertura del 100% nella conversione automatica del codice prodotto autonomamente
-- *D02*: Gestione efficace di costrutti COBOL complessi o non direttamente traducibili
-- *D03*: Implementazione di meccanismi di ottimizzazione del codice Java generato
-
-*Requisiti facoltativi*
-
-- *F01*: Integrazione con sistemi di analisi statica per la verifica della qualità del codice generato
-- *F02*: Sviluppo di un sistema di #foreign("reporting") dettagliato sulle conversioni effettuate
-- *F03*: Implementazione di funzionalità avanzate di #foreign("refactoring") del codice Java prodotto
+- *Copertura di conversione*: Percentuale di linee di codice COBOL convertite automaticamente senza intervento manuale
+- *Equivalenza funzionale*: Corrispondenza interfaccia utente COBOL originale e Java convertito
+- *Qualità del codice*: Conformità agli standard Java verificata tramite strumenti di analisi statica
+- *Tempo di conversione*: Riduzione del tempo necessario per la migrazione rispetto a un approccio completamente manuale
+- *Usabilità*: Capacità di utilizzo del sistema da parte di utenti con conoscenze base di programmazione
 
 == Vincoli <sec:vincoli>
 
 Il progetto si focalizzava sullo sviluppo di un sistema di migrazione automatica e questo aspetto caratterizzava le condizioni imposte per lo svolgimento del lavoro.
-
+#linebreak()
 *Vincoli temporali*
-
 - Durata complessiva dello #foreign("stage"): 320 ore
 - Periodo: dal 05 maggio al 27 giugno 2025
 - Modalità di lavoro ibrida: 2 giorni a settimana in sede, 3 giorni in modalità telematica
 - Orario lavorativo: 9:00 - 18:00
 
 *Vincoli tecnologici*
-
 - Il sistema doveva essere sviluppato utilizzando tecnologie moderne e supportate
 - Necessità di preservare integralmente la #foreign("business logic") contenuta nei programmi COBOL originali
 - La soluzione doveva essere scalabile, capace di gestire progetti di diverse dimensioni
-- Utilizzo strumenti di versionamento (#foreign("Git")) e di documentazione continua. #ref-figure(<fig:bitbucket-git>) mostra l'interfaccia che BitBucket mette a disposizione per il versionamento di progetti, evidenzia l'importanza attribuita dall'azienda alla tracciabilità e alla collaborazione nel processo di sviluppo.
-
-#numbered-figure(
-  image("../images/Atlassian-Bitbucket.png"),
-  caption: "Utilizzo di BitBucket per il versionamento del codice",
-) <fig:bitbucket-git>
-
+- Utilizzo strumenti di versionamento (#foreign("Git")) e di documentazione continua.
 *Vincoli metodologici*
-
 - Adozione dei principi #foreign("Agile") con #foreign("sprint") settimanali e #foreign("stand-up") giornalieri per allineamento costante
 - Revisioni settimanali degli obiettivi con adattamento del piano di lavoro
 
@@ -174,10 +145,10 @@ In base a quanto ho potuto osservare e comprendere durante il periodo di #foreig
 - *Creazione di competenze interne*: Il progetto permetteva di sviluppare #foreign("know-how") interno su una problematica di crescente rilevanza, preparando l'azienda a potenziali progetti futuri.
 
 - *Esplorazione di tecnologie emergenti*: Il progetto era stato concepito per esplorare la possibile applicazione dell'intelligenza artificiale generativa a problemi di modernizzazione del #foreign("software"). Questo ambito, all'intersezione tra #acronym("AI") e #foreign("software engineering"), può rappresentare una frontiera tecnologica di forte attualità e di interesse per un'azienda che opera già attivamente nel campo dell'AI e dei #foreign("Large Language Models").
-
+#define-acronym("AI", "Artificial Intelligence")
 - *Sviluppo di #foreign("asset") riutilizzabili*: Sebbene il progetto fosse autoconclusivo, permetteva di ottenere risultati tangibili nel breve termine dello #foreign("stage"), ma con il potenziale di evolversi in soluzioni più ampie e commercializzabili.
 
-== Obiettivi personali e aspettative <sec:obiettivi-personali>
+== Aspettative personali <sec:obiettivi-personali>
 
 La scelta di intraprendere questo #foreign("stage") presso Miriade è stata guidata da una combinazione di motivazioni tecniche e personali che si allineavano con il mio percorso formativo universitario. Tra le diverse opportunità di #foreign("stage") che avevo valutato, questo progetto si distingueva per due elementi fondamentali:
 
@@ -185,7 +156,7 @@ La scelta di intraprendere questo #foreign("stage") presso Miriade è stata guid
 - *Interesse per COBOL*: Il mio forte interesse nel scoprire di più sul linguaggio COBOL, un affascinante paradosso tecnologico che, nonostante la sua longeva età, continua a essere cruciale nello scenario bancario e assicurativo internazionale.
 
 Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di competenze pratiche nel campo della modernizzazione di sistemi #foreign("legacy") e gestione progetti:
-
+#linebreak()
 *Obiettivi tecnici*
 
 - Comprendere la struttura e la logica dei programmi COBOL attraverso lo sviluppo di applicazioni di test
@@ -203,7 +174,7 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 - Sviluppare autonomia nella gestione di un progetto aziendale, dalla pianificazione all'implementazione
 - Acquisire capacità di #foreign("problem solving") in contesti reali, con vincoli temporali e tecnologici definiti
 - Migliorare le competenze comunicative attraverso l'interazione con il #foreign("team") e la presentazione dei progressi
-- Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo. #ref-figure(<fig:metodologia-agile>) rappresenta visivamente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
+- Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo. #ref-figure(<fig:metodologia-agile>)#footnote("Fonte: https://indevlab.com") rappresenta visivamente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
 
 - Sviluppare pensiero critico nella valutazione di soluzioni tecnologiche alternative
 

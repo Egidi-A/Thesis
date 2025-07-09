@@ -47,32 +47,50 @@
     "caption": "",
     "label": "<fig:logo-unipd>"
   },
-  "miriade.png": {
+  "Microservice architecture.png": {
     "id": "img_010",
+    "path": "images\\Microservice architecture.png",
+    "caption": "",
+    "label": "<fig:Microservice architecture>"
+  },
+  "miriade.png": {
+    "id": "img_011",
     "path": "images\\miriade.png",
     "caption": "",
     "label": "<fig:miriade>"
   },
   "MOB5.svg": {
-    "id": "img_011",
+    "id": "img_012",
     "path": "images\\MOB5.svg",
     "caption": "",
     "label": "<fig:MOB5>"
   },
+  "Monolith Vs Microservice.png": {
+    "id": "img_013",
+    "path": "images\\Monolith Vs Microservice.png",
+    "caption": "",
+    "label": "<fig:Monolith Vs Microservice>"
+  },
+  "Monolithic architecture.png": {
+    "id": "img_014",
+    "path": "images\\Monolithic architecture.png",
+    "caption": "",
+    "label": "<fig:Monolithic architecture>"
+  },
   "monolitic and microsevices application.png": {
-    "id": "img_012",
+    "id": "img_015",
     "path": "images\\monolitic and microsevices application.png",
     "caption": "",
     "label": "<fig:monolitic and microsevices application>"
   },
   "team.png": {
-    "id": "img_013",
+    "id": "img_016",
     "path": "images\\team.png",
     "caption": "",
     "label": "<fig:team>"
   },
   "valori-miriade.png": {
-    "id": "img_014",
+    "id": "img_017",
     "path": "images\\valori-miriade.png",
     "caption": "",
     "label": "<fig:valori-miriade>"

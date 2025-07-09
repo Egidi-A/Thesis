@@ -1,21 +1,28 @@
 #import "../config/functions.typ": *
-#import "../config/foreign-words.typ": foreign
+#import "../config/foreign-words.typ": *
+#import "../appendix/glossary.typ": *
+#import "../appendix/acronyms.typ": *
 
-
+#define-acronym("AI", "Artificial Intelligence")
+#define-term("legacy", "Sistemi informatici datati ma ancora in uso")
+#define-acronym("COBOL", "Common Business-Oriented Language")
+#define-term("mainframe", "Computer di grandi dimensioni per elaborazioni complesse")
+#define-term("microservizi", "Architettura software basata su servizi indipendenti")
+#define-acronym("CLI", "Command Line Interface")
+#define-acronym("IT", "Information Technology")
+#define-acronym("LLM", "Large Language Models")
+#define-term("DevOps", "Pratiche che combinano sviluppo software e operazioni IT")
+#define-term("stand-up", "Breve riunione giornaliera del team Agile")
+#define-term("sprint", "Periodo di tempo definito per completare un set di attività")
 = Miriade: un ecosistema di innovazione tecnologica <cap:miriade>
 
 Miriade, come realtà nel panorama #acronym("IT") italiano, si distingue per il suo approccio innovativo rispetto all'ecosistema completo del dato e alle soluzioni informatiche correlate. L'azienda, che ho avuto l'opportunità di conoscere durante il mio percorso di #foreign("stage"), si caratterizza per una filosofia aziendale orientata all'innovazione continua e all'investimento nel capitale umano, elementi che la rendono un ambiente particolarmente stimolante per la crescita professionale di figure #foreign("junior").
-
-#define-term("Miriade", "Azienda specializzata nell'analisi dati e nelle soluzioni informatiche")
-#define-acronym("IT", "Information Technology")
-#define-acronym("AI", "Artificial Intelligence")
-#define-acronym("LLM", "Large Language Models")
 
 == L'azienda nel panorama informatico e sociale <sec:panorama-informatico>
 
 Miriade si posiziona strategicamente nel settore dell'analisi dati e delle soluzioni informatiche, operando con quattro aree funzionali principali: #foreign("Analytics"), #foreign("Data"), #foreign("System Application") e #foreign("Operation"). L'azienda ha costruito nel tempo una solida reputazione nel mercato attraverso la capacità di fornire soluzioni innovative che rispondono non solo alle esigenze tecniche dei clienti, ma che prestano particolare attenzione alle relazioni umane e alle realtà del territorio.
 
-Ciò che distingue #gls("Miriade") nel contesto competitivo è la sua vision aziendale, che integra le competenze tecnologiche con una forte responsabilità sociale. L'azienda implementa attivamente azioni a supporto di società e cooperative del territorio, dimostrando come l'innovazione tecnologica possa essere un veicolo di sviluppo sociale ed economico locale. Questa attenzione alla dimensione sociale si riflette anche nell'approccio alle risorse umane, con una particolare propensione a individuare e coltivare giovani energie fin dalle scuole e università attraverso tirocini curricolari che permettono una crescita personale durante il percorso di studi.
+Ciò che distingue #gls("Miriade") nel contesto competitivo è la sua #foreign("vision") aziendale, che integra le competenze tecnologiche con una forte responsabilità sociale. L'azienda implementa attivamente azioni a supporto di società e cooperative del territorio, dimostrando come l'innovazione tecnologica possa essere un veicolo di sviluppo sociale ed economico locale. Questa attenzione alla dimensione sociale si riflette anche nell'approccio alle risorse umane, con una particolare propensione a individuare e coltivare giovani energie fin dalle scuole e università attraverso tirocini curricolari che permettono una crescita personale durante il percorso di studi.
 
 La clientela di Miriade spazia tra i medi e grandi clienti, includendo sia realtà del settore privato che pubblico. Questa diversificazione del portfolio clienti permette all'azienda di confrontarsi con problematiche tecnologiche variegate, mantenendo una costante spinta all'innovazione e all'adattamento delle soluzioni proposte.
 
@@ -37,11 +44,11 @@ Lo #gls("stack tecnologico") adottato riflette l'attenzione dell'azienda per gli
 - *#foreign("Jira")* per il #foreign("tracking") delle attività e la gestione dei progetti  
 - *#foreign("Bitbucket")* per il versionamento del codice e la collaborazione nello sviluppo
 
-Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione. Le #ref-figure(<fig:Atlassian-Jira-videoframe>) e #ref-figure(<fig:Atlassian-Confluence-videoframe>) mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo software.
+Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione. Le #ref-figure(<fig:Atlassian-Jira-videoframe>)#footnote("Fonte: https://www.peakforce.dev"
+) e #ref-figure(<fig:Atlassian-Confluence-videoframe>)#footnote("Fonte: https://support.atlassian.com") mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo software.
 #numbered-figure(
   image("../images/Atlassian-Jira-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Jira",
-  source:"https://www.peakforce.dev/blog/jira-implementation---how-to-get-started-atlassian-expert-q-a"
 ) <fig:Atlassian-Jira-videoframe>
 #numbered-figure(
   image("../images/Atlassian-Confluence-videoframe.png",width: 80%),
@@ -81,12 +88,13 @@ Particolarmente apprezzabili sono gli incontri settimanali chiamati "tiramisù",
 
 == Investimento nel capitale umano e nella ricerca <sec:investimento-capitale-umano>
 
-L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali della strategia aziendale di Miriade. Come si può osservare in #ref-figure(<fig:valori-miriade>), l'azienda si esprime esplicitamente riguardo i valori Durante il mio stage, ho potuto constatare come l'azienda non si limiti a dichiarare l'importanza delle risorse umane, ma implementi concretamente politiche e programmi volti alla valorizzazione e crescita delle persone, come ad esempio incontri, riflessioni e azioni sulla Parità di Genere, sulla quale sono certificati come azienda.
-
+L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali della strategia aziendale di Miriade. Durante il mio stage, ho potuto constatare come l'azienda non si limiti a dichiarare l'importanza delle risorse umane, ma implementi concretamente politiche e programmi volti alla valorizzazione e crescita delle persone, come ad esempio incontri, riflessioni e azioni sulla Parità di Genere, sulla quale sono certificati come azienda.
 #numbered-figure(
   image("../images/valori-miriade.png",width: 100%),
   caption: "Impegni etici e morali aziendali di Miriade",
 ) <fig:valori-miriade>
+
+Come si può osservare in #ref-figure(<fig:valori-miriade>)#footnote("Fonte: https://www.miriade.it"), l'azienda si esprime esplicitamente riguardo i propri valori.
 
 Il processo di selezione riflette questa filosofia: l'azienda ricerca persone sensibili, elastiche, proattive e autonome, ponendo l'enfasi sulle caratteristiche personali piuttosto che esclusivamente sulle competenze tecniche pregresse, un approccio che permette di costruire #foreign("team") coesi e motivati, capaci di affrontare sfide tecnologiche in continua evoluzione.
 
