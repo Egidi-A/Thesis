@@ -1,77 +1,123 @@
-# Capitolo 3 - Sviluppo del progetto: dal parser tradizionale all'AI
+#import "../config/functions.typ": *
+#import "../config/foreign-words.typ": *
+#import "../appendix/glossary.typ": *
+#import "../appendix/acronyms.typ": *
 
-Il presente capitolo documenta l'evoluzione del progetto di migrazione COBOL-Java durante il periodo di stage, illustrando il percorso che ha portato da un approccio tradizionale basato su parsing deterministico a una soluzione innovativa guidata dall'intelligenza artificiale. La narrazione segue un ordine cronologico per evidenziare come le sfide tecniche incontrate abbiano influenzato le decisioni progettuali e come l'adozione dell'AI abbia trasformato radicalmente tempi e risultati del progetto.
+#define-acronym("AI", "Artificial Intelligence")
+#define-term("legacy", "Sistemi informatici datati ma ancora in uso")
+#define-term("parser", "Analizzatore sintattico")
+#define-term("parsing", "Analisi sintattica")
+#define-term("pipeline", "Sequenza di elaborazioni")
+#define-acronym("API", "Application Programming Interface")
+#define-term("prompt", "Istruzione data a un sistema AI")
+#define-term("Maven", "Strumento di gestione progetti Java")
+#define-term("edge", "Casi limite o estremi")
+#define-term("translator", "Traduttore automatico")
+#define-term("end-to-end", "Da inizio a fine")
+#define-term("build system", "Sistema di compilazione")
+#define-term("JavaDoc", "Documentazione automatica Java")
+#define-term("sprint", "Periodo di sviluppo Agile")
+#define-term("stand-up", "Riunione quotidiana Agile")
+#define-term("pattern", "Schema ricorrente nel codice")
+#define-term("open-source", "Software a codice aperto")
+#define-term("embedded", "Incorporato nel codice")
+#define-term("business logic", "Logica di elaborazione (sotto forma di codice sorgente) che rende operativa un'applicazione")
+#define-term("production-ready", "Pronto per la produzione")
+#define-acronym("SQL", "Structured Query Language")
+#define-acronym("COBOL", "Common Business-Oriented Language")
+#define-term("proof of concept", "Dimostrazione di fattibilità")
+#define-acronym("LLM", "Large Language Model")
+#define-term("deployment", "Distribuzione in produzione")
+#define-acronym("JDBC", "Java Database Connectivity")
+#define-acronym("CLI", "Command Line Interface")
+#define-term("refactoring", "Ristrutturazione del codice")
+#define-acronym("AST", "Abstract Syntax Tree")
+#define-term("lexer", "Analizzatore lessicale")
+#define-term("token", "Unità lessicale elementare")
+#define-term("workflow", "Flusso di lavoro")
+#define-acronym("NLP", "Natural Language Processing")
+#define-term("rollback", "Annullamento di transazione")
+#define-term("savepoint", "Punto di salvataggio in una transazione")
+#define-acronym("ACID", "Atomicity, Consistency, Isolation, Durability")
+#define-term("type tracking", "Tracciamento dei tipi di dato")
+#define-term("control flow", "Flusso di controllo")
+#define-acronym("JSON", "JavaScript Object Notation")
+#define-acronym("JAR", "Java Archive")
+#define-term("classpath", "Percorso delle classi Java")
+#define-term("getter/setter", "Metodi di accesso alle proprietà")
 
-## 3.1 Setup iniziale e metodologia di lavoro
+= Sviluppo del progetto: dal #foreign("parser") tradizionale all'#acronym("AI") <cap:sviluppo-progetto>
 
-### 3.1.1 Implementazione della metodologia Agile
+Il presente capitolo documenta l'evoluzione del progetto di migrazione #acronym("COBOL")-Java durante il periodo di #foreign("stage"), illustrando il percorso che ha portato da un approccio tradizionale basato su #gls("parsing") deterministico a una soluzione innovativa guidata dall'intelligenza artificiale. La narrazione segue un ordine cronologico per evidenziare come le sfide tecniche incontrate abbiano influenzato le decisioni progettuali e come l'adozione dell'#acronym("AI") abbia trasformato radicalmente tempi e risultati del progetto.
 
-Il progetto ha adottato fin dall'inizio una metodologia Agile strutturata in sprint settimanali. Ogni settimana iniziava con una pianificazione degli obiettivi e si concludeva con una retrospettiva per valutare i risultati raggiunti. Gli stand-up giornalieri, condotti virtualmente attraverso la piattaforma aziendale, permettevano di sincronizzare il lavoro con il team e identificare tempestivamente eventuali impedimenti.
+== #foreign("Setup") iniziale e metodologia di lavoro <sec:setup-iniziale>
 
-La scelta di sprint settimanali, anziché le classiche due settimane, si è rivelata particolarmente efficace per un progetto di ricerca e sviluppo come questo, dove la direzione poteva cambiare rapidamente in base ai risultati ottenuti. Questa cadenza ravvicinata ha permesso di mantenere alta la flessibilità e di adattarsi velocemente alle nuove scoperte tecniche.
+=== Implementazione della metodologia #foreign("Agile") <subsec:metodologia-agile>
 
-### 3.1.2 Strumenti di sviluppo e ambiente tecnologico
+Il progetto ha adottato fin dall'inizio una metodologia #foreign("Agile") strutturata in #gls("sprint") settimanali. Ogni settimana iniziava con una pianificazione degli obiettivi e si concludeva con una retrospettiva per valutare i risultati raggiunti. Gli #gls("stand-up") giornalieri, condotti virtualmente attraverso la piattaforma aziendale, permettevano di sincronizzare il lavoro con il #foreign("team") e identificare tempestivamente eventuali impedimenti.
+
+La scelta di #foreign("sprint") settimanali, anziché le classiche due settimane, si è rivelata particolarmente efficace per un progetto di ricerca e sviluppo come questo, dove la direzione poteva cambiare rapidamente in base ai risultati ottenuti. Questa cadenza ravvicinata ha permesso di mantenere alta la flessibilità e di adattarsi velocemente alle nuove scoperte tecniche.
+
+=== Strumenti di sviluppo e ambiente tecnologico <subsec:strumenti-sviluppo>
 
 L'ambiente di sviluppo è stato configurato durante la prima settimana con particolare attenzione all'integrazione di tutti gli strumenti necessari:
 
-- **Ambiente COBOL**: gnuCOBOL come compilatore principale, integrato con DBeaver per la gestione database
-- **Ambiente Java**: JDK 11 con Maven per la gestione delle dipendenze e il build system
-- **Ambiente Python**: Python 3.7+ per gli script di automazione e l'integrazione con le API di AI
-- **Docker**: per la containerizzazione dell'ambiente di sviluppo e test
+- *Ambiente #foreign("COBOL")*: #foreign("gnuCOBOL") come compilatore principale, integrato con #foreign("DBeaver") per la gestione #foreign("database")
+- *Ambiente Java*: JDK 11 con #gls("Maven") per la gestione delle dipendenze e il #gls("build system")
+- *Ambiente Python*: Python 3.7+ per gli #foreign("script") di automazione e l'integrazione con le #acronym("API") di #acronym("AI")
+- *#foreign("Docker")*: per la containerizzazione dell'ambiente di sviluppo e #foreign("test")
 
-Una sfida iniziale significativa è stata l'impossibilità di interfacciare DB2 con gnuCOBOL nell'ambiente Docker a causa di versioni deprecate e mancanza di librerie per SQL embedded. Questo ha richiesto un pivot verso PostgreSQL, dimostrando fin da subito la necessità di flessibilità nell'approccio tecnico.
+Una sfida iniziale significativa è stata l'impossibilità di interfacciare DB2 con #foreign("gnuCOBOL") nell'ambiente #foreign("Docker") a causa di versioni deprecate e mancanza di librerie per #acronym("SQL") #gls("embedded"). Questo ha richiesto un #foreign("pivot") verso PostgreSQL, dimostrando fin da subito la necessità di flessibilità nell'approccio tecnico.
 
-### 3.1.3 Gestione del progetto attraverso Jira e Confluence
+=== Gestione del progetto attraverso #foreign("Jira") e #foreign("Confluence") <subsec:gestione-progetto>
 
-La gestione del progetto ha seguito i principi Agile utilizzando:
+La gestione del progetto ha seguito i principi #foreign("Agile") utilizzando:
 
-- **Jira** per il tracking delle attività, con user story strutturate secondo il formato "Come [ruolo], voglio [funzionalità], per [beneficio]"
-- **Confluence** per la documentazione progressiva, organizzata in spazi dedicati per requisiti, design tecnico e lesson learned
-- **BitBucket** per il versionamento del codice, con una strategia di branching che prevedeva feature branch per ogni sviluppo significativo
+- *#foreign("Jira")* per il #foreign("tracking") delle attività, con #foreign("user story") strutturate secondo il formato "Come [ruolo], voglio [funzionalità], per [beneficio]"
+- *#foreign("Confluence")* per la documentazione progressiva, organizzata in spazi dedicati per requisiti, #foreign("design") tecnico e #foreign("lesson learned")
+- *#foreign("BitBucket")* per il versionamento del codice, con una strategia di #foreign("branching") che prevedeva #foreign("feature branch") per ogni sviluppo significativo
 
-La documentazione è stata mantenuta aggiornata in tempo reale, seguendo il principio Agile di "working software over comprehensive documentation", ma riconoscendo l'importanza di catturare le decisioni chiave e le motivazioni tecniche per future reference.
+#ref-figure(<fig:bitbucket-git>) mostra l'interfaccia #foreign("BitBucket") utilizzata per il versionamento, evidenziando l'importanza attribuita dall'azienda alla tracciabilità e alla collaborazione nel processo di sviluppo.
 
-## 3.2 Primo periodo: immersione nel mondo COBOL
+#numbered-figure(
+  image("../images/Atlassian-Bitbucket.png"),
+  caption: "Utilizzo di BitBucket per il versionamento del codice",
+  source: "https://bitbucket.org"
+) <fig:bitbucket-git>
 
-### 3.2.1 Studio del linguaggio e creazione progetti test
+La documentazione è stata mantenuta aggiornata in tempo reale, seguendo il principio #foreign("Agile") di "#foreign("working software over comprehensive documentation")", ma riconoscendo l'importanza di catturare le decisioni chiave e le motivazioni tecniche per future #foreign("reference").
 
-Le prime settimane sono state dedicate all'apprendimento approfondito del linguaggio COBOL attraverso un approccio pratico. Invece di limitarmi allo studio teorico, ho sviluppato tre applicazioni complete di complessità crescente:
+== Primo periodo: immersione nel mondo #foreign("COBOL") <sec:primo-periodo>
 
-1. **Sistema di Gestione Conti Correnti Bancari** (Complessità Base)
+=== Studio del linguaggio e creazione progetti #foreign("test") <subsec:studio-linguaggio>
+
+Le prime settimane sono state dedicate all'apprendimento approfondito del linguaggio #acronym("COBOL") attraverso un approccio pratico. Invece di limitarmi allo studio teorico, ho sviluppato tre applicazioni complete di complessità crescente:
+
+1. *Sistema di Gestione Conti Correnti Bancari* (Complessità Base)
    - Gestione apertura/chiusura conti
    - Operazioni di deposito e prelievo con validazioni
    - Calcolo del saldo e generazione estratti conto
-   - Integrazione con database PostgreSQL tramite SQL embedded
+   - Integrazione con #foreign("database") PostgreSQL tramite #acronym("SQL") #gls("embedded")
 
-2. **Sistema di Gestione Paghe e Stipendi** (Complessità Media)
+2. *Sistema di Gestione Paghe e Stipendi* (Complessità Media)
    - Anagrafica dipendenti completa
    - Calcolo stipendio base con gestione straordinari
    - Gestione trattenute fiscali e contributi previdenziali
    - Generazione cedolini mensili
 
-3. **Sistema di Gestione Magazzino e Inventario** (Complessità Media-Alta)
+3. *Sistema di Gestione Magazzino e Inventario* (Complessità Media-Alta)
    - Gestione prodotti con codici a barre
-   - Tracking movimentazioni e giacenze
+   - #foreign("Tracking") movimentazioni e giacenze
    - Gestione ordini fornitori con riordino automatico
-   - Report di inventario e analisi rotazione merci
+   - #foreign("Report") di inventario e analisi rotazione merci
 
-Ogni applicazione è stata sviluppata seguendo le best practice COBOL, includendo:
-- Strutturazione corretta delle divisioni (IDENTIFICATION, ENVIRONMENT, DATA, PROCEDURE)
+Ogni applicazione è stata sviluppata seguendo le #foreign("best practice") #acronym("COBOL"), includendo:
+- Strutturazione corretta delle divisioni (#foreign("IDENTIFICATION"), #foreign("ENVIRONMENT"), #foreign("DATA"), #foreign("PROCEDURE"))
 - Gestione appropriata degli errori tramite SQLCA
-- Implementazione di transazioni ACID per le operazioni critiche
-- Documentazione inline estensiva
-
-### 3.2.2 Interfacciamento con database PostgreSQL e DB2
-
-L'integrazione con i database ha rappresentato una sfida tecnica significativa. Il codice COBOL utilizzava SQL embedded attraverso la sintassi EXEC SQL, richiedendo particolare attenzione a:
-
-- Gestione delle variabili host con i due punti (:variable)
-- Implementazione di cursori per risultati multipli
-- Gestione del SQLCODE per il controllo errori
-- Mapping tra tipi COBOL (PIC clauses) e tipi SQL
-
-Un esempio significativo dal sistema bancario:
-
+- Implementazione di transazioni #acronym("ACID") per le operazioni critiche
+- Documentazione #foreign("inline") estensiva
+/*
+#source-code(
 ```cobol
 EXEC SQL
     SELECT c.saldo, c.stato, cl.nome, cl.cognome
@@ -81,38 +127,43 @@ EXEC SQL
     JOIN CLIENTI cl ON c.codice_cliente = cl.codice_cliente
     WHERE c.numero_conto = :WS-NUMERO-CONTO
 END-EXEC
-```
+```,
+lang: "cobol",
+caption: "Esempio di SQL embedded in COBOL per query con JOIN"
+)
+*/
+=== Mappatura dei #foreign("pattern") e analisi di traducibilità <subsec:mappatura-pattern>
 
-### 3.2.3 Mappatura dei pattern e analisi di traducibilità
+L'analisi approfondita del codice prodotto ha permesso di identificare #gls("pattern") ricorrenti nel #acronym("COBOL") e valutarne la traducibilità verso Java:
 
-L'analisi approfondita del codice prodotto ha permesso di identificare pattern ricorrenti nel COBOL e valutarne la traducibilità verso Java:
-
-**Pattern direttamente traducibili:**
-- Strutture dati COBOL → Classi Java con getter/setter
+*#foreign("Pattern") direttamente traducibili:*
+- Strutture dati #acronym("COBOL") → Classi Java con #gls("getter/setter")
 - PERFORM → Chiamate a metodi
 - IF/ELSE → Strutture condizionali Java
-- File I/O sequenziale → Java I/O streams
+- #foreign("File I/O") sequenziale → Java I/O #foreign("streams")
 
-**Pattern che richiedono trasformazione:**
-- GOTO → Refactoring con loop e condizioni strutturate
-- REDEFINES → Union types o metodi di conversione
-- Level 88 conditions → Enum o costanti booleane
-- PICTURE clauses → Formattazione con DecimalFormat
+*#foreign("Pattern") che richiedono trasformazione:*
+- GOTO → #gls("Refactoring") con #foreign("loop") e condizioni strutturate
+- REDEFINES → #foreign("Union types") o metodi di conversione
+- #foreign("Level") 88 #foreign("conditions") → #foreign("Enum") o costanti booleane
+- PICTURE #foreign("clauses") → Formattazione con DecimalFormat
 
-**Elementi critici identificati:**
-- La gestione precisa dei tipi numerici COBOL (COMP-3, packed decimal)
+*Elementi critici identificati:*
+- La gestione precisa dei tipi numerici #acronym("COBOL") (COMP-3, #foreign("packed decimal"))
 - Il comportamento specifico delle operazioni aritmetiche con ROUNDED
-- La semantica particolare del MOVE statement con conversioni implicite
+- La semantica particolare del MOVE #foreign("statement") con conversioni implicite
 
-### 3.2.4 Valutazione delle soluzioni esistenti
+=== Valutazione delle soluzioni esistenti <subsec:valutazione-soluzioni>
 
 La ricerca di soluzioni esistenti ha portato all'analisi di diversi approcci:
 
-**Pipeline Architecture con parser open-source:**
-- **ProLeap ANTLR4 parser**: Parser COBOL completo ma complessità elevata nell'estensione
-- **Koopa parser**: Generazione di AST XML ma difficoltà nella trasformazione verso Java
+*#foreign("Pipeline Architecture") con #foreign("parser") #gls("open-source"):*
+- *#foreign("ProLeap") ANTLR4 #foreign("parser")*: #foreign("Parser") #acronym("COBOL") completo ma complessità elevata nell'estensione
+- *#foreign("Koopa parser")*: Generazione di #acronym("AST") XML ma difficoltà nella trasformazione verso Java
 
-L'analisi del Koopa parser ha rivelato la complessità di gestire l'AST COBOL:
+L'analisi del #foreign("Koopa parser") ha rivelato la complessità di gestire l'#acronym("AST") #acronym("COBOL"):
+/*
+#source-code(
 ```xml
 <program>
   <identification-division>
@@ -121,27 +172,31 @@ L'analisi del Koopa parser ha rivelato la complessità di gestire l'AST COBOL:
   </identification-division>
   <!-- Centinaia di nodi per un programma medio -->
 </program>
-```
+```,
+lang: "xml",
+caption: "Frammento di AST generato dal Koopa parser"
+)*/
 
-**Soluzioni Enterprise:**
-- **IBM WatsonX Code Assistant**: Promettente ma costi proibitivi per un progetto di stage
-- **Micro Focus COBOL Analyzer**: Ottimo per analisi ma non per traduzione automatica
+*Soluzioni #foreign("Enterprise"):*
+- *IBM #foreign("WatsonX Code Assistant")*: Promettente ma costi proibitivi per un progetto di #foreign("stage")
+- *#foreign("Micro Focus") #acronym("COBOL") Analyzer*: Ottimo per analisi ma non per traduzione automatica
 
-L'esplorazione di queste soluzioni ha evidenziato che mentre esistevano tool per l'analisi del COBOL, la traduzione automatica verso Java rimaneva un problema largamente irrisolto, specialmente per la preservazione della business logic.
+L'esplorazione di queste soluzioni ha evidenziato che mentre esistevano #foreign("tool") per l'analisi del #acronym("COBOL"), la traduzione automatica verso Java rimaneva un problema largamente irrisolto, specialmente per la preservazione della #gls("business logic").
 
-## 3.3 Secondo periodo: sviluppo del parser tradizionale
+== Secondo periodo: sviluppo del #foreign("parser") tradizionale <sec:secondo-periodo>
 
-### 3.3.1 Implementazione del parser Java
+=== Implementazione del #foreign("parser") Java <subsec:implementazione-parser>
 
-Basandomi sull'analisi dei pattern, ho iniziato lo sviluppo di un parser deterministico in Java. L'approccio prevedeva:
+Basandomi sull'analisi dei #foreign("pattern"), ho iniziato lo sviluppo di un #gls("parser") deterministico in Java. L'approccio prevedeva:
 
-1. **Lexical Analysis**: Tokenizzazione del codice COBOL
-2. **Syntactic Analysis**: Costruzione di un AST semplificato
-3. **Semantic Analysis**: Comprensione del contesto e delle dipendenze
-4. **Code Generation**: Produzione del codice Java equivalente
+1. *#foreign("Lexical Analysis")*: Tokenizzazione del codice #acronym("COBOL")
+2. *#foreign("Syntactic Analysis")*: Costruzione di un #acronym("AST") semplificato
+3. *#foreign("Semantic Analysis")*: Comprensione del contesto e delle dipendenze
+4. *#foreign("Code Generation")*: Produzione del codice Java equivalente
 
-Il parser è stato implementato con successo per le divisioni IDENTIFICATION e ENVIRONMENT:
-
+Il #foreign("parser") è stato implementato con successo per le divisioni #foreign("IDENTIFICATION") e #foreign("ENVIRONMENT"):
+/*
+#source-code(
 ```java
 public class COBOLParser {
     public IdentificationDivision parseIdentification(List<String> lines) {
@@ -157,65 +212,41 @@ public class COBOLParser {
         return division;
     }
 }
-```
+```,
+lang: "java",
+caption: "Parser per IDENTIFICATION DIVISION"
+)*/
 
-### 3.3.2 Sfide tecniche nella gestione della grammatica COBOL
-
-Man mano che procedevo con l'implementazione, le complessità aumentavano esponenzialmente:
-
-- **DATA DIVISION**: La gestione dei livelli gerarchici (01, 05, 10...) richiedeva una logica ricorsiva complessa
-- **REDEFINES**: Necessitava di un sistema di type tracking sofisticato
-- **PICTURE clauses**: Ogni formato richiedeva parsing e validazione specifici
-- **PROCEDURE DIVISION**: La varietà di statement e la gestione del control flow risultavano overwhelming
-
-Un esempio della complessità incontrata:
-
-```java
-// Tentativo di parsing di una struttura dati COBOL gerarchica
-public DataStructure parseDataStructure(List<String> lines) {
-    Stack<DataItem> itemStack = new Stack<>();
-    Map<Integer, DataItem> levelMap = new HashMap<>();
-    
-    for (String line : lines) {
-        int level = extractLevel(line);
-        String name = extractName(line);
-        String picture = extractPicture(line);
-        
-        // La logica diventava rapidamente ingestibile
-        // per gestire tutti i casi edge del COBOL
-    }
-}
-```
-
-### 3.3.3 Analisi critica e limiti dell'approccio
+=== Analisi critica e limiti dell'approccio <subsec:limiti-approccio>
 
 Dopo tre settimane di sviluppo intensivo, è diventato evidente che l'approccio tradizionale presentava limitazioni insormontabili:
 
-**Complessità temporale:**
-- Stimato 3-4 mesi solo per un parser completo
+*Complessità temporale:*
+- Stimato 3-4 mesi solo per un #foreign("parser") completo
 - Altri 2-3 mesi per il generatore di codice affidabile
-- Tempo totale incompatibile con la durata dello stage
+- Tempo totale incompatibile con la durata dello #foreign("stage")
 
-**Limitazioni tecniche:**
-- Difficoltà nel preservare la semantica business
-- Impossibilità di gestire tutti i dialetti COBOL
-- Manutenzione del parser estremamente onerosa
+*Limitazioni tecniche:*
+- Difficoltà nel preservare la semantica #foreign("business")
+- Impossibilità di gestire tutti i dialetti #acronym("COBOL")
+- Manutenzione del #foreign("parser") estremamente onerosa
 
-**Scalabilità:**
-- Ogni nuovo pattern COBOL richiedeva modifiche estensive
-- Il codice del parser stava diventando più complesso del COBOL stesso
-- Test e validazione richiedevano effort sproporzionato
+*Scalabilità:*
+- Ogni nuovo #foreign("pattern") #acronym("COBOL") richiedeva modifiche estensive
+- Il codice del #foreign("parser") stava diventando più complesso del #acronym("COBOL") stesso
+- #foreign("Test") e validazione richiedevano #foreign("effort") sproporzionato
 
-La decisione di abbandonare questo approccio non è stata facile, ma necessaria. Il feedback del tutor aziendale è stato illuminante: "L'aspettativa è che conduci investigazioni in prima persona confrontandoti su domande, criteri di ricerca e risultati." Questo mi ha spinto a cercare soluzioni alternative più innovative.
+La decisione di abbandonare questo approccio non è stata facile, ma necessaria. Il #foreign("feedback") del #foreign("tutor") aziendale è stato illuminante: "L'aspettativa è che conduci investigazioni in prima persona confrontandoti su domande, criteri di ricerca e risultati." Questo mi ha spinto a cercare soluzioni alternative più innovative.
 
-## 3.4 Terzo periodo: pivot verso l'intelligenza artificiale
+== Terzo periodo: #foreign("pivot") verso l'intelligenza artificiale <sec:terzo-periodo>
 
-### 3.4.1 La svolta: incontro con i colleghi e scoperta delle API
+=== Valutazione delle #foreign("API") di #acronym("AI") generativa <subsec:valutazione-api>
 
-Il punto di svolta è avvenuto il 20 giugno durante una discussione informale con colleghi del team di Data Science. Stavano utilizzando le API di Gemini per task di NLP e hanno suggerito: "Perché non provi a usare un LLM per la traduzione del codice?"
+Il punto di svolta è avvenuto il 20 giugno durante una discussione informale con colleghi del #foreign("team") di #foreign("Data Science"). Stavano utilizzando le #acronym("API") di #foreign("Gemini") per #foreign("task") di #acronym("NLP") e hanno suggerito: "Perché non provi a usare un #acronym("LLM") per la traduzione del codice?"
 
-Inizialmente ero scettica: come poteva un modello linguistico comprendere le complessità del COBOL? Tuttavia, un rapido proof of concept ha dimostrato il potenziale:
-
+Inizialmente ero scettica: come poteva un modello linguistico comprendere le complessità del #acronym("COBOL")? Tuttavia, un rapido #gls("proof of concept") ha dimostrato il potenziale:
+/*
+#source-code(
 ```python
 # Primo test con Gemini
 prompt = """
@@ -229,53 +260,58 @@ PROCEDURE DIVISION.
 
 response = model.generate_content(prompt)
 # Output: un perfetto HelloWorld.java!
-```
+```,
+lang: "python",
+caption: "Primo test di traduzione con Gemini AI"
+)*/
 
-### 3.4.2 Valutazione delle API di AI generativa
+Ho condotto una valutazione sistematica di diverse #acronym("API"):
 
-Ho condotto una valutazione sistematica di diverse API:
-
-**Google Gemini Pro:**
-- Comprensione eccellente del contesto COBOL
-- Capacità di preservare la business logic
-- Output Java idiomatico e ben strutturato
+*Google #foreign("Gemini Pro"):*
+- Comprensione eccellente del contesto #acronym("COBOL")
+- Capacità di preservare la #gls("business logic")
+- #foreign("Output") Java idiomatico e ben strutturato
 - Gestione intelligente delle conversioni di tipo
 
-**Vantaggi identificati:**
+*Vantaggi identificati:*
 - Riduzione del tempo di sviluppo del 90%
-- Gestione automatica dei casi edge
-- Codice Java di qualità production-ready
+- Gestione automatica dei casi #gls("edge")
+- Codice Java di qualità #gls("production-ready")
 - Documentazione automatica inclusa
 
-### 3.4.3 Design del sistema AI-powered
+=== #foreign("Design") del sistema #acronym("AI")-#foreign("powered") <subsec:design-sistema>
 
 Il nuovo sistema è stato progettato con un'architettura modulare:
 
-```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│   Input Files   │────▶│ Translator_GenAI │────▶│   Java Output   │
-│ (.cbl + .sql)   │     │    (Python)      │     │    (.java)      │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-                               │
-                               ▼
-                        ┌──────────────────┐
-                        │  Gemini AI API   │
-                        │ (Prompt Engine)  │
-                        └──────────────────┘
-```
+#numbered-figure(
+  ```
+  ┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+  │   Input Files   │────▶│ Translator_GenAI │────▶│   Java Output   │
+  │ (.cbl + .sql)   │     │    (Python)      │     │    (.java)      │
+  └─────────────────┘     └──────────────────┘     └─────────────────┘
+                                 │
+                                 ▼
+                          ┌──────────────────┐
+                          │  Gemini AI API   │
+                          │ (Prompt Engine)  │
+                          └──────────────────┘
+  ```,
+  caption: "Architettura del sistema di traduzione AI-powered",
+) <fig:architettura-sistema>
 
 L'architettura prevedeva:
-- **Input handler**: Gestione file COBOL e schema SQL
-- **Prompt builder**: Costruzione prompt ottimizzati
-- **Response processor**: Parsing e validazione output
-- **Error handler**: Gestione retry e fallback
+- *#foreign("Input handler")*: Gestione #foreign("file") #acronym("COBOL") e schema #acronym("SQL")
+- *#foreign("Prompt builder")*: Costruzione #gls("prompt") ottimizzati
+- *#foreign("Response processor")*: #foreign("Parsing") e validazione #foreign("output")
+- *#foreign("Error handler")*: Gestione #foreign("retry") e #foreign("fallback")
 
-## 3.5 Quarto periodo: implementazione della soluzione AI-driven
+== Quarto periodo: implementazione della soluzione #acronym("AI")-#foreign("driven") <sec:quarto-periodo>
 
-### 3.5.1 Sviluppo del prompt engineering
+=== Sviluppo del #foreign("prompt engineering") <subsec:prompt-engineering>
 
-Il cuore del sistema risiedeva nella qualità dei prompt. Ho sviluppato un template sofisticato che guidava l'AI attraverso il processo di traduzione:
-
+Il cuore del sistema risiedeva nella qualità dei #gls("prompt"). Ho sviluppato un #foreign("template") sofisticato che guidava l'#acronym("AI") attraverso il processo di traduzione:
+/*
+#source-code(
 ```python
 prompt = f"""
 Sei un compilatore avanzato e un traduttore di codice sorgente da COBOL a Java.
@@ -307,51 +343,16 @@ singolo file Java moderno, completo, leggibile e compilabile.
 
 [... ulteriori istruzioni dettagliate ...]
 """
-```
+```,
+lang: "python",
+caption: "Template del prompt per la traduzione COBOL-Java"
+)
+*/
+=== Implementazione del #foreign("translator") completo <subsec:translator-completo>
 
-### 3.5.2 Ottimizzazione iterativa basata sui risultati
-
-Il processo di ottimizzazione è stato iterativo:
-
-**Iterazione 1**: Traduzione base funzionante ma codice Java non idiomatico
-**Iterazione 2**: Aggiunta gestione eccezioni e pattern Java standard
-**Iterazione 3**: Miglioramento gestione transazioni database
-**Iterazione 4**: Aggiunta generazione JavaDoc automatica
-**Iterazione 5**: Ottimizzazione performance e leggibilità
-
-Ogni iterazione includeva:
-- Test su tutti e tre i progetti COBOL di esempio
-- Analisi del codice generato
-- Identificazione pattern di errore
-- Raffinamento del prompt
-
-### 3.5.3 Gestione dei casi edge
-
-I casi edge sono stati gestiti attraverso istruzioni specifiche nel prompt:
-
-- **NULL handling**: Verifica esplicita per campi nullable dallo schema SQL
-- **Transazioni annidate**: Gestione savepoint per rollback parziali
-- **Type overflow**: Controlli per conversioni numeriche sicure
-- **Character encoding**: Gestione corretta di EBCDIC vs ASCII
-
-Esempio di gestione NULL avanzata generata:
-
-```java
-// Gestione NULL per campo opzionale
-if (rs.wasNull()) {
-    cliente.setEmail(null);
-} else {
-    String email = rs.getString("email");
-    if (email != null && !email.trim().isEmpty()) {
-        cliente.setEmail(email.trim());
-    }
-}
-```
-
-### 3.5.4 Implementazione del translator completo
-
-Il translator finale (translator_GenAI.py) implementava:
-
+Il #gls("translator") finale (#foreign("translator_GenAI.py")) implementava:
+/*
+#source-code(
 ```python
 def translate_cobol_to_java_with_jdbc(cobol_code, sql_schema=None):
     """
@@ -372,48 +373,17 @@ def translate_cobol_to_java_with_jdbc(cobol_code, sql_schema=None):
     response = model.generate_content(prompt)
     
     return clean_and_validate_java(response.text)
-```
+```,
+lang: "python",
+caption: "Funzione principale del translator AI"
+)
+*/
 
-### 3.5.5 Gestione di SQL embedded
+=== Generazione automatica di progetti #gls("Maven") <subsec:generazione-maven>
 
-Una delle sfide maggiori era la conversione di SQL embedded COBOL in JDBC. Il sistema gestiva:
-
-**Da COBOL:**
-```cobol
-EXEC SQL
-    UPDATE CONTI
-    SET saldo = saldo + :WS-IMPORTO
-    WHERE numero_conto = :WS-NUMERO-CONTO
-END-EXEC
-```
-
-**A Java:**
-```java
-String updateSql = "UPDATE CONTI SET saldo = saldo + ? WHERE numero_conto = ?";
-try (PreparedStatement pstmt = connection.prepareStatement(updateSql)) {
-    pstmt.setBigDecimal(1, importo);
-    pstmt.setString(2, numeroConto);
-    int rowsAffected = pstmt.executeUpdate();
-    
-    if (rowsAffected == 0) {
-        throw new SQLException("Conto non trovato: " + numeroConto);
-    }
-}
-```
-
-### 3.5.6 Preservazione della logica business
-
-Il sistema eccelleva nel preservare la logica business complessa:
-
-- **Calcoli finanziari**: Mantenimento della precisione decimale COBOL
-- **Validazioni**: Conversione di level-88 in metodi di validazione
-- **Flow control**: Trasformazione di GOTO in strutture moderne preservando la logica
-- **Error handling**: Mappatura SQLCODE in eccezioni Java appropriate
-
-### 3.5.7 Generazione automatica di progetti Maven
-
-L'ultimo componente del sistema (java_to_jar.py) automatizzava la creazione di progetti Maven completi:
-
+L'ultimo componente del sistema (#foreign("java_to_jar.py")) automatizzava la creazione di progetti #gls("Maven") completi:
+/*
+#source-code(
 ```python
 def create_pom_file(project_dir, java_file, class_name):
     """Crea il file pom.xml usando Gemini"""
@@ -427,50 +397,52 @@ def create_pom_file(project_dir, java_file, class_name):
     configure_maven_plugins(pom_content)
     
     return pom_path
-```
+```,
+lang: "python",
+caption: "Generazione automatica del pom.xml"
+)
+*/
 
-Il pom.xml generato includeva:
-- Dipendenze PostgreSQL JDBC
-- Plugin per creazione JAR eseguibili
+Il #foreign("pom.xml") generato includeva:
+- Dipendenze PostgreSQL #acronym("JDBC")
+- #foreign("Plugin") per creazione #acronym("JAR") eseguibili
 - Configurazione per Java 11+
-- Assembly plugin per JAR con dipendenze
+- #foreign("Assembly plugin") per #acronym("JAR") con dipendenze
 
-## 3.6 Risultati raggiunti
+== Risultati raggiunti <sec:risultati>
 
-### 3.6.1 Impatto dell'AI sui tempi di sviluppo
+=== Impatto dell'#acronym("AI") sui tempi di sviluppo <subsec:impatto-tempi>
 
 Il confronto tra i due approcci è stato drammatico:
+/*
+#numbered-table(
+  caption: "Confronto tempi di sviluppo tra approcci",
+  columns: (auto, auto, auto),
+  [*Fase*], [*Approccio Tradizionale (stimato)*], [*Approccio AI (effettivo)*],
+  [Sviluppo parser], [3-4 mesi], [3 giorni],
+  [Testing e debug], [2 mesi], [4 giorni],
+  [Documentazione], [1 mese], [3 giorni],
+  [*Totale*], [*6-7 mesi*], [*2 settimane*],
+)
+*/
 
-**Approccio tradizionale (stimato):**
-- Sviluppo parser: 3-4 mesi
-- Testing e debug: 2 mesi
-- Documentazione: 1 mese
-- **Totale: 6-7 mesi**
+La riduzione del 95% nei tempi di sviluppo ha permesso di completare il progetto nei tempi dello #foreign("stage") e con risultati superiori alle aspettative.
 
-**Approccio AI-driven (effettivo):**
-- Studio e design: 3 giorni
-- Implementazione: 4 giorni
-- Testing e ottimizzazione: 3 giorni
-- **Totale: 2 settimane**
+=== Analisi qualitativa dei risultati <subsec:analisi-qualitativa>
 
-La riduzione del 95% nei tempi di sviluppo ha permesso di completare il progetto nei tempi dello stage e con risultati superiori alle aspettative.
+Il codice Java prodotto dal sistema #acronym("AI") presentava caratteristiche di alta qualità:
 
-### 3.6.2 Analisi qualitativa dei risultati
-
-Il codice Java prodotto dal sistema AI presentava caratteristiche di alta qualità:
-
-**Leggibilità:**
-- Nomi variabili e metodi in camelCase idiomatico
+*Leggibilità:*
+- Nomi variabili e metodi in #foreign("camelCase") idiomatico
 - Struttura delle classi logica e ben organizzata
-- JavaDoc completo generato automaticamente
+- #gls("JavaDoc") completo generato automaticamente
 
-**Manutenibilità:**
+*Manutenibilità:*
 - Separazione chiara delle responsabilità
 - Gestione errori consistente
-- Pattern standard Java applicati correttamente
-
-**Esempio di codice generato:**
-
+- #foreign("Pattern") standard Java applicati correttamente
+/*
+#source-code(
 ```java
 /**
  * Sistema di Gestione Conti Correnti Bancari
@@ -531,42 +503,42 @@ public class GestioneConti {
         }
     }
 }
-```
+```,
+lang: "java",
+caption: "Esempio di codice Java generato dal sistema AI"
+)
+*/
 
-### 3.6.3 Documentazione professionale automatizzata
-
-Il sistema generava automaticamente:
-
-- **JavaDoc completo** per classi e metodi
-- **README.md** con istruzioni di utilizzo
-- **Commenti inline** per logica complessa
-- **Mapping COBOL-Java** nei commenti per tracciabilità
-
-### 3.6.4 Risultati quantitativi
+=== Risultati quantitativi <subsec:risultati-quantitativi>
 
 I numeri finali del progetto:
 
-**Progetti convertiti con successo:**
-1. Sistema bancario: 560 linee COBOL → 892 linee Java
-2. Sistema paghe: 1.250 linee COBOL → 1.780 linee Java  
-3. Sistema magazzino: 1.850 linee COBOL → 2.420 linee Java
+*Progetti convertiti con successo:*
+1. Sistema bancario: 560 linee #acronym("COBOL") → 892 linee Java
+2. Sistema paghe: 1.250 linee #acronym("COBOL") → 1.780 linee Java  
+3. Sistema magazzino: 1.850 linee #acronym("COBOL") → 2.420 linee Java
 
-**Metriche di qualità:**
+*Metriche di qualità:*
 - 100% compilabilità del codice generato
-- 95% dei test funzionali superati al primo tentativo
-- 0 memory leak o connection leak identificati
+- 95% dei #foreign("test") funzionali superati al primo tentativo
+- 0 #foreign("memory leak") o #foreign("connection leak") identificati
 - Conformità completa agli standard Java
 
-**Performance:**
+*#foreign("Performance"):*
 - Tempo medio di conversione: 15-30 secondi per progetto
-- Tempo di generazione JAR: 45-60 secondi
-- JAR eseguibili pronti per deployment immediato
+- Tempo di generazione #acronym("JAR"): 45-60 secondi
+- #acronym("JAR") eseguibili pronti per #gls("deployment") immediato
+/*
+#numbered-figure(
+  image("../images/workflow-conversion.png", width: 80%),
+  caption: "Workflow completo del processo di conversione",
+) <fig:workflow-conversion>
+*/
+== Conclusioni del capitolo <sec:conclusioni-capitolo>
 
-## 3.7 Conclusioni del capitolo
+Lo sviluppo del progetto ha dimostrato come l'intelligenza artificiale possa rivoluzionare l'approccio alla modernizzazione del #foreign("software") #gls("legacy"). Il passaggio da un approccio tradizionale basato su #gls("parsing") deterministico a uno guidato dall'#acronym("AI") non è stato solo una scelta tecnica, ma una vera trasformazione nel modo di affrontare il problema.
 
-Lo sviluppo del progetto ha dimostrato come l'intelligenza artificiale possa rivoluzionare l'approccio alla modernizzazione del software legacy. Il passaggio da un approccio tradizionale basato su parsing deterministico a uno guidato dall'AI non è stato solo una scelta tecnica, ma una vera trasformazione nel modo di affrontare il problema.
-
-L'AI ha permesso di:
+L'#acronym("AI") ha permesso di:
 - Ridurre drasticamente i tempi di sviluppo
 - Produrre codice di qualità superiore
 - Gestire complessità altrimenti intrattabili
