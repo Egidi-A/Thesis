@@ -44,15 +44,17 @@ Lo #gls("stack tecnologico") adottato riflette l'attenzione dell'azienda per gli
 - *#foreign("Jira")* per il #foreign("tracking") delle attività e la gestione dei progetti  
 - *#foreign("Bitbucket")* per il versionamento del codice e la collaborazione nello sviluppo
 
-Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione. Le #ref-figure(<fig:Atlassian-Jira-videoframe>)#footnote("Fonte: https://www.peakforce.dev"
-) e #ref-figure(<fig:Atlassian-Confluence-videoframe>)#footnote("Fonte: https://support.atlassian.com") mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo software.
+Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione. Le #ref-figure(<fig:Atlassian-Jira-videoframe>)
+) e #ref-figure(<fig:Atlassian-Confluence-videoframe>) mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo software.
 #numbered-figure(
   image("../images/Atlassian-Jira-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Jira",
+  source: "Fonte: https://www.peakforce.dev",
 ) <fig:Atlassian-Jira-videoframe>
 #numbered-figure(
   image("../images/Atlassian-Confluence-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Confluence",
+  source: "Fonte: https://support.atlassian.com",
 ) <fig:Atlassian-Confluence-videoframe>
 La formazione continua sulle tecnologie emergenti è parte integrante della cultura aziendale. 
 L'area #foreign("Analytics"), in particolare, mantiene un #foreign("focus") costante sull'esplorazione e implementazione di soluzioni basate su #acronym("AI") e #acronym("LLM"), che rappresentano il naturale proseguimento di quello che precedentemente veniva incasellato come "#foreign("big data")" ed è parte integrante della strategia aziendale.
@@ -92,9 +94,10 @@ L'investimento nel capitale umano rappresenta uno dei pilastri fondamentali dell
 #numbered-figure(
   image("../images/valori-miriade.png",width: 100%),
   caption: "Impegni etici e morali aziendali di Miriade",
-) <fig:valori-miriade>
+  source: "https://www.miriade.it",
+)<fig:valori-miriade>
 
-Come si può osservare in #ref-figure(<fig:valori-miriade>)#footnote("Fonte: https://www.miriade.it"), l'azienda si esprime esplicitamente riguardo i propri valori.
+Come si può osservare in #ref-figure(<fig:valori-miriade>), l'azienda si esprime esplicitamente riguardo i propri valori.
 
 Il processo di selezione riflette questa filosofia: l'azienda ricerca persone sensibili, elastiche, proattive e autonome, ponendo l'enfasi sulle caratteristiche personali piuttosto che esclusivamente sulle competenze tecniche pregresse, un approccio che permette di costruire #foreign("team") coesi e motivati, capaci di affrontare sfide tecnologiche in continua evoluzione.
 

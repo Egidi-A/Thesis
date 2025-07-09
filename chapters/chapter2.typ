@@ -14,11 +14,12 @@ I sistemi legacy basati su #acronym("COBOL") rappresentano ancora oggi una parte
 
 // Esempio di citazione: La persistenza di COBOL è documentata in numerosi studi @bmc2024state.
 
-#ref-figure(<fig:interfaccia-cobol>)#footnote("Fonte: https://overcast.blog") mostra un esempio tipico di interfaccia utente e codice COBOL, che evidenzia il contrasto netto con le moderne interfacce grafiche e paradigmi di programmazione attuali. Questa differenza visuale è solo la punta dell'iceberg delle sfide che comporta il mantenimento di questi sistemi in un ecosistema tecnologico in rapida evoluzione.
+#ref-figure(<fig:interfaccia-cobol>) mostra un esempio tipico di interfaccia utente e codice COBOL, che evidenzia il contrasto netto con le moderne interfacce grafiche e paradigmi di programmazione attuali. Questa differenza visuale è solo la punta dell'iceberg delle sfide che comporta il mantenimento di questi sistemi in un ecosistema tecnologico in rapida evoluzione.
 
 #numbered-figure(
   image("../images/COBOL-cli.png"),
   caption: "Interfaccia utente e codice COBOL tipici dei sistemi legacy",
+  source: "Fonte: https://overcast.blog",
 ) <fig:interfaccia-cobol>
 
 La problematica della #foreign("legacy modernization") va ben oltre la semplice obsolescenza tecnologica. Durante il mio #foreign("stage"), attraverso l'analisi della letteratura e il confronto con i professionisti del settore, in particolare ho avuto modo di confrontarmi con la sig.ra Luisa Biagi, analista COBOL, ho potuto identificare come i costi nascosti del mantenimento di questi sistemi includano:
@@ -35,11 +36,12 @@ I rischi associati al mantenimento di sistemi COBOL #foreign("legacy") nelle inf
 - *Documentazione inadeguata*: La documentazione inadeguata o assente di molti di questi sistemi, sviluppati decenni fa, rende ogni intervento di manutenzione un'operazione ad alto rischio @howtogeek2020cobol.
 - *Incompatibilità tecnologica*: L'incompatibilità con le moderne pratiche di sviluppo come #foreign("DevOps"), #foreign("continuous integration") e #gls("microservizi") limita in modo significativo la capacità delle organizzazioni di innovare e competere efficacemente nel mercato digitale @cast2024cobol.
 
-Come illustrato in #ref-figure(<fig:confronto-architetture>)#footnote("Fonte: https://www.atlassian.com"), il contrasto tra l'architettura monolitica tipica dei sistemi #foreign("mainframe") e l'architettura moderna a microservizi evidenzia le sfide architetturali della migrazione. Questa differenza strutturale comporta non solo una riprogettazione tecnica, ma anche un ripensamento completo dei processi operativi e delle modalità di sviluppo.
+Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l'architettura monolitica tipica dei sistemi #foreign("mainframe") e l'architettura moderna a microservizi evidenzia le sfide architetturali della migrazione. Questa differenza strutturale comporta non solo una riprogettazione tecnica, ma anche un ripensamento completo dei processi operativi e delle modalità di sviluppo.
 
 #numbered-figure(
   image("../images/monolitic and microsevices application.png", width: 100%),
   caption: "Confronto tra architettura monolitica dei mainframe e architettura moderna a microservizi",
+  source: "Fonte: https://www.atlassian.com",
 ) <fig:confronto-architetture>
 
 La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta una sfida tecnica e una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione @newrelic2024java.
@@ -174,11 +176,12 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 - Sviluppare autonomia nella gestione di un progetto aziendale, dalla pianificazione all'implementazione
 - Acquisire capacità di #foreign("problem solving") in contesti reali, con vincoli temporali e tecnologici definiti
 - Migliorare le competenze comunicative attraverso l'interazione con il #foreign("team") e la presentazione dei progressi
-- Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo. #ref-figure(<fig:metodologia-agile>)#footnote("Fonte: https://indevlab.com") rappresenta visivamente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
+- Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo. #ref-figure(<fig:metodologia-agile>) rappresenta visivamente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
 
 - Sviluppare pensiero critico nella valutazione di soluzioni tecnologiche alternative
 
 #numbered-figure(
   image("../images/agile.png", width: 80%),
   caption: "Rappresentazione della metodologia Agile applicata al progetto",
+  source: "Fonte: https://indevlab.com",
 ) <fig:metodologia-agile>
