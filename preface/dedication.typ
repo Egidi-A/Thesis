@@ -1,5 +1,7 @@
+#set heading(numbering: none, outlined: false)
+
 #import "../config/functions.typ": *
 
 #align(center)[
-    #unnumbered-heading[Ringraziamenti]
+  = Ringraziamenti
 ]

@@ -4,12 +4,27 @@
 #let numbered-figure(
   content,
   caption: none,
+  source: none,
   kind: "Figura",
   supplement: "Figura",
 ) = {
+  let final-caption = caption
+  if source != none {
+    let source-text = text(size: 8pt)[Fonte: #source]
+    if final-caption != none {
+      final-caption = [
+        #final-caption
+        #linebreak()
+        #source-text
+      ]
+    } else {
+      final-caption = source-text
+    }
+  }
+
   figure(
     content,
-    caption: caption,
+    caption: final-caption,
     kind: kind,
     supplement: supplement,
   )

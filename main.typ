@@ -5,9 +5,6 @@
 #import "config/styles.typ": *
 #import "config/functions.typ": *
 
-#import "appendix/glossary.typ": *
-#import "appendix/acronyms.typ": *
-
 // Configura le citazioni
 #set cite(style: "ieee")
 

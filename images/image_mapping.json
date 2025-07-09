@@ -11,62 +11,68 @@
     "caption": "",
     "label": "<fig:analytics>"
   },
-  "Atlassian-Confluence-videoframe.png": {
+  "Atlassian-Bitbucket.png": {
     "id": "img_003",
+    "path": "images\\Atlassian-Bitbucket.png",
+    "caption": "",
+    "label": "<fig:Atlassian-Bitbucket>"
+  },
+  "Atlassian-Confluence-videoframe.png": {
+    "id": "img_004",
     "path": "images\\Atlassian-Confluence-videoframe.png",
     "caption": "",
     "label": "<fig:Atlassian-Confluence-videoframe>"
   },
   "Atlassian-Jira-videoframe.png": {
-    "id": "img_004",
+    "id": "img_005",
     "path": "images\\Atlassian-Jira-videoframe.png",
     "caption": "",
     "label": "<fig:Atlassian-Jira-videoframe>"
   },
   "COBOL-cli.png": {
-    "id": "img_005",
+    "id": "img_006",
     "path": "images\\COBOL-cli.png",
     "caption": "",
     "label": "<fig:COBOL-cli>"
   },
   "diagrammaGantt.png": {
-    "id": "img_006",
+    "id": "img_007",
     "path": "images\\diagrammaGantt.png",
     "caption": "",
     "label": "<fig:diagrammaGantt>"
   },
   "logo-unipd.png": {
-    "id": "img_008",
+    "id": "img_009",
     "path": "images\\logo-unipd.png",
     "caption": "",
     "label": "<fig:logo-unipd>"
   },
   "miriade.png": {
-    "id": "img_009",
+    "id": "img_010",
     "path": "images\\miriade.png",
     "caption": "",
     "label": "<fig:miriade>"
   },
   "MOB5.svg": {
-    "id": "img_010",
+    "id": "img_011",
     "path": "images\\MOB5.svg",
     "caption": "",
     "label": "<fig:MOB5>"
   },
   "monolitic and microsevices application.png": {
-    "id": "img_011",
+    "id": "img_012",
     "path": "images\\monolitic and microsevices application.png",
     "caption": "",
     "label": "<fig:monolitic and microsevices application>"
   },
   "team.png": {
-    "id": "img_012",
+    "id": "img_013",
     "path": "images\\team.png",
     "caption": "",
     "label": "<fig:team>"
   },
   "valori-miriade.png": {
-    "id": "img_013",
+    "id": "img_014",
     "path": "images\\valori-miriade.png",
     "caption": "",
     "label": "<fig:valori-miriade>"

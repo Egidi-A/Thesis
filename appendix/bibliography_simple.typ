@@ -2,7 +2,7 @@
 #import "../config/functions.typ": *
 
 #align(center)[
-  #unnumbered-heading[Bibliografia] <bibliography>
+  = Bibliografia <bibliography>
 ]
 
 // Importa e mostra la bibliografia dal file .bib

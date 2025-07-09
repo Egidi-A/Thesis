@@ -3,7 +3,7 @@
 #import "../config/functions.typ": *
 
 #align(center)[
-    #unnumbered-heading[Lista degli acronimi] <acronyms>
+    = Lista degli acronimi <acronyms>
 ]
 
 // Definiti automaticamente nei capitoli

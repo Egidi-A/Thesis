@@ -1,11 +1,10 @@
-// preface/abstract.typ - Sommario della tesi
+#set heading(numbering: none, outlined: false)
 
-#import "../config/functions.typ": *
 #import "../config/metadata.typ": *
 #import "../config/foreign-words.typ": foreign
 
 #align(center)[
-  #unnumbered-heading[Sommario]
+  = Sommario
 ]
 
 L'elaborato descrive i processi, gli strumenti e le metodologie coinvolte nello sviluppo di un sistema di migrazione automatizzata per la modernizzazione di sistemi #foreign("legacy"), in particolare sulla conversione di applicazioni COBOL verso Java.

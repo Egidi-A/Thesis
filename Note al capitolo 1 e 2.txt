@@ -1,1 +1,5 @@
 ﻿- rimozione immagine 1 ed eventuale sostituzione con fotoframe dell'azienda o simile
+- aggiunta fonti immagini automatizzata
+- rimozione ringraziamenti e sommario dall'indice
+- aggiunta Luisa Biagi con termini tecnici
+- controllare struttura modificata del 2 per rispecchiare richieste tulli

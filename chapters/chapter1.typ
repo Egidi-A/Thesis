@@ -41,6 +41,7 @@ Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribu
 #numbered-figure(
   image("../images/Atlassian-Jira-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Jira",
+  source:"https://www.peakforce.dev/blog/jira-implementation---how-to-get-started-atlassian-expert-q-a"
 ) <fig:Atlassian-Jira-videoframe>
 #numbered-figure(
   image("../images/Atlassian-Confluence-videoframe.png",width: 80%),
