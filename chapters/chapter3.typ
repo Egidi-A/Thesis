@@ -41,7 +41,7 @@ In questa sottosezione descriverò l'architettura del nuovo sistema basato su AI
 == Quarto periodo: implementazione della soluzione AI-driven
 In questa sezione descriverò lo sviluppo completo del sistema di migrazione basato su AI.
 
-== Sviluppo del prompt engineering
+=== Sviluppo del prompt engineering
 In questa sottosezione illustrerò la creazione di prompt specifici per la conversione COBOL-Java, l'ottimizzazione iterativa basata sui risultati, e la gestione dei casi edge.
 
 === Implementazione del translator completo
