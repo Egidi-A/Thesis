@@ -19,7 +19,7 @@ I sistemi legacy basati su #acronym("COBOL") rappresentano ancora oggi una parte
 #numbered-figure(
   image("../images/COBOL-cli.png"),
   caption: "Interfaccia utente e codice COBOL tipici dei sistemi legacy",
-  source: "Fonte: https://overcast.blog",
+  source: "https://overcast.blog",
 ) <fig:interfaccia-cobol>
 
 La problematica della #foreign("legacy modernization") va ben oltre la semplice obsolescenza tecnologica. Durante il mio #foreign("stage"), attraverso l'analisi della letteratura e il confronto con i professionisti del settore, in particolare ho avuto modo di confrontarmi con la sig.ra Luisa Biagi, analista COBOL, ho potuto identificare come i costi nascosti del mantenimento di questi sistemi includano:
@@ -41,7 +41,7 @@ Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l
 #numbered-figure(
   image("../images/monolitic and microsevices application.png", width: 100%),
   caption: "Confronto tra architettura monolitica dei mainframe e architettura moderna a microservizi",
-  source: "Fonte: https://www.atlassian.com",
+  source: "https://www.atlassian.com",
 ) <fig:confronto-architetture>
 
 La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta una sfida tecnica e una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione @newrelic2024java.
@@ -183,5 +183,5 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 #numbered-figure(
   image("../images/agile.png", width: 80%),
   caption: "Rappresentazione della metodologia Agile applicata al progetto",
-  source: "Fonte: https://indevlab.com",
+  source: "https://indevlab.com",
 ) <fig:metodologia-agile>

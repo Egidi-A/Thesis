@@ -8,23 +8,14 @@
   kind: "Figura",
   supplement: "Figura",
 ) = {
-  let final-caption = caption
-  if source != none {
-    let source-text = text(size: 8pt)[Fonte: #source]
-    if final-caption != none {
-      final-caption = [
-        #final-caption
-        #linebreak()
-        #source-text
-      ]
-    } else {
-      final-caption = source-text
-    }
-  }
-
   figure(
-    content,
-    caption: final-caption,
+    {
+      content
+      if source != none {
+        align(center, text(size: 8pt)[Fonte: #source])
+      }
+    },
+    caption: caption,
     kind: kind,
     supplement: supplement,
   )
@@ -56,7 +47,7 @@
 
 // Funzione per riferimenti incrociati
 #let ref-figure(label) = {
-  link(label)[#ref(label)]
+  ref(label)
 }
 
 #let ref-table(label) = {

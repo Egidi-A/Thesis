@@ -82,12 +82,12 @@ In questa sottosezione descriverò il sistema completo di conversione COBOL-Java
 === Risultati quantitativi
 In questa sottosezione presenterò i dati concreti: tre progetti convertiti con successo, vasta copertura delle funzionalità e oltre 2000 linee di codice Java di qualità #foreign("production-ready").
 
-
-
-/*
-#ref-figure(<fig:bitbucket-git>)#footnote("Fonte: https://bitbucket.org") mostra l'interfaccia che BitBucket mette a disposizione per il versionamento di progetti, evidenzia l'importanza attribuita dall'azienda alla tracciabilità e alla collaborazione nel processo di sviluppo.
 #numbered-figure(
   image("../images/Atlassian-Bitbucket.png"),
   caption: "Utilizzo di BitBucket per il versionamento del codice",
+  source: "https://bitbucket.org"
 ) <fig:bitbucket-git>
+
+/*
+#ref-figure(<fig:bitbucket-git>)#footnote("Fonte: https://bitbucket.org") mostra l'interfaccia che BitBucket mette a disposizione per il versionamento di progetti, evidenzia l'importanza attribuita dall'azienda alla tracciabilità e alla collaborazione nel processo di sviluppo.
 */

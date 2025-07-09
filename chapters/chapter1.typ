@@ -49,12 +49,12 @@ Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribu
 #numbered-figure(
   image("../images/Atlassian-Jira-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Jira",
-  source: "Fonte: https://www.peakforce.dev",
+  source: "https://www.peakforce.dev",
 ) <fig:Atlassian-Jira-videoframe>
 #numbered-figure(
   image("../images/Atlassian-Confluence-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Confluence",
-  source: "Fonte: https://support.atlassian.com",
+  source: "https://support.atlassian.com",
 ) <fig:Atlassian-Confluence-videoframe>
 La formazione continua sulle tecnologie emergenti è parte integrante della cultura aziendale. 
 L'area #foreign("Analytics"), in particolare, mantiene un #foreign("focus") costante sull'esplorazione e implementazione di soluzioni basate su #acronym("AI") e #acronym("LLM"), che rappresentano il naturale proseguimento di quello che precedentemente veniva incasellato come "#foreign("big data")" ed è parte integrante della strategia aziendale.
