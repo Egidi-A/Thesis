@@ -37,10 +37,50 @@ La struttura rigida del codice COBOL, articolata nelle quattro divisioni obbliga
 L'analisi delle singole divisioni ha rivelato aspetti significativi:
 
 - La IDENTIFICATION DIVISION testimonia l'enfasi sulla documentazione incorporata nel codice, con campi dedicati per autore, data di installazione e osservazioni, riflettendo un'epoca in cui il codice sorgente costituiva spesso l'unica documentazione disponibile.
+    Un esempio della divisione IDENTIFICATION DIVISION è mostrato in #ref-figure(<lst:identification-div>).
+    #source-code(
+      ```cobol
+      IDENTIFICATION DIVISION.
+      PROGRAM-ID. GESTIONE-CONTI.
+      AUTHOR. ANNALISA EGIDI.
+      INSTALLATION. MIRIADE SRL.
+      DATE-WRITTEN. 2025-05-15.
+      DATE-COMPILED. 2025-05-20.
+      REMARKS. Sistema bancario per gestione conti correnti.
+      ```,
+      lang: "cobol",
+      caption: "Esempio di IDENTIFICATION DIVISION con metadati"
+    ) <lst:identification-div>
 
 - La ENVIRONMENT DIVISION introduce esplicitamente considerazioni hardware e di sistema operativo nel codice sorgente. La necessità di specificare SOURCE-COMPUTER e OBJECT-COMPUTER evidenzia le sfide dell'era dei mainframe, dove la portabilità del software non poteva essere data per scontata.
-
+    Un esempio della divisione ENVIRONMENT DIVISION è mostrato in #ref-figure(<lst:environment-div>).
+    #source-code(
+      ```cobol
+      ENVIRONMENT DIVISION.
+      CONFIGURATION SECTION.
+      SOURCE-COMPUTER. IBM-3090.
+      OBJECT-COMPUTER. IBM-3090.
+      SPECIAL-NAMES.
+          DECIMAL-POINT IS COMMA.
+      ```,
+      lang: "cobol",
+      caption: "ENVIRONMENT DIVISION con specifiche hardware"
+    ) <lst:environment-div>
 - La sezione FILE-CONTROL, con la sua gestione esplicita dell'associazione tra file logici e fisici, richiede un cambio di mentalità significativo rispetto all'astrazione automatica fornita dai moderni sistemi operativi e strutture software.
+  Un esempio della sezione FILE-CONTROL è mostrato in #ref-figure(<lst:file-control>).
+  #source-code(
+    ```cobol
+    INPUT-OUTPUT SECTION.
+    FILE-CONTROL.
+        SELECT CONTI-FILE
+            ASSIGN TO "CONTI.DAT"
+            ORGANIZATION IS INDEXED
+            ACCESS MODE IS RANDOM
+            RECORD KEY IS CONTO-ID.
+    ```,
+    lang: "cobol",
+    caption: "FILE-CONTROL con gestione esplicita dei file"
+  ) <lst:file-control>
 #linebreak()
 Ho sviluppato, progressivamente, tre codici applicativi di complessità crescente:
 
@@ -50,7 +90,25 @@ Ho sviluppato, progressivamente, tre codici applicativi di complessità crescent
 
 - Il terzo progetto, un sistema di gestione magazzino e inventario, rappresenta il culmine della complessità con funzionalità avanzate come la valorizzazione FIFO/LIFO/costo medio ponderato, gestione lotti, analisi ABC degli articoli, controllo scorte con punti di riordino automatici e gestione completa del ciclo ordini fornitori. Il sistema utilizza cursori SQL multipli, transazioni annidate e genera report sofisticati per l'inventario fisico e l'analisi del valore di magazzino, dimostrando la capacità di COBOL di gestire processi aziendali articolati con elevati volumi di dati.
 #linebreak()
-L'interfacciamento con database relazionali ha rappresentato una sfida particolare. Lavorando con PostgreSQL e DB2, ho approfondito le peculiarità dell'SQL embedded in COBOL. L'approccio differisce radicalmente dalle moderne #acronym("API") #acronym("JDBC"): il preprocessore COBOL-SQL analizza il codice sorgente, estrae le istruzioni SQL delimitate da EXEC SQL ... END-EXEC, e genera il codice COBOL appropriato per l'interazione con il database. La gestione delle variabili host e controllo esplicito degli errori attraverso SQLCODE e SQLSTATE implementa la richiesta del controllo esplicito del codice di ritorno dopo ogni operazione SQL. Inoltre, per ogni colonna del database è richiesta la corrispettiva variabile locale che funziona da ponte tra il programma e il database, queste variabili sono gestite attraverso la dichiarazione delle stesse nella WORKING-STORAGE SECTION e devono essere necessariamente compatibili per tipo e dimensione con la colonna del database corrispondente.
+L'interfacciamento con database relazionali ha rappresentato una sfida particolare. Lavorando con PostgreSQL e DB2, ho approfondito le peculiarità dell'SQL embedded in COBOL. L'approccio differisce radicalmente dalle moderne #acronym("API") #acronym("JDBC"): il preprocessore COBOL-SQL analizza il codice sorgente, estrae le istruzioni SQL delimitate da EXEC SQL ... END-EXEC, e genera il codice COBOL appropriato per l'interazione con il database. La gestione delle variabili host e controllo esplicito degli errori attraverso SQLCODE e SQLSTATE implementa la richiesta del controllo esplicito del codice di ritorno dopo ogni operazione SQL, come illustrato nel #ref-figure(<lst:sqlcode-handling>). Inoltre, per ogni colonna del database è richiesta la corrispettiva variabile locale che funziona da ponte tra il programma e il database, queste variabili sono gestite attraverso la dichiarazione delle stesse nella WORKING-STORAGE SECTION e devono essere necessariamente compatibili per tipo e dimensione con la colonna del database corrispondente.
+
+#source-code(
+  ```cobol
+  EXEC SQL
+      SELECT SALDO INTO :WS-SALDO
+      FROM CONTI
+      WHERE ID_CLIENTE = :WS-ID-CLIENTE
+  END-EXEC.
+  
+  EVALUATE SQLCODE
+      WHEN 0      CONTINUE
+      WHEN 100    DISPLAY "Cliente non trovato"
+      WHEN OTHER  PERFORM ERRORE-DATABASE
+  END-EVALUATE.
+  ```,
+  lang: "cobol",
+  caption: "Gestione degli SQLCODE in COBOL"
+) <lst:sqlcode-handling>
 
 === Mappatura dei pattern e analisi di traducibilità <subsec:mappatura-pattern>
 
@@ -62,65 +120,125 @@ Durante l'analisi dei pattern, ho classificato tre categorie principali:
 
 ==== Pattern di equivalenza diretta e costrutti base
 
-- I tipi di dati primitivi seguono corrispondenze chiare
-  - PIC 9(n) → int/long
-  - PIC X(n) → String
-  - PIC 9(n)V9(n) → BigDecimal
+La mappatura dei pattern COBOL verso Java segue corrispondenze consolidate che possono essere categorizzate come segue:
 
-- Le strutture di controllo (IF-THEN-ELSE, EVALUATE) hanno equivalenti diretti in Java, rispettivamente if-else e switch
+#figure(
+  table(
+    columns: (1fr, 1fr),
+    align: (left, left),
+    [*Tipo COBOL*], [*Tipo Java*],
+    [PIC 9(n)], [int/long],
+    [PIC X(n)], [String],
+    [PIC 9(n)V9(n)], [BigDecimal],
+    [PIC S9(n) COMP-3], [BigDecimal],
+  ),
+  caption: "Mappatura dei tipi di dati primitivi COBOL-Java",
+  kind: "Tabella",
+  supplement: "Tabella"
+) <tab:tipi-primitivi>
 
-- Le operazioni aritmetiche base (ADD, SUBSTRACT, MULTIPLY, DIVIDE) si mappano direttamente agli operatori java, con attenzione alla gestione della precisione
+#figure(
+  table(
+    columns: (1fr, 1fr),
+    align: (left, left),
+    [*Costrutto COBOL*], [*Equivalente Java*],
+    [IF-THEN-ELSE], [if-else],
+    [EVALUATE], [switch],
+    [ADD/SUBTRACT], [Operatori aritmetici (+, -)],
+    [MULTIPLY/DIVIDE], [Operatori aritmetici (\*, /)],
+    [PERFORM UNTIL], [while loop],
+    [PERFORM VARYING], [for loop],
+    [PERFORM THRU], [Metodi con sequenza di chiamate],
+  ),
+  caption: "Mappatura delle strutture di controllo e operazioni",
+  kind: "Tabella",
+  supplement: "Tabella"
+) <tab:strutture-controllo>
 
-- Le dichiarazioni di variabili seguono pattern consolidati, con record gerarchici che diventano classi Java annidate
-  - 01 level declaration diventano classi java
-  - i record strutturati gerarchici del COBOL, con i loro level numbers, diventano classi Java annidate
+#figure(
+  table(
+    columns: (1fr, 2fr),
+    align: (left, left),
+    [*Struttura COBOL*], [*Trasformazione Java*],
+    [01 level declaration], [Classe Java principale],
+    [02-49 level numbers], [Campi della classe o inner classes],
+    [Record gerarchici], [Classi Java annidate],
+    [WORKING-STORAGE items], [Variabili di istanza private],
+  ),
+  caption: "Mappatura delle strutture dati gerarchiche",
+  kind: "Tabella",
+  supplement: "Tabella"
+) <tab:strutture-dati>
 
-- I PERFORM statements si convertono in metodi Java seguendo pattern specifici: 
-  - PERFORM UNTIL diventa while loop
-  - PERFORM VARYING si trasforma in for loop
-  - PERFORM THRU richiede metodi che incapsulano l'intera sequenza di paragrafi
-
+Come evidenziato nelle tabelle #ref-table(<tab:tipi-primitivi>), #ref-table(<tab:strutture-controllo>) e #ref-table(<tab:strutture-dati>), questi pattern di equivalenza diretta coprono la maggior parte dei costrutti COBOL di base, permettendo una traduzione sistematica verso Java con particolare attenzione alla gestione della precisione numerica.
 ==== Trasformazioni complesse e pattern di adattamento
 
-Costrutti di complessità intermedia necessitano di strategie di conversione più sofisticate:
+Costrutti di complessità intermedia necessitano di strategie di conversione più sofisticate che richiedono trasformazioni strutturali:
 
-- GOTO, non supportato in java, richiede la ristrutturazione del flusso di controllo
-- i COPY statements, che permettono l'inclusione di codice comune, si trasformano in classi java dedicate con struttura dati appropriata.
-- la WORKING-STORAGE SECTION si converte in classi di storage con pattern specifici
-- la SECTION e PARAGRAPH della PROCEDURE DIVISION diventano metodi Java, questo approccio mantiene la leggibilità del codice e facilita il debugging durante la fase di transizione
-- l'SQL embedded (EXEC SQL) richiede la conversione in JDBC, con particolare attenzione alla gestione dei cursori e delle transazioni
+#figure(
+  table(
+    columns: (1fr, 2fr),
+    align: (left, left),
+    [*Costrutto COBOL*], [*Strategia di conversione Java*],
+    [GOTO], [Ristrutturazione del flusso con pattern State/Strategy],
+    [COPY statements], [Classi Java dedicate con import/package],
+    [WORKING-STORAGE SECTION], [Classi di storage con variabili statiche o di istanza],
+    [SECTION/PARAGRAPH], [Metodi Java organizzati gerarchicamente],
+    [SQL embedded (EXEC SQL)], [JDBC con PreparedStatement e gestione transazioni],
+    [REDEFINES], [Union types tramite ereditarietà o interfacce],
+    [OCCURS DEPENDING ON], [Collections dinamiche (ArrayList, HashMap)],
+  ),
+  caption: "Pattern di trasformazione per costrutti complessi",
+  kind: "Tabella",
+  supplement: "Tabella"
+) <tab:trasformazioni-complesse>
+
+Come illustrato nella #ref-table(<tab:trasformazioni-complesse>), questi pattern richiedono un'analisi contestuale per determinare la strategia ottimale, mantenendo la leggibilità del codice e facilitando il debugging durante la fase di transizione.
 
 ==== Costrutti problematici e soluzioni architetturali
 
-I costrutti senza equivalenti diretti rappresentano una parte critica della migrazione.
+I costrutti senza equivalenti diretti rappresentano la sfida più significativa della migrazione, richiedendo riprogettazione completa:
 
-- L'ALTER statement, che modifica il comportamento dei GOTO a runtime, non ha alcun equivalente in Java e richiede una completa ristrutturazione utilizzando pattern Strategy
+#figure(
+  table(
+    columns: (1fr, 2fr),
+    align: (left, left),
+    [*Costrutto COBOL*], [*Soluzione architetturale Java*],
+    [ALTER statement], [Pattern Strategy con selezione dinamica del comportamento],
+    [UNSTRING], [String.split() con logica custom per overflow e contatori],
+    [EXAMINE], [Pattern Matcher con espressioni regolari],
+    [NEXT SENTENCE], [Controllo di flusso ristrutturato con flag booleani],
+    [SORT/MERGE files], [Collections.sort() o Stream API con Comparator],
+    [Report Writer], [Template engine (Jasper, Velocity) o generazione PDF],
+    [Screen Section], [Framework GUI (Swing/JavaFX) o web UI],
+  ),
+  caption: "Soluzioni architetturali per costrutti senza equivalenti diretti",
+  kind: "Tabella",
+  supplement: "Tabella"
+) <tab:costrutti-problematici>
 
-- Costrutti specifici del mainframe (UNSTRING, EXAMINE, NEXT SENTENCE) necessitano di implementazioni custom. Per esempio, UNSTRING si può convertire utilizzando String.split() con logica aggiuntiva per gestire i contatori e le condizioni di overflow
+La #ref-table(<tab:costrutti-problematici>) evidenzia come questi costrutti richiedano non solo una traduzione sintattica ma una completa reinterpretazione semantica nel contesto delle architetture Java moderne, spesso comportando l'introduzione di librerie esterne o framework specifici.
 
 === Valutazione delle soluzioni esistenti <subsec:valutazione-soluzioni>
 
-Dopo la mappatura dei pattern comuni e l'analisi di pattern Java corrispondenti ho condotto un'analisi approfondita e sistematica delle soluzioni esistenti sul mercato, sia open-source che enterprise. Questa fase di ricerca e valutazione si è rivelata fondamentale non solo per comprendere lo stato dell'arte attuale, ma anche per identificare opportunità di innovazione e differenziazione.
-
-Ho valutato ciascuna soluzione secondo criteri multipli:
-
-- completezza della copertura COBOL
-- qualità del codice generato
-- facilità d'uso
-- costo totale di proprietà
-- supporto e manutenzione
-- estensibilità
-- personalizzazione
-
 ==== Soluzioni open-source
 
-L'analisi del ProLeap COBOL parser, uno dei progetti open-source più maturi nello spazio di GitHub, ha rivelato un'architettura solida basata su #acronym("ANTLR")4 con capacità complete di analisi sintattica. Tuttavia, il sistema si limitava alla generazione dell'#acronym("AST"), richiedendo l'implementazione separata della trasformazione AST COBOL → AST Java e della successiva generazione del codice. Ad ogni modo il ProLeap parser presentava una architettura modulare che permetteva l'estensione per nuovi costrutti.
-
+L'analisi del ProLeap COBOL parser, in #ref-figure(<fig:proLeap>), uno dei progetti open-source più maturi nello spazio di GitHub, ha rivelato un'architettura solida basata su #acronym("ANTLR")4 con capacità complete di analisi sintattica. Tuttavia, il sistema si limitava alla generazione dell'#acronym("AST"), richiedendo l'implementazione separata della trasformazione AST COBOL → AST Java e della successiva generazione del codice. Ad ogni modo il ProLeap parser presentava una architettura modulare che permetteva l'estensione per nuovi costrutti.
+#numbered-figure(
+  image("../images/proleap.png",width: 80%),
+  caption: "ProLeap COBOL parser",
+) <fig:proLeap>
 ==== Soluzioni enterprise
 
 Il panorama presentava soluzioni commerciali sofisticate con prezzi corrispondentemente elevati. Essendo soluzioni chiuse al pubblico ho avuto modo di testare tali soluzioni solo in modo limitato, quando prove gratuite o soluzioni demo lo permettevano.
 
-In particolare, grazie alle soluzioni di prova per sviluppatori, ho potuto mettere mano a IBM WatsonX Code Assistant for Z che rappresenta attualmente lo stato dell'arte nell'applicazione dell'intelligenza artificiale alla modernizzazione legacy. La soluzione IBM non si limita alla traduzione sintattica ma tenta di comprendere il contesto aziendale del codice tramite l'interazione e interconnessione con l'intelligenza artificiale. Durante la demo, la quale si presentava come chatbot integrato nell'IDE di riferimento (nel mio caso Visual Studio Code), ho osservato come il sistema potesse riconoscere schemi di dominio, desse suggerimenti di modernizzazione architetturale (conversione a microservizi dove appropriato), generazione di test automatici basati sulla comprensione del comportamento atteso, e documentazione automatica che catturava l'intento aziendale tramite domande di contesto oltre che puramente tecniche.
+In particolare, grazie alle soluzioni di prova per sviluppatori, ho potuto mettere mano a IBM WatsonX Code Assistant for Z, estensione mostrata in #ref-figure(<fig:watsonx>), che rappresenta attualmente lo stato dell'arte nell'applicazione dell'intelligenza artificiale alla modernizzazione legacy. La soluzione IBM non si limita alla traduzione sintattica ma tenta di comprendere il contesto aziendale del codice tramite l'interazione e interconnessione con l'intelligenza artificiale.
+#numbered-figure(
+  image("../images/watsonx.png",width: 80%),
+  caption: "IBM WatsonX Code Assistant for Z",
+  source: "https://www.community.ibm.com/",
+) <fig:watsonx>
+Durante la demo, la quale si presentava come chatbot integrato nell'IDE di riferimento (nel mio caso Visual Studio Code), una rappresentazione visiva in #ref-figure(<fig:watsonX-chat>), ho osservato come il sistema potesse riconoscere schemi di dominio, desse suggerimenti di modernizzazione architetturale (conversione a microservizi dove appropriato), generazione di test automatici basati sulla comprensione del comportamento atteso, e documentazione automatica che catturava l'intento aziendale tramite domande di contesto oltre che puramente tecniche.
 
 La soluzione presentava barriere significative per un progetto di ricerca:
 
@@ -128,6 +246,13 @@ La soluzione presentava barriere significative per un progetto di ricerca:
 - natura proprietaria che impediva personalizzazione profonde
 - requisiti di infrastruttura aziendale
 - vincolo con l'ecosistema IBM
+
+#numbered-figure(
+  image("../images/watsonxChat.png",width: 40%),
+  caption: "Chatbot di IBM WatsonX Code Assistant for Z",
+  source: "https://community.ibm.com/",
+) <fig:watsonX-chat>
+
 
 Altre soluzioni enterprise che ho preso in analisi erano Micro Focus, Modern Systems e TSRI che risultavano però meno di valore per qualità-costo dei contenuti producibili, pertanto ho approfondito meno queste tecnologie.
 
@@ -152,7 +277,7 @@ Forte delle conoscenze acquisite sul linguaggio COBOL e dell'analisi delle soluz
 
 L'obiettivo era implementare un sistema modulare ed estensibile che potesse crescere incrementalmente man mano che nuovi costrutti COBOL venivano supportati.
 
-L'architettura seguiva il classico modello di compilatore a pipeline:
+L'architettura seguiva il classico modello di compilatore a pipeline, la sua raffigurazione sequenziale è mostrata in #ref-figure(<fig:parser-pipeline>):
 
 + Il *Lexer di ProLeap* gestiva la tokenizzazione del codice COBOL, affrontando le peculiarità del linguaggio come la sensibilità alla colonna (le colonne 1-6 riservate per numeri di linea, colonna 7 per indicatori speciali, colonne 8-72 per il codice effettivo), la gestione dei commenti e delle linee di continuazione
 
@@ -161,34 +286,80 @@ L'architettura seguiva il classico modello di compilatore a pipeline:
 + Il *Traduttore custom* (da implementare) trasformava l'AST COBOL nell'AST Java corrispondente, gestendo le differenze semantiche tra i due linguaggi
 
 + Il *Generatore di codice* (da implementare) convertiva l'AST Java annotato in codice sorgente Java idiomatico
+#numbered-figure(
+  image("../images/fasiPipeline.png",width: 60%),
+  caption: "Pipeline del parser COBOL → Java",
+) <fig:parser-pipeline>
 
 L'implementazione del traduttore custom e generatore di codice è proceduta in parallelo, per divisioni COBOL:
 
-- *IDENTIFICATION DIVISION*, punto di partenza naturale per la sua semplicità strutturale e prevedibilità. Questa divisione, contenendo principalmente metadati senza impatto diretto sulla logica del programma, forniva contesto essenziale per la comprensione del sistema. Ho sviluppato un analizzatore basato su pattern matching che estraeva sistematicamente le informazioni standard: PROGRAM-ID, AUTHOR, INSTALLATION, DATE-WRITTEN e REMARKS.
-  La strategia di conversione per questa divisione prevedeva una trasformazione semanticamente ricca dei metadati:
-  - Il PROGRAM-ID veniva convertito nel nome della classe Java principale, applicando le convenzioni di denominazione Java (trasformazione da KEBAB-CASE o UNDERSCORE_CASE a CamelCase)
-  - Le informazioni di contesto (AUTHOR, INSTALLATION, DATE-WRITTEN) venivano preservate in un blocco JavaDoc strutturato in testa alla classe, mantenendo la completa tracciabilità con il programma originale e rispettando gli standard di documentazione Java
-
+- *IDENTIFICATION DIVISION*, punto di partenza naturale per la sua semplicità strutturale e prevedibilità. Questa divisione, contenendo principalmente metadati senza impatto diretto sulla logica del programma, forniva contesto essenziale per la comprensione del sistema. 
+  Ho sviluppato un analizzatore basato su pattern matching che estraeva sistematicamente le informazioni standard: PROGRAM-ID, AUTHOR, INSTALLATION, DATE-WRITTEN e REMARKS.
+    La strategia di conversione per questa divisione prevedeva una trasformazione semanticamente ricca dei metadati:
+    - Il PROGRAM-ID veniva convertito nel nome della classe Java principale, applicando le convenzioni di denominazione Java (trasformazione da KEBAB-CASE o UNDERSCORE_CASE a CamelCase)
+    - Le informazioni di contesto (AUTHOR, INSTALLATION, DATE-WRITTEN) venivano preservate in un blocco JavaDoc strutturato in testa alla classe, mantenendo la completa tracciabilità con il programma originale e rispettando gli standard di documentazione Java
+    #figure(
+      {
+        ```cobol
+        IDENTIFICATION DIVISION.
+        PROGRAM-ID. GESTIONE-CONTI.
+        AUTHOR. ANNALISA EGIDI.
+        DATE-WRITTEN. 2025-05-15.
+        ```
+        ```java
+        /**
+         * GESTIONE-CONTI
+         * Author: ANNALISA EGIDI
+         * Date Written: 2025-05-15
+         * 
+         * Converted from COBOL on: 2025-06-20
+         */
+        public class GestioneConti {
+            // ...
+        }
+        ```
+      },
+      caption: "Trasformazione della IDENTIFICATION DIVISION in JavaDoc",
+      kind: "Codice",
+      supplement: "Listato"
+    ) <lst:identification-transform>
 - La *ENVIRONMENT DIVISION* ha presentato le prime sfide sostanziali. Questa divisione, che specifica l'ambiente di esecuzione del programma COBOL includendo informazioni su hardware, sistema operativo e mappatura dei file, riflette un'epoca in cui tali dettagli erano critici per l'esecuzione. Nel contesto moderno, molte di queste informazioni risultano obsolete o vengono gestite attraverso meccanismi completamente diversi.
   Ho sviluppato una strategia di conversione che preservava le informazioni semanticamente rilevanti mentre scartava quelle puramente storiche:
     - La CONFIGURATION SECTION, contenente SOURCE-COMPUTER e OBJECT-COMPUTER, veniva convertita in commenti documentativi strutturati, preservando l'informazione per riferimento storico senza impatto sul codice generato
     - Nella INPUT-OUTPUT SECTION, particolarmente la FILE-CONTROL, ogni dichiarazione di file in COBOL include non solo il nome logico del file ma anche dettagli critici sulla sua organizzazione (sequenziale, indicizzata, relativa), modalità di accesso (sequenziale, random, dinamica), e strategie di gestione degli errori.#linebreak()
-      Ho implementato un sistema di mapping che traduceva le dichiarazioni COBOL in configurazioni Java moderne. Ad esempio, una dichiarazione COBOL come:
+      Ho implementato un sistema di mapping che traduceva le dichiarazioni COBOL in configurazioni Java moderne. Ad esempio, una dichiarazione COBOL come in #ref-figure(<lst:gestione-file-cobol>).
+        #source-code(
           ```cobol
-          SELECT CUSTOMER-FILE ASSIGN TO "CUSTMAST.DAT"
-                      ORGANIZATION IS INDEXED
-                      ACCESS MODE IS RANDOM
-                      RECORD KEY IS CUSTOMER-ID
-          ```
+          SELECT CUSTOMER-FILE ASSIGN TO CUSTMAST.DAT
+              ORGANIZATION IS INDEXED
+              ACCESS MODE IS RANDOM
+              RECORD KEY IS CUSTOMER-ID
+          ```,
+          lang: "cobol",
+          caption: "Esempio di dichiarazione file COBOL"
+        ) <lst:gestione-file-cobol>
+
           veniva trasformata in una configurazione che utilizzava classi di accesso ai file Java con appropriati livelli di astrazione, preservando la semantica COBOL (accesso indicizzato, chiave di record) mentre si integrava con le API Java moderne per I/O.
 
-  - La *DATA DIVISION* ha rappresentato la sfida tecnica più significativa di questa fase. La complessità derivava dal sistema gerarchico di definizione dei dati in COBOL, che utilizza numeri di livello (01-49, 66, 77, 88) per definire strutture dati annidate con semantiche specifiche. Ho implementato un analizzatore ricorsivo che costruiva una rappresentazione interna completa della gerarchia dei dati, gestendo:
+  - La *DATA DIVISION* ha rappresentato la sfida tecnica più significativa di questa fase. La complessità derivava dal sistema gerarchico di definizione dei dati in COBOL, che utilizza numeri di livello (01-49, 66, 77, 88) per definire strutture dati annidate con semantiche specifiche, un esempio è rappresentato in #ref-figure(<lst:movimento-bancario>). Ho implementato un analizzatore ricorsivo che costruiva una rappresentazione interna completa della gerarchia dei dati, gestendo:
 
     - I livelli 01 che definiscono record di primo livello
     - I livelli 02-49 che creano strutture gerarchiche
     - Il livello 66 per la ridefinizione di gruppi di campi
     - Il livello 77 per variabili indipendenti
     - Il livello 88 per valori condizionali (condition names)
+    #source-code(
+      ```cobol
+      01 WS-MOVIMENTO.
+        05 WS-DATA-MOV      PIC X(10).
+        05 WS-TIPO-MOV      PIC X(1).
+            88 DEPOSITO      VALUE 'D'.
+            88 PRELIEVO      VALUE 'P'.
+        05 WS-IMPORTO-MOV   PIC S9(7)V99 COMP-3.
+      ```,
+      lang: "cobol",
+      caption: "Struttura dati COBOL per la gestione dei movimenti bancari"
+    ) <lst:movimento-bancario>
 
     La conversione in strutture Java appropriate si è rivelata particolarmente complessa. Un approccio naïve di mappare ogni elemento di gruppo su una classe Java e ogni elemento elementare su un campo produceva codice eccessivamente verboso e non idiomatico. Ho quindi sperimentato due strategie complementari:
 
@@ -293,14 +464,69 @@ Il sistema analizza la gerarchia dei level numbers per costruire una rappresenta
 - Elementi ripetuti (OCCURS) che richiedono array o collezioni
 - Ridefinizioni (REDEFINES) che necessitano di gestione speciale attraverso union-like patterns
 
-Il processo di generazione delle classi Java corrispondenti applica convenzioni di naming standard, trasformando nomi COBOL in stile KEBAB-CASE in camelCase Java. La generazione include automaticamente metodi getter e setter appropriati, costruttori per inizializzazione, e metodi utility per conversioni quando ritenuto necessario dal modello.
+Il processo di generazione delle classi Java corrispondenti applica convenzioni di naming standard, trasformando nomi COBOL in stile KEBAB-CASE in camelCase Java, un sempio in #ref-figure(<lst:confronto-sintassi>). La generazione include automaticamente metodi getter e setter appropriati, costruttori per inizializzazione, e metodi utility per conversioni quando ritenuto necessario dal modello.
+#figure(
+  table(
+    columns: 2,
+    stroke: none,
+    [*COBOL*], [*Java*],
+    ```cobol
+    MOVE WS-IMPORTO TO WS-SALDO
+    ADD 100 TO WS-SALDO
+    ```,
+    ```java
+    wsSaldo = wsImporto;
+    wsSaldo = wsSaldo.add(new BigDecimal("100"));
+    ```
+  ),
+  caption: "Confronto tra sintassi COBOL e Java per operazioni aritmetiche",
+  kind: "Codice",
+  supplement: "Listato"
+) <lst:confronto-sintassi>
 
 La traduzione dell'SQL embedded ha richiesto particolare attenzione alla preservazione della semantica transazionale. Il sistema identifica i blocchi EXEC SQL attraverso pattern matching, estrae gli statement SQL e le variabili host coinvolte, e genera codice JDBC equivalente. La generazione utilizza sempre PreparedStatement per prevenire SQL injection, implementa gestione appropriata delle connessioni con pattern try-with-resources, preserva la logica di gestione errori COBOL attraverso mappature SQLCODE appropriate, e mantiene la semantica transazionale con commit e rollback espliciti.
 
 Un aspetto critico dell'implementazione riguarda la preservazione della logica di business durante la trasformazione. Il translator riconosce pattern comuni nel codice COBOL procedurale e li trasforma in equivalenti object-oriented appropriati: 
 - I PERFORM statements vengono analizzati per determinare se rappresentano semplici chiamate di subroutine o pattern più complessi come iterazioni
-- Le SECTION e PARAGRAPH della PROCEDURE DIVISION vengono trasformate in metodi Java, preservando la struttura logica mentre si adotta l'organizzazione object-oriented
-
+- Le SECTION e PARAGRAPH della PROCEDURE DIVISION vengono trasformate in metodi Java, come illustrato nel'esempio #ref-figure(<lst:section-to-methods>), preservando la struttura logica mentre si adotta l'organizzazione object-oriented
+#figure(
+  {
+    ```cobol
+    PROCEDURE DIVISION.
+    DISPLAY-MENU.
+        DISPLAY "1. Apertura conto"
+        DISPLAY "2. Deposito"
+        DISPLAY "0. Esci".
+    
+    PROCESS-CHOICE.
+        ACCEPT WS-SCELTA
+        EVALUATE WS-SCELTA
+            WHEN '1' PERFORM OPEN-ACCOUNT
+            WHEN '2' PERFORM MAKE-DEPOSIT
+        END-EVALUATE.
+    ```
+    ```java
+    public class GestioneConti {
+        private void displayMenu() {
+            System.out.println("1. Apertura conto");
+            System.out.println("2. Deposito");
+            System.out.println("0. Esci");
+        }
+        
+        private void processChoice() {
+            String scelta = scanner.nextLine();
+            switch (scelta) {
+                case "1": openAccount(); break;
+                case "2": makeDeposit(); break;
+            }
+        }
+    }
+    ```
+  },
+  caption: "Trasformazione di SECTION e PARAGRAPH COBOL in metodi Java",
+  kind: "Codice",
+  supplement: "Listato"
+) <lst:section-to-methods>
 Per quanto riguarda la gestione degli errori, COBOL spesso utilizza gestione degli errori implicita attraverso controlli di status code, mentre Java favorisce exception handling esplicito. Il translator aggiunge automaticamente blocchi try-catch appropriati dove necessario, preserva i codici di errore COBOL per compatibilità mentre aggiunge exception handling Java, implementa logging strutturato per facilitare debugging e manutenzione, e crea classi di eccezione custom quando pattern di errore specifici lo richiedono.
 
 === Generazione automatica di progetti Maven <subsec:generazione-maven>
@@ -322,7 +548,26 @@ La generazione del file pom.xml rappresenta un elemento critico del processo. Il
 La configurazione dei plugin Maven riceve particolare attenzione per assicurare che il progetto possa essere costruito e deployato senza modifiche manuali:
 - Il maven-compiler-plugin viene configurato con la versione Java appropriata basata sulle feature utilizzate nel codice
 - Il maven-jar-plugin include configurazione per generare JAR eseguibili con manifest appropriato
-- Il maven-assembly-plugin viene configurato per creare "fat JARs" che includono tutte le dipendenze, semplificando il deployment
+- Il maven-assembly-plugin viene configurato per creare "fat JARs" che includono tutte le dipendenze, semplificando il deployment, come esemplificato nel #ref-figure(<lst:pom-generated>)
+  #source-code(
+    ```xml
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.7.1</version>
+    </dependency>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+            <source>11</source>
+            <target>11</target>
+        </configuration>
+    </plugin>
+    ```,
+    lang: "xml",
+    caption: "Estratto del pom.xml generato automaticamente"
+  ) <lst:pom-generated>
 
 Il processo di build automatizzato verifica la correttezza della configurazione attraverso l'invocazione di Maven per compilare il codice, risolvere e scaricare tutte le dipendenze, eseguire eventuali test di base generati, e produrre gli artifact finali. Qualsiasi errore in questa fase viene catturato e reportato con suggerimenti per la risoluzione.
 

@@ -59,7 +59,6 @@
   show figure: it => {
     align(center)[
       #it.body
-      #v(0.5em)
       #text(size: 10pt, style: "italic")[
         #it.caption
       ]

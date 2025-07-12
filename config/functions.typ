@@ -31,8 +31,8 @@
   figure(
     table(columns: columns, rows: rows, content),
     caption: caption,
-    kind: "Tabella",
-    supplement: "Tabella",
+    kind: kind,
+    supplement: supplement,
   )
 }
 
@@ -47,19 +47,19 @@
 
 // Funzione per riferimenti incrociati
 #let ref-figure(label) = {
-  ref(label)
+  link(label)[#ref(label)]
 }
 
 #let ref-table(label) = {
-  link(label)[Tabella #ref(label)]
+  link(label)[#ref(label)]
 }
 
 #let ref-chapter(label) = {
-  link(label)[Capitolo #ref(label)]
+  link(label)[#ref(label)]
 }
 
 #let ref-section(label) = {
-  link(label)[Sezione #ref(label)]
+  link(label)[#ref(label)]
 }
 
 // Funzione per acronimi
@@ -107,13 +107,13 @@
 
 // Funzione per codice sorgente con highlighting
 #let source-code(
-  content,
+  code,
   lang: "text",
   caption: none,
   label: none,
 ) = {
   let fig = figure(
-    raw(content, lang: lang, block: true),
+    code,
     caption: caption,
     kind: "Codice",
     supplement: "Listato",
