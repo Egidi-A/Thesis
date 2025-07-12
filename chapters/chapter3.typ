@@ -368,11 +368,20 @@ L'implementazione del traduttore custom e generatore di codice è proceduta in p
     - *Preservazione gerarchica*: per strutture complesse o quando la gerarchia aveva significato semantico, utilizzavo classi Java annidate che riflettevano la struttura originale
 
     La gestione delle *PICTURE clauses* ha richiesto un'attenzione particolare. Queste clausole non definiscono solo tipo e dimensione dei dati, ma anche formattazione, gestione del segno, allineamento decimale e altre caratteristiche di presentazione. Ho sviluppato un mini-parser specializzato per le PICTURE clauses che le decompone in attributi gestibili:
-
-    - PIC 9(5) → int con validazione del range
-    - PIC X(30) → String con lunghezza massima
-    - PIC 9(7)V99 → BigDecimal con precisione specificata
-    - PIC S9(5) COMP-3 → gestione speciale per packed decimal
+      #figure(
+        table(
+          columns: (1fr, 1fr, 2fr),
+          align: (left, left, left),
+          [*PIC Clause*], [*Tipo Java*], [*Note di conversione*],
+          [PIC 9(5)], [int], [Validazione del range 0-99999],
+          [PIC X(30)], [String], [Lunghezza massima 30 caratteri],
+          [PIC 9(7)V99], [BigDecimal], [Precisione 9 cifre, 2 decimali],
+          [PIC S9(5) COMP-3], [BigDecimal], [Gestione speciale per packed decimal],
+        ),
+        caption: "Mappatura delle PICTURE clauses COBOL verso tipi Java",
+        kind: "Tabella",
+        supplement: "Tabella"
+      ) <tab:picture-clauses>
 
 === Analisi critica e limiti dell'approccio <subsec:limiti-approccio>
 
@@ -420,7 +429,11 @@ L'implementazione si articola in tre moduli principali, ciascuno con responsabil
   - Il limite di 20.000 token di output era sufficiente per i codici sviluppati nel primo periodo.
 - Il *modulo di packaging* trasforma il codice Java raw in un progetto Maven completo. Il punto di forza del modulo risiede nella sua capacità di analizzare il codice generato per identificare automaticamente le dipendenze necessarie. Utilizzando nuovamente Gemini, il modulo esamina gli import statements e l'uso effettivo delle API per determinare non solo quali librerie sono necessarie ma anche le versioni appropriate basandosi su compatibilità e best practice correnti. La generazione del file pom.xml avviene dinamicamente, producendo configurazioni complete che includono sia le dipendenze che anche la configurazione appropriata dei plugin per compilazione, testing, e packaging.
 - Il *modulo di orchestrazione* fornisce il layer di coordinamento che trasforma i componenti individuali in un sistema coeso. Implementa una pipeline di esecuzione che gestisce il flusso dei dati tra i moduli, monitora il progresso della conversione, e gestisce condizioni di errore con strategie di recovery appropriate. Il logging da terminale strutturato fornisce visibilità completa sul processo di conversione, essenziale per debugging e audit in contesti enterprise.
-
+Una rappresentazione semplificata e schematica del sistema è mostrata in #ref-figure(<fig:architettura-sistema-ai>).
+#numbered-figure(
+  image("../images/flussopy.png",width: 100%),
+  caption: "Rappresentazione schematica del sistema di migrazione AI-driven",
+) <fig:architettura-sistema-ai>
 Il flusso di elaborazione segue una sequenza logica che massimizza le probabilità di successo della conversione. La fase iniziale di acquisizione e validazione assicura che gli input siano completi e ben formati, prevenendo errori downstream. Segue una fase di pre-processamento dove il codice viene normalizzato e preparato per l'analisi, rimuovendo elementi non significativi, preservando struttura e commenti per la comprensione del contesto.
 
 La fase di generazione del prompt rappresenta il momento critico dove la conoscenza sulla migrazione viene codificata in forma processabile dal modello. Il prompt non è una semplice richiesta ma una specifica dettagliata che include il ruolo del modello, il contesto della traduzione, esempi di pattern di trasformazione, e requisiti specifici per l'output. La costruzione del prompt sfrutta template parametrizzati che vengono istanziati con il codice specifico e lo schema database, assicurando consistenza mentre si adatta al contesto specifico.
@@ -469,7 +482,6 @@ Il processo di generazione delle classi Java corrispondenti applica convenzioni 
   table(
     columns: 2,
     stroke: none,
-    [*COBOL*], [*Java*],
     ```cobol
     MOVE WS-IMPORTO TO WS-SALDO
     ADD 100 TO WS-SALDO
