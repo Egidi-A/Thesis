@@ -33,6 +33,9 @@
     first-line-indent: 1em,
   )
   
+  // Configurazione della numerazione per i titoli
+  set heading(numbering: "1.1.1")
+  
   // Stili per i titoli
   show heading.where(level: 1): set text(size: 18pt, weight: "bold")
   show heading.where(level: 1): set block(above: 2em, below: 1.5em)

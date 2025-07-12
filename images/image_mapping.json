@@ -35,62 +35,92 @@
     "caption": "",
     "label": "<fig:COBOL-cli>"
   },
-  "diagrammaGantt.png": {
+  "cobol-console.jpg": {
     "id": "img_007",
+    "path": "images\\cobol-console.jpg",
+    "caption": "",
+    "label": "<fig:cobol-console>"
+  },
+  "diagrammaGantt.png": {
+    "id": "img_008",
     "path": "images\\diagrammaGantt.png",
     "caption": "",
     "label": "<fig:diagrammaGantt>"
   },
-  "logo-unipd.png": {
+  "gitWorkflow.svg": {
     "id": "img_009",
+    "path": "images\\gitWorkflow.svg",
+    "caption": "",
+    "label": "<fig:gitWorkflow>"
+  },
+  "gitWorkflow2.svg": {
+    "id": "img_010",
+    "path": "images\\gitWorkflow2.svg",
+    "caption": "",
+    "label": "<fig:gitWorkflow2>"
+  },
+  "gitWorkflow3.svg": {
+    "id": "img_011",
+    "path": "images\\gitWorkflow3.svg",
+    "caption": "",
+    "label": "<fig:gitWorkflow3>"
+  },
+  "gitWorkflow4.svg": {
+    "id": "img_012",
+    "path": "images\\gitWorkflow4.svg",
+    "caption": "",
+    "label": "<fig:gitWorkflow4>"
+  },
+  "logo-unipd.png": {
+    "id": "img_014",
     "path": "images\\logo-unipd.png",
     "caption": "",
     "label": "<fig:logo-unipd>"
   },
   "Microservice architecture.png": {
-    "id": "img_010",
+    "id": "img_015",
     "path": "images\\Microservice architecture.png",
     "caption": "",
     "label": "<fig:Microservice architecture>"
   },
   "miriade.png": {
-    "id": "img_011",
+    "id": "img_016",
     "path": "images\\miriade.png",
     "caption": "",
     "label": "<fig:miriade>"
   },
   "MOB5.svg": {
-    "id": "img_012",
+    "id": "img_017",
     "path": "images\\MOB5.svg",
     "caption": "",
     "label": "<fig:MOB5>"
   },
   "Monolith Vs Microservice.png": {
-    "id": "img_013",
+    "id": "img_018",
     "path": "images\\Monolith Vs Microservice.png",
     "caption": "",
     "label": "<fig:Monolith Vs Microservice>"
   },
   "Monolithic architecture.png": {
-    "id": "img_014",
+    "id": "img_019",
     "path": "images\\Monolithic architecture.png",
     "caption": "",
     "label": "<fig:Monolithic architecture>"
   },
   "monolitic and microsevices application.png": {
-    "id": "img_015",
+    "id": "img_020",
     "path": "images\\monolitic and microsevices application.png",
     "caption": "",
     "label": "<fig:monolitic and microsevices application>"
   },
   "team.png": {
-    "id": "img_016",
+    "id": "img_021",
     "path": "images\\team.png",
     "caption": "",
     "label": "<fig:team>"
   },
   "valori-miriade.png": {
-    "id": "img_017",
+    "id": "img_022",
     "path": "images\\valori-miriade.png",
     "caption": "",
     "label": "<fig:valori-miriade>"

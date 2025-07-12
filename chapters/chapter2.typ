@@ -3,7 +3,7 @@
 #import "../appendix/glossary.typ": *
 #import "../appendix/acronyms.typ": *
 
-= Il progetto di migrazione COBOL-Java <cap:progetto-migrazione>
+= Il progetto di migrazione #foreign("COBOL-Java") <cap:progetto-migrazione>
 
 Il progetto di #foreign("stage") proposto da Miriade si inserisce in un contesto tecnologico di particolare rilevanza per il settore #acronym("IT") contemporaneo: la modernizzazione dei sistemi #gls("legacy"). 
 Durante il mio percorso, ho avuto l'opportunità di confrontarmi con una problematica comune a molte organizzazioni, in particolare nel settore bancario e assicurativo, dove i sistemi COBOL continuano a costituire l'impalcatura portante di infrastrutture critiche per il #foreign("business").
@@ -44,10 +44,10 @@ Come illustrato in #ref-figure(<fig:confronto-architetture>), il contrasto tra l
   source: "https://www.atlassian.com",
 ) <fig:confronto-architetture>
 
-La migrazione di questi sistemi verso tecnologie più moderne come Java rappresenta una sfida tecnica e una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. Java, con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione @newrelic2024java.
+La migrazione di questi sistemi verso tecnologie più moderne come #foreign("Java") rappresenta una sfida tecnica e una necessità strategica per garantire la continuità operativa e la competitività delle organizzazioni. #foreign("Java"), con il suo ecosistema maturo, la vasta #foreign("community") di sviluppatori e il supporto per paradigmi di programmazione moderni, si presenta come una delle destinazioni privilegiate per questi progetti di modernizzazione.
 
 == Obiettivi dello stage <sec:obiettivi>
-Il macro-obiettivo era sviluppare un sistema prototipale di migrazione automatica da COBOL a Java che potesse dimostrare la fattibilità di automatizzare il processo di conversione, preservando la #foreign("business logic") originale e producendo codice Java idiomatico e manutenibile.
+Il macro-obiettivo era sviluppare un sistema prototipale di migrazione automatica da #acronym("COBOL") a #foreign("Java") che potesse dimostrare la fattibilità di automatizzare il processo di conversione, preservando la #foreign("business logic") originale e producendo codice #foreign("Java") idiomatico e manutenibile.
 === Obiettivi principali
 - *Esplorazione tecnologica*: Investigare e valutare diverse strategie di migrazione, dalla conversione sintattica diretta basata su regole deterministiche fino all'utilizzo di tecnologie di intelligenza artificiale generativa, identificando vantaggi e limitazioni di ciascun approccio.
 - *Automazione del processo*: Sviluppare strumenti e metodologie che potessero automatizzare il più possibile il processo di conversione, riducendo l'intervento manuale e i conseguenti rischi di errore umano nella traduzione.
@@ -62,7 +62,7 @@ Per rendere concreti e misurabili gli obiettivi principali, sono stati definiti 
 - *OO03*: Implementare un sistema di conversione automatica che raggiungesse almeno il 75% di copertura delle divisioni
 - *OO04*: Esplorare e documentare approcci distinti alla migrazione
 - *OO05*: Completare la migrazione funzionante di almeno uno dei progetti COBOL sviluppati, validando l'equivalenza funzionale tra codice sorgente e risultato
-- *OO06*: Produrre codice Java che rispettasse le convenzioni del linguaggio, includendo struttura dei #foreign("package"), nomenclatura standard e documentazione #foreign("JavaDoc")
+- *OO06*: Produrre codice #foreign("Java") che rispettasse le convenzioni del linguaggio, includendo struttura dei #foreign("package"), nomenclatura standard e documentazione #foreign("JavaDoc")
 - *OO07*: Fornire un'interfaccia utilizzabile (grafica o #acronym("CLI")) per l'esecuzione del sistema di conversione
 - *OO08*: Creare documentazione utente completa, includendo un #foreign("README") dettagliato con istruzioni di installazione, configurazione e utilizzo
 *Desiderabili*
@@ -78,8 +78,8 @@ Per rendere concreti e misurabili gli obiettivi principali, sono stati definiti 
 Per valutare oggettivamente il raggiungimento degli obiettivi, erano state definite le seguenti metriche:
 
 - *Copertura di conversione*: Percentuale di linee di codice COBOL convertite automaticamente senza intervento manuale
-- *Equivalenza funzionale*: Corrispondenza interfaccia utente COBOL originale e Java convertito
-- *Qualità del codice*: Conformità agli standard Java verificata tramite strumenti di analisi statica
+- *Equivalenza funzionale*: Corrispondenza #foreign("interfaccia utente") COBOL originale e #foreign("Java") convertito
+- *Qualità del codice*: Conformità agli standard #foreign("Java") verificata tramite strumenti di analisi statica
 - *Tempo di conversione*: Riduzione del tempo necessario per la migrazione rispetto a un approccio completamente manuale
 - *Usabilità*: Capacità di utilizzo del sistema da parte di utenti con conoscenze base di programmazione
 
@@ -140,9 +140,9 @@ La rappresentazione temporale dettagliata della pianificazione è visualizzata i
 
 == Valore strategico per l'azienda <sec:valore-strategico>
 
-In base a quanto ho potuto osservare e comprendere durante il periodo di #foreign("stage"), la strategia di gestione del progetto di migrazione COBOL-Java dell'azienda ospitante persegue i seguenti obiettivi:
+In base a quanto ho potuto osservare e comprendere durante il periodo di #foreign("stage"), la strategia di gestione del progetto di migrazione #foreign("COBOL-Java") dell'azienda ospitante persegue i seguenti obiettivi:
 
-- *Innovazione tecnologica*: l'interesse dell'azienda non era limitato allo sviluppo di una soluzione tecnica specifica, ma si estendeva all'osservazione dell'approccio metodologico e del metodo di studio che una risorsa #foreign("junior") con formazione universitaria avrebbe applicato a un problema complesso di modernizzazione IT.
+- *Innovazione tecnologica*: l'interesse dell'azienda non era limitato allo sviluppo di una soluzione tecnica specifica, ma si estendeva all'osservazione dell'approccio metodologico e del metodo di studio che una risorsa #foreign("junior") con formazione universitaria avrebbe applicato a un problema complesso di modernizzazione #foreign("IT").
 
 - *Creazione di competenze interne*: Il progetto permetteva di sviluppare #foreign("know-how") interno su una problematica di crescente rilevanza, preparando l'azienda a potenziali progetti futuri.
 
@@ -162,14 +162,14 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 *Obiettivi tecnici*
 
 - Comprendere la struttura e la logica dei programmi COBOL attraverso lo sviluppo di applicazioni di test
-- Esplorare approcci concreti alla migrazione del codice, sia deterministici che basati su AI
+- Esplorare approcci concreti alla migrazione del codice, sia deterministici che basati su #foreign("AI")
 - Produrre un prototipo funzionante di sistema di conversione, anche se limitato
 
 *Competenze da sviluppare*
 
 - Familiarità di base con il linguaggio COBOL e le sue peculiarità sintattiche
 - Comprensione pratica delle sfide nella traduzione tra paradigmi di programmazione diversi
-- Esperienza nell'utilizzo di tecnologie emergenti come l'AI generativa applicata al codice
+- Esperienza nell'utilizzo di tecnologie emergenti come l'#foreign("AI") generativa applicata al codice
 
 *Crescita professionale attesa*
 

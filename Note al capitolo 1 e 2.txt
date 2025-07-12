@@ -1,5 +1,225 @@
-﻿- rimozione immagine 1 ed eventuale sostituzione con fotoframe dell'azienda o simile
-- aggiunta fonti immagini automatizzata
-- rimozione ringraziamenti e sommario dall'indice
-- aggiunta Luisa Biagi con termini tecnici
-- controllare struttura modificata del 2 per rispecchiare richieste tulli
+﻿Capitolo 3: Sviluppo del progetto: dal parser tradizionale all'AI
+Questo capitolo illustrerà il percorso evolutivo del progetto di migrazione COBOL-Java, partendo dalla fase iniziale di familiarizzazione con COBOL e valutazione degli approcci tradizionali, fino alla svolta strategica verso l'intelligenza artificiale generativa e all'implementazione della soluzione finale. Il focus sarà sui dettagli tecnici, sulle decisioni chiave e sui risultati ottenuti in ciascuna fase.
+1. Setup iniziale e metodologia di lavoro
+Il progetto di stage si è inserito nel contesto di modernizzazione dei sistemi legacy basati su COBOL, una problematica cruciale per molte organizzazioni, in particolare nei settori bancario e assicurativo. L'obiettivo macro era lo sviluppo di un sistema prototipale per la migrazione automatica da COBOL a Java, con l'intento di dimostrare la fattibilità dell'automazione, preservando la business logic originale e generando codice Java idiomatico e manutenibile.
+Il percorso è stato guidato dall'adozione della metodologia Agile, con sprint settimanali e stand-up giornalieri, elementi chiave per un allineamento costante del team e un approccio dinamico al lavoro. Fin dai primi giorni, l'ambiente di lavoro ha previsto una modalità ibrida, con due giorni a settimana in sede e tre in modalità telematica.
+Per la gestione del progetto e la collaborazione, l'azienda Miriade, specializzata in analisi dati e soluzioni IT, ha messo a disposizione l'Atlassian Suite. In particolare:
+•
+Confluence è stato utilizzato per la gestione della knowledge base aziendale e la documentazione tecnica.
+•
+Jira ha supportato il tracking delle attività e la gestione dei progetti.
+•
+Bitbucket è stato impiegato per il versionamento del codice e la collaborazione nello sviluppo, evidenziando l'importanza attribuita dall'azienda alla cultura del versioning e della documentazione.
+I primi due giorni della prima settimana di stage sono stati dedicati interamente all'assestamento e alla configurazione dell'ambiente fornito dall'azienda, inclusi gli strumenti Atlassian, il computer aziendale e le procedure interne. L'esperienza complessiva dello stage è stata pensata per valutare le capacità di problem solving e apprendimento, con maggiore attenzione al processo seguito piuttosto che al solo risultato finale.
+2. Primo periodo: immersione nel mondo COBOL
+Questa fase ha rappresentato un'immersione profonda nel linguaggio COBOL e nell'analisi delle sue caratteristiche.
+Studio del linguaggio e creazione progetti test
+Lo studio di COBOL è iniziato con la creazione dei primi file di codice base, sviluppando procedure funzionanti che simulavano scenari applicativi. Per testare le capacità di traduzione, sono state prodotte tre applicazioni COBOL di complessità crescente:
+•
+Sistema di Gestione Conti Correnti Bancari (Complessità Base): Ha implementato funzionalità come apertura/chiusura conti, depositi, prelievi, calcolo del saldo ed estratto conto con movimenti. Ha interagito con tabelle di database come CLIENTI, CONTI e MOVIMENTI.
+•
+Sistema di Gestione Paghe e Stipendi (Complessità Media): Ha gestito l'anagrafica dei dipendenti, il calcolo dello stipendio base e degli straordinari, le trattenute e i contributi, e la generazione dei cedolini. Le tabelle di riferimento includevano DIPENDENTI, STIPENDI, TRATTENUTE e CEDOLINI.
+•
+Sistema di Gestione Magazzino e Inventario (Complessità Media-Alta): Ha coperto carico/scarico merci, gestione di giacenze e scorte minime, valorizzazione del magazzino (FIFO/LIFO), alert per riordino automatico e report inventariali. Le tabelle del database erano ARTICOLI, MOVIMENTIMAGAZZINO, FORNITORI e ORDINI.
+L'implementazione ha previsto l'interfacciamento delle applicazioni COBOL con database relazionali (compatibili con PostgreSQL/MySQL). Tuttavia, sono emerse delle criticità significative legate all'interfacciamento tra DB2 e GnuCOBOL in ambiente Docker, principalmente a causa di versioni deprecate e della mancanza di una libreria necessaria per SQL Embedded. Questo ha richiesto un cambio di strategia, orientandosi verso l'analisi statica del codice per procedere con le fasi successive.
+Mappatura dei pattern e analisi di traducibilità
+Un passaggio fondamentale è stata l'identificazione dei pattern COBOL e l'analisi del loro grado di migrabilità verso Java. Sono state distinte tre categorie principali:
+•
+Costrutti facilmente traducibili (corrispondenza diretta al 90-95%):
+◦
+Strutture dati record: Corrispondono a classi/oggetti Java con attributi privati. Ad esempio, il gruppo 01 WS-CLIENTE in COBOL diventa una classe Cliente in Java.
+◦
+Variabili primitive: Tradotte in variabili Java standard (int, char, String, BigDecimal).
+◦
+Controllo di flusso (IF, EVALUATE, PERFORM): Corrispondono a if-else, switch e cicli while/for in Java. Un EVALUATE WS-SCELTA si traduce in uno switch(scelta) Java.
+◦
+Operazioni SQL embedded: Implementate tramite JDBC PreparedStatement con lo stesso codice SQL. Le dichiarazioni EXEC SQL sono mappate a operazioni JDBC.
+◦
+Controllo delle transazioni: Gestito con le funzionalità di transaction management di JDBC (es. conn.commit(), conn.rollback()).
+◦
+I/O da console: Realizzato con Scanner per l'input e System.out per l'output.
+◦
+Operazioni su file: Tradotte con PrintWriter/BufferedReader e try-with-resources.
+◦
+Operazioni aritmetiche: Implementate con BigDecimal per mantenere la precisione, cruciale per i calcoli finanziari.
+◦
+Manipolazione stringhe (STRING, INSPECT): Tradotte usando le API String e StringBuilder di Java.
+◦
+Operazioni su date/tempo: Gestite tramite le API java.time.
+◦
+Formattazione numerica: Realizzata con DecimalFormat e NumberFormat.
+◦
+Operazioni su array/tabelle: Mappate a ArrayList, Arrays e Stream API.
+◦
+Questi pattern coprono circa il 75-80% della logica del sistema bancario analizzato.
+•
+Costrutti che richiedono adattamento moderato (corrispondenza al 70-80%):
+◦
+COPYBOOK inclusion: Sostituita da package imports e classi condivise.
+◦
+PIC clauses: Richiedono una mappatura al sistema di tipi Java con validazione.
+◦
+OCCURS DEPENDING ON: Si traduce in dimensionamento dinamico delle Collection.
+◦
+REDEFINES: Gestito tramite union types attraverso ereditarietà o interfacce.
+◦
+Organizzazione dei paragrafi: Mappata all'organizzazione dei metodi e al design delle classi.
+◦
+Working-Storage vs Local-Storage: Corrisponde a variabili di istanza vs variabili locali.
+•
+Costrutti che richiedono riprogettazione significativa (corrispondenza al 40-60%):
+◦
+Struttura del programma COBOL: Richiede una riprogettazione in architettura applicativa Java.
+◦
+LINKAGE SECTION: Mappata al passaggio di parametri e firme dei metodi.
+◦
+CALL statement: Tradotto in chiamate a metodi e istanziazione di oggetti.
+◦
+Organizzazione dei file (INDEXED, RELATIVE): Si traduce in design di database.
+◦
+SORT/MERGE statements: Implementati con Collections.sort() e operazioni Stream.
+◦
+Report Writer: Richiede l'uso di template engines o reporting frameworks.
+Valutazione delle soluzioni esistenti
+In questa fase sono stati esaminati diversi approcci per la migrazione.
+•
+Architettura Pipeline Tradizionale: Un approccio basato su parsing deterministico, utilizzando parser open-source come ProLeap parser da GitHub. Questa metodologia prevedeva la generazione di un AST/ASG (Abstract Syntax Tree/Graph) dal codice COBOL, la sua esportazione in formato XML, e successivamente la trasformazione di questo XML COBOL in un XML Java ASG. Il ASTToXMLExporter era responsabile della creazione di elementi XML per le diverse divisioni (Identification, Data, Procedure) del programma COBOL. Il CobolToJavaXMLTransformer si occupava poi di mappare le unità di programma COBOL in classi Java, le divisioni dati in campi (con getter/setter) e le divisioni procedure in metodi Java (inclusi un metodo main e metodi per i singoli paragrafi).
+•
+Soluzioni Enterprise: È stata analizzata anche la soluzione IBM WatsonX per la migrazione assistita dall'AI.
+3. Secondo periodo: sviluppo del parser tradizionale
+Implementazione del parser Java
+L'approccio iniziale si è concentrato sullo sviluppo di un parser deterministico in Java, focalizzandosi inizialmente sulle divisioni IDENTIFICATION ed ENVIRONMENT. La classe CobolToJavaConverter ha funto da punto d'ingresso principale per il processo di conversione, gestendo passaggi come la validazione dei file, la gestione dei nomi, la lettura del file sorgente COBOL, la normalizzazione, il parsing, la generazione e la scrittura del file Java risultante.
+•
+Il metodo normalizeCobolSource ha implementato la logica per rimuovere elementi specifici del formato COBOL, come numeri di sequenza e aree indicatore, e per eliminare gli spazi finali dalle righe.
+•
+Per il parsing delle divisioni:
+◦
+L'IdentificationDivisionParser ha impiegato espressioni regolari complesse per estrarre metadati del programma COBOL, quali PROGRAM-ID, AUTHOR, DATE-WRITTEN, INSTALLATION, DATE-COMPILED, SECURITY e REMARKS.
+◦
+L'EnvironmentDivisionParser ha gestito la CONFIGURATION SECTION (estendendo SOURCE-COMPUTER, OBJECT-COMPUTER, SPECIAL-NAMES) e la INPUT-OUTPUT SECTION (con FILE-CONTROL e I-O-CONTROL), sebbene quest'ultima fosse estratta come stringhe grezze senza un'analisi dettagliata.
+•
+Sono stati definiti modelli di dati per rappresentare la struttura del programma COBOL, includendo CobolProgram (come contenitore principale), IdentificationDivision ed EnvironmentDivision.
+•
+Il JavaCodeGenerator ha incluso metodi utili come toCamelCase per la conversione dei nomi delle variabili e delle entità COBOL in convenzioni Java (es. EMPLOYEE-REPORT a EmployeeReport).
+•
+Il convertitore era in grado di esportare la struttura AST in formato XML, ad esempio in output/ASG_COBOL.xml.
+Analisi critica e limiti dell'approccio
+Nonostante i progressi, questo approccio tradizionale ha rivelato limiti significativi:
+•
+Il parser non era in grado di gestire la DATA DIVISION (variabili e strutture dati) né la PROCEDURE DIVISION (logica del programma).
+•
+La logica effettiva del programma non veniva convertita.
+•
+La INPUT-OUTPUT SECTION veniva solo letta ma non processata nel dettaglio.
+•
+La crescente complessità per affrontare la DATA e la PROCEDURE DIVISION con un parser deterministico e la stima dei tempi incompatibile con la durata dello stage (320 ore in totale) hanno portato alla decisione di esplorare approcci alternativi.
+•
+Per un convertitore completo, sarebbero stati necessari parser specifici per la DATA DIVISION (con gestione di Working-Storage Section, File Section e PIC clauses) e per la PROCEDURE DIVISION (con conversione di paragrafi, statement COBOL come MOVE, COMPUTE, PERFORM, e gestione file), oltre a un generatore Java più avanzato.
+4. Terzo periodo: pivot verso l'intelligenza artificiale
+Di fronte alle limitazioni del parser tradizionale, si è verificata una svolta strategica verso l'utilizzo dell'Intelligenza Artificiale generativa.
+Valutazione delle API di AI generativa
+Questa fase ha visto un passaggio da una pipeline deterministica a un sistema AI-powered. È emersa la possibilità di richiamare direttamente le API di Gemini per la traduzione del codice, una soluzione facilitata dall'esperienza pregressa con progetti di ingegneria del software. Nonostante l'efficacia, questa soluzione ha sollevato una perplessità legata al "poco controllo sull'output generato" dall'LLM.
+Design del sistema AI-powered
+Il sistema basato sull'AI è stato progettato per utilizzare un modello di AI generativa (specificamente gemini-2.0-flash-exp) per tradurre il codice COBOL in Java. Il prompt fornito al modello includeva istruzioni dettagliate e obbligatorie per la traduzione strutturale e logica:
+•
+Analisi Strutturale:
+◦
+Il PROGRAM-ID doveva definire il nome della classe Java (es. GESTIONE-CONTI -> GestioneConti).
+◦
+La FILE-CONTROL nell'ENVIRONMENT DIVISION doveva identificare le interazioni con i file.
+◦
+La WORKING-STORAGE SECTION nella DATA DIVISION doveva dichiarare i campi privati della classe Java.
+◦
+I PARAGRAPH nella PROCEDURE DIVISION dovevano essere tradotti in metodi privati Java, con il flusso principale incapsulato in un metodo mainLogic().
+•
+Mappatura Tipi di Dato:
+◦
+Le variabili COBOL (es. WS-NOME-CLIENTE) dovevano essere convertite in camelCase Java (es. wsNomeCliente).
+◦
+PIC X(n) doveva diventare String.
+◦
+PIC 9(n) doveva diventare String se ID o input non matematico, altrimenti int o long.
+◦
+È stato reso OBBLIGATORIO tradurre PIC S9(n)V99 [COMP-3] in java.math.BigDecimal per preservare la precisione finanziaria.
+◦
+Per le SQL host variables, si dovevano usare i tipi Java appropriati che mappassero i tipi di colonna del database.
+•
+Traduzione della Logica:
+◦
+PERFORM paragraph-name si traduceva in una chiamata al metodo Java corrispondente (methodName();).
+◦
+PERFORM ... UNTIL ... doveva usare un ciclo do-while per i menu o while per altre condizioni.
+◦
+DISPLAY '...' si traduceva con System.out.println(...) (o System.out.print(...) per i prompt).
+◦
+ACCEPT var si traduceva con var = scanner.nextLine(); (o var = new BigDecimal(scanner.nextLine()); per i BigDecimal).
+•
+Gestione degli errori SQL: SQLCODE = 100 (nessun dato trovato) doveva essere gestito come SQLException con SQLState "02000", e codici errore negativi per altri errori.
+•
+Un elemento fondamentale nel design è stata la fornitura dello schema del database SQL al modello AI. Questo ha permesso all'AI di analizzare attentamente lo schema per:
+◦
+Identificare i vincoli NOT NULL e i campi opzionali.
+◦
+Comprendere le relazioni di foreign key.
+◦
+Notare i tipi di dati (CHAR, VARCHAR, etc.) e le loro dimensioni.
+•
+L'output finale desiderato era un singolo file Java moderno, completo, leggibile e compilabile, che utilizzasse JDBC per implementare le operazioni SQL presenti nel programma COBOL.
+5. Quarto periodo: implementazione della soluzione AI-driven
+Sviluppo del prompt engineering
+La fase di prompt engineering è stata cruciale, implicando la creazione e ottimizzazione iterativa di prompt specifici per la conversione COBOL-Java, inclusa la gestione dei casi limite (edge cases).
+•
+I prompt hanno guidato l'AI nella mappatura dei tipi di dati, specificando che PIC S9(n)V99 [COMP-3] dovesse diventare java.math.BigDecimal per garantire la precisione finanziaria.
+•
+È stata richiesta una gestione specifica degli SQLCODE, traducendo SQLCODE = 100 (nessun dato trovato) in un'eccezione SQLException con SQLState "02000" e altri codici errore negativi in eccezioni appropriate.
+•
+È stata introdotta una verifica finale OBBLIGATORIA per il codice generato, che includeva:
+◦
+Assenza di testo non commentato.
+◦
+Utilizzo di PreparedStatement con parametri posizionali per tutti gli statement SQL.
+◦
+Chiusura corretta di ogni PreparedStatement (preferibilmente con try-with-resources).
+◦
+Inizializzazione di tutte le variabili prima dell'uso.
+◦
+Corretta gestione delle transazioni (commit/rollback).
+◦
+Gestione adeguata dei tipi di dati SQL, con particolare attenzione a NULL e tipi numerici.
+◦
+Il codice doveva essere completo e compilabile senza modifiche manuali.
+◦
+Presenza del metodo main() che chiamasse correttamente mainLogic().
+•
+È stato anche richiesto l'inserimento di JavaDoc chiari per la classe e per i metodi principali.
+Implementazione del translator completo
+Lo script Python Translator_GenAI.py è stato sviluppato per orchestrare l'intero processo di conversione. Prende in input i file COBOL e lo schema SQL, e produce un file Java. Garantisce che ci sia un solo file COBOL e un solo file SQL nella directory di input. L'AI generativa (gemini-2.0-flash-exp) è il motore di traduzione effettivo. Il codice Java generato integra JDBC per le operazioni SQL e il sistema è stato in grado di preservare la business logic originale. Il metodo main nel codice Java generato chiama correttamente mainLogic().
+Generazione automatica di progetti Maven
+Dopo la traduzione, lo script java_to_jar.py è stato utilizzato per automatizzare la creazione di un progetto Maven. Questo processo include:
+•
+Estrazione del nome della classe principale dal file Java generato.
+•
+Aggiunta della dichiarazione di package (es. package com;) al file Java.
+•
+Copia del file Java nella corretta directory sorgente Maven (src/main/java/com/).
+•
+Generazione automatica del file pom.xml tramite Gemini, assicurando l'inclusione delle dipendenze Maven necessarie (es. driver PostgreSQL JDBC versione 42.7.1 o superiore), la configurazione corretta di groupId (com), version (1.0.0 senza SNAPSHOT), maven.compiler.source e target (tipicamente 11), il maven-jar-plugin per la classe main e il maven-assembly-plugin per la creazione di un JAR con tutte le dipendenze.
+•
+Infine, il processo compila il codice Java e crea un file JAR eseguibile, generalmente denominato <NomeClasse>-1.0.0-jar-with-dependencies.jar.
+•
+I file COBOL e SQL originali vengono archiviati all'interno della nuova directory del progetto Maven.
+6. Risultati raggiunti
+La soluzione finale ha dimostrato l'efficacia dell'approccio AI-driven nella migrazione di sistemi legacy.
+Impatto dell'AI sui tempi di sviluppo
+L'introduzione dell'intelligenza artificiale ha generato una riduzione significativa dei tempi di sviluppo rispetto agli approcci tradizionali. Il processo di conversione è passato da mesi a pochi giorni, un risultato che non sarebbe stato possibile raggiungere senza l'AI. L'AI ha trasformato il progetto da un semplice "prototipo dimostrativo" a una "soluzione potenzialmente completa".
+Analisi qualitativa dei risultati
+Il sistema ha prodotto conversioni COBOL-Java funzionanti, generando codice Java idiomatico e manutenibile. Inoltre, ha fornito documentazione professionale automatizzata (JavaDoc), un requisito esplicitamente richiesto nel prompt.
+Risultati quantitativi
+Sono stati convertiti con successo tre progetti principali:
+•
+Il sistema di gestione conti bancari (GESTIONE-CONTI).
+•
+Il sistema di gestione paghe e stipendi (GESTIONE-PAGHE).
+•
+Il sistema di gestione magazzino e inventario (GESTIONE-MAGAZZINO).
+Il sistema ha raggiunto una vasta copertura delle funzionalità dei programmi originali, generando oltre 2000 linee di codice Java di qualità production-ready.

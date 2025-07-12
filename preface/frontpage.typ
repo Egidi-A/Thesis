@@ -38,7 +38,7 @@
 
 // Tipo di documento
 #text(size: 14pt)[
-  Tesi di laurea
+  Tesi di Laurea
 ]
 
 #v(2cm)
@@ -64,7 +64,7 @@
   align(right)[
     #text(style: "italic")[Laureando] \
     #text(weight: "bold")[#thesis-author] \
-    #v(0.2cm)
+    
     Matricola: #thesis-matricola
   ]
 )

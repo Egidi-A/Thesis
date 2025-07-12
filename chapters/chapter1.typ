@@ -24,7 +24,7 @@ Miriade si posiziona strategicamente nel settore dell'analisi dati e delle soluz
 
 Ciò che distingue #gls("Miriade") nel contesto competitivo è la sua #foreign("vision") aziendale, che integra le competenze tecnologiche con una forte responsabilità sociale. L'azienda implementa attivamente azioni a supporto di società e cooperative del territorio, dimostrando come l'innovazione tecnologica possa essere un veicolo di sviluppo sociale ed economico locale. Questa attenzione alla dimensione sociale si riflette anche nell'approccio alle risorse umane, con una particolare propensione a individuare e coltivare giovani energie fin dalle scuole e università attraverso tirocini curricolari che permettono una crescita personale durante il percorso di studi.
 
-La clientela di Miriade spazia tra i medi e grandi clienti, includendo sia realtà del settore privato che pubblico. Questa diversificazione del portfolio clienti permette all'azienda di confrontarsi con problematiche tecnologiche variegate, mantenendo una costante spinta all'innovazione e all'adattamento delle soluzioni proposte.
+La clientela di Miriade spazia tra i medi e grandi clienti, includendo sia realtà del settore privato che pubblico. Questa diversificazione del #foreign("portfolio") clienti permette all'azienda di confrontarsi con problematiche tecnologiche variegate, mantenendo una costante spinta all'innovazione e all'adattamento delle soluzioni proposte.
 
 == Metodologie e tecnologie all'avanguardia <sec:metodologie-tecnologie>
 
@@ -84,7 +84,7 @@ Questa fluidità organizzativa crea un ambiente stimolante dove ogni persona pu�
   caption: "Funzioni nella sezione Analytics",
 ) <fig:funzioni-analytics>
 
-Il ruolo dello stagista in questo ecosistema aziendale è particolarmente valorizzato. Non viene visto come una risorsa marginale, ma come parte integrante del team, con la possibilità di contribuire attivamente ai progetti e di proporre soluzioni innovative. Il sistema di tutoraggio è strutturato con l'assegnazione di un tutor dell'area specifica e di un mentor che può provenire anche da altre aree. Il tutor segue il percorso tecnico dello stagista, mentre il mentor fornisce supporto a livello emotivo e di inserimento aziendale.
+Il ruolo dello stagista in questo ecosistema aziendale è particolarmente valorizzato. Non viene visto come una risorsa marginale, ma come parte integrante del team, con la possibilità di contribuire attivamente ai progetti e di proporre soluzioni innovative. Il sistema di tutoraggio è strutturato con l'assegnazione di un #foreign("tutor") dell'area specifica e di un #foreign("mentor") che può provenire anche da altre aree. Il #foreign("tutor") segue il percorso tecnico dello stagista, mentre il #foreign("mentor") fornisce supporto a livello emotivo e di inserimento aziendale.
 
 Particolarmente apprezzabili sono gli incontri settimanali chiamati "tiramisù", dedicati ai nuovi entrati in azienda. Durante questi momenti, vengono analizzate le possibili difficoltà relazionali o comunicative riscontrate durante la settimana, con il supporto di una figura dedicata. Questo approccio dimostra l'attenzione dell'azienda non solo alla crescita tecnica, ma anche al benessere e all'integrazione dei propri collaboratori.
 
@@ -109,7 +109,7 @@ I programmi di formazione continua sono strutturati e costanti. L'azienda invest
 - Sessioni di #foreign("knowledge sharing") interno
 - Progetti di ricerca e sviluppo che permettono sperimentazione
 
-Il rapporto consolidato con le università rappresenta un altro aspetto distintivo dell'approccio di Miriade al capitale umano. Gli #foreign("stage") non sono visti come semplici adempimenti formativi, ma come veri e propri laboratori di sperimentazione tecnologica. Nel mio caso specifico, il progetto di migrazione COBOL-Java è stato scelto appositamente per valutare le capacità di #foreign("problem solving") e apprendimento, con maggiore attenzione al processo seguito piuttosto che al solo risultato finale.
+Il rapporto consolidato con le università rappresenta un altro aspetto distintivo dell'approccio di Miriade al capitale umano. Gli #foreign("stage") non sono visti come semplici adempimenti formativi, ma come veri e propri laboratori di sperimentazione tecnologica. Nel mio caso specifico, il progetto di migrazione #foreign("COBOL-Java") è stato scelto appositamente per valutare le capacità di #foreign("problem solving") e apprendimento, con maggiore attenzione al processo seguito piuttosto che al solo risultato finale.
 
 L'equilibrio tra formazione e produttività negli #foreign("stage") è gestito con attenzione. Inizialmente, lo #foreign("stage") è orientato totalmente sulla formazione, per poi evolvere gradualmente verso un bilanciamento equilibrato tra formazione e contributo produttivo quando lo stagista diventa sufficientemente autonomo. Nel mio caso però, trattandosi di #foreign("stage") curricolare per tesi, l'intero percorso è stato focalizzato sulla formazione, permettendomi di esplorare in profondità tecnologie e metodologie senza la pressione di #foreign("deadline") produttive immediate.
 
