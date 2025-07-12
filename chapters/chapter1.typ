@@ -45,7 +45,7 @@ Lo #gls("stack tecnologico") adottato riflette l'attenzione dell'azienda per gli
 - *#foreign("Bitbucket")* per il versionamento del codice e la collaborazione nello sviluppo
 
 Durante il mio percorso, ho potuto apprezzare l'importanza che l'azienda attribuisce alla cultura del versionamento e della documentazione. Le #ref-figure(<fig:Atlassian-Jira-videoframe>)
-) e #ref-figure(<fig:Atlassian-Confluence-videoframe>) mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo software.
+) e #ref-figure(<fig:Atlassian-Confluence-videoframe>) mostrano parte dell'ecosistema Atlassian integrato utilizzato quotidianamente in azienda, che ha rappresentato per me un elemento fondamentale nell'apprendimento delle pratiche professionali di sviluppo #foreign("software").
 #numbered-figure(
   image("../images/Atlassian-Jira-videoframe.png",width: 80%),
   caption: "Ecosistema Atlassian - dashboard Jira",
@@ -77,14 +77,14 @@ La divisione #foreign("Analytics"), nella quale ho avuto il piacere di lavorare,
 - Ricerca e sviluppo di nuove soluzioni
 - Sviluppo #foreign("software") e #foreign("data analysis")
 
-Questa fluidità organizzativa crea un ambiente stimolante dove ogni persona può contribuire in modi diversi, favorendo la crescita professionale multidisciplinare. Durante lo stage, ho potuto interagire con colleghi che ricoprivano diverse funzioni, beneficiando della loro esperienza e prospettive diverse. La varietà di funzioni all'interno della divisione Analytics è rappresentata in #ref-figure(<fig:funzioni-analytics>), che evidenzia la natura dinamica e multifunzionale del team.
+Questa fluidità organizzativa crea un ambiente stimolante dove ogni persona può contribuire in modi diversi, favorendo la crescita professionale multidisciplinare. Durante lo stage, ho potuto interagire con colleghi che ricoprivano diverse funzioni, beneficiando della loro esperienza e prospettive diverse. La varietà di funzioni all'interno della divisione Analytics è rappresentata in #ref-figure(<fig:funzioni-analytics>), che evidenzia la natura dinamica e multifunzionale del #foreign("team").
 
 #numbered-figure(
   image("../images/analytics.png", width: 60%),
   caption: "Funzioni nella sezione Analytics",
 ) <fig:funzioni-analytics>
 
-Il ruolo dello stagista in questo ecosistema aziendale è particolarmente valorizzato. Non viene visto come una risorsa marginale, ma come parte integrante del team, con la possibilità di contribuire attivamente ai progetti e di proporre soluzioni innovative. Il sistema di tutoraggio è strutturato con l'assegnazione di un #foreign("tutor") dell'area specifica e di un #foreign("mentor") che può provenire anche da altre aree. Il #foreign("tutor") segue il percorso tecnico dello stagista, mentre il #foreign("mentor") fornisce supporto a livello emotivo e di inserimento aziendale.
+Il ruolo dello stagista in questo ecosistema aziendale è particolarmente valorizzato. Non viene visto come una risorsa marginale, ma come parte integrante del #foreign("team"), con la possibilità di contribuire attivamente ai progetti e di proporre soluzioni innovative. Il sistema di tutoraggio è strutturato con l'assegnazione di un #foreign("tutor") dell'area specifica e di un #foreign("mentor") che può provenire anche da altre aree. Il #foreign("tutor") segue il percorso tecnico dello stagista, mentre il #foreign("mentor") fornisce supporto a livello emotivo e di inserimento aziendale.
 
 Particolarmente apprezzabili sono gli incontri settimanali chiamati "tiramisù", dedicati ai nuovi entrati in azienda. Durante questi momenti, vengono analizzate le possibili difficoltà relazionali o comunicative riscontrate durante la settimana, con il supporto di una figura dedicata. Questo approccio dimostra l'attenzione dell'azienda non solo alla crescita tecnica, ma anche al benessere e all'integrazione dei propri collaboratori.
 

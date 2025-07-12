@@ -110,7 +110,7 @@ La pianificazione del progetto seguiva un approccio flessibile, con revisioni se
 
 - Studio approfondito del linguaggio COBOL e delle sue peculiarità
 - Analisi di sistemi COBOL
-- Creazione di programmi COBOL di test con complessità crescente
+- Creazione di programmi COBOL di #foreign("test") con complessità crescente
 - Implementazione dell'interfacciamento con #foreign("database") relazionali
 
 *Seconda fase - sviluppo del sistema di migrazione (4 settimane - 160 ore)*
@@ -146,7 +146,7 @@ In base a quanto ho potuto osservare e comprendere durante il periodo di #foreig
 
 - *Creazione di competenze interne*: Il progetto permetteva di sviluppare #foreign("know-how") interno su una problematica di crescente rilevanza, preparando l'azienda a potenziali progetti futuri.
 
-- *Esplorazione di tecnologie emergenti*: Il progetto era stato concepito per esplorare la possibile applicazione dell'intelligenza artificiale generativa a problemi di modernizzazione del #foreign("software"). Questo ambito, all'intersezione tra #acronym("AI") e #foreign("software engineering"), può rappresentare una frontiera tecnologica di forte attualità e di interesse per un'azienda che opera già attivamente nel campo dell'AI e dei #foreign("Large Language Models").
+- *Esplorazione di tecnologie emergenti*: Il progetto era stato concepito per esplorare la possibile applicazione dell'intelligenza artificiale generativa a problemi di modernizzazione del #foreign("software"). Questo ambito, all'intersezione tra #acronym("AI") e #foreign("software engineering"), può rappresentare una frontiera tecnologica di forte attualità e di interesse per un'azienda che opera già attivamente nel campo dell'#foreign("AI") e dei #foreign("Large Language Models").
 #define-acronym("AI", "Artificial Intelligence")
 - *Sviluppo di #foreign("asset") riutilizzabili*: Sebbene il progetto fosse autoconclusivo, permetteva di ottenere risultati tangibili nel breve termine dello #foreign("stage"), ma con il potenziale di evolversi in soluzioni più ampie e commercializzabili.
 
@@ -161,7 +161,7 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 #linebreak()
 *Obiettivi tecnici*
 
-- Comprendere la struttura e la logica dei programmi COBOL attraverso lo sviluppo di applicazioni di test
+- Comprendere la struttura e la logica dei programmi COBOL attraverso lo sviluppo di applicazioni di #foreign("test")
 - Esplorare approcci concreti alla migrazione del codice, sia deterministici che basati su #foreign("AI")
 - Produrre un prototipo funzionante di sistema di conversione, anche se limitato
 
@@ -176,7 +176,7 @@ Il mio percorso di #foreign("stage") mirava principalmente all'acquisizione di c
 - Sviluppare autonomia nella gestione di un progetto aziendale, dalla pianificazione all'implementazione
 - Acquisire capacità di #foreign("problem solving") in contesti reali, con vincoli temporali e tecnologici definiti
 - Migliorare le competenze comunicative attraverso l'interazione con il #foreign("team") e la presentazione dei progressi
-- Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo. #ref-figure(<fig:metodologia-agile>) rappresenta visivamente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, testing e revisione che ha caratterizzato il mio percorso formativo.
+- Apprendere metodologie di lavoro #foreign("Agile") applicate a progetti di ricerca e sviluppo. #ref-figure(<fig:metodologia-agile>) rappresenta visivamente l'approccio metodologico Agile che ho appreso e applicato durante lo stage, evidenziando il ciclo iterativo di pianificazione, sviluppo, #foreign("testing") e revisione che ha caratterizzato il mio percorso formativo.
 
 - Sviluppare pensiero critico nella valutazione di soluzioni tecnologiche alternative
 

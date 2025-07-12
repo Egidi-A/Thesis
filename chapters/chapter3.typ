@@ -14,11 +14,11 @@
 #define-term("token", "Unità base di testo processata dai modelli linguistici")
 #define-term("backoff esponenziale", "Strategia di retry con attese progressivamente più lunghe")
 
-= Sviluppo del progetto: dal parser tradizionale all'AI <cap:sviluppo-progetto>
+= Sviluppo del progetto: dal #foreign("parser") tradizionale all'#foreign("AI") <cap:sviluppo-progetto>
 
 Il percorso di sviluppo del progetto di migrazione COBOL-Java ha attraversato diverse fasi evolutive, caratterizzate da sfide tecnologiche e cambiamenti strategici. Questo capitolo analizza cronologicamente le fasi del progetto, dall'immersione nel linguaggio COBOL fino all'implementazione di una soluzione basata sull'intelligenza artificiale generativa.
 
-== Setup iniziale e metodologia di lavoro <sec:setup-iniziale>
+== #foreign("setup") iniziale e metodologia di lavoro <sec:setup-iniziale>
 
 Il progetto ha adottato la metodologia #foreign("Agile") già consolidata in Miriade, descritta nella #ref-chapter(<sec:metodologie-tecnologie>), strutturando il lavoro in #foreign("sprint") settimanali con #foreign("stand-up") giornalieri alle 9:05. Come esposto nel capitolo precedente, l'azienda utilizza Jira per la gestione delle attività e Confluence per la documentazione condivisa, strumenti fondamentali per tracciare l'evoluzione del progetto di migrazione.
 
@@ -210,7 +210,7 @@ La #ref-table(<tab:costrutti-problematici>) evidenzia costrutti che richiedono r
 
 *Soluzioni open-source*
 
-L'analisi del ProLeap COBOL parser, in #ref-figure(<fig:proLeap>), uno dei progetti open-source più maturi nello spazio di GitHub, ha rivelato un'architettura solida basata su #acronym("ANTLR")4 con capacità complete di analisi sintattica. Tuttavia, il sistema si limitava alla generazione dell'#acronym("AST"), richiedendo l'implementazione separata della trasformazione AST COBOL → AST Java e della successiva generazione del codice. Ad ogni modo il ProLeap parser presentava una architettura modulare che permetteva l'estensione per nuovi costrutti.
+L'analisi del ProLeap COBOL #foreign("parser"), in #ref-figure(<fig:proLeap>), uno dei progetti open-source più maturi nello spazio di GitHub, ha rivelato un'architettura solida basata su #acronym("ANTLR")4 con capacità complete di analisi sintattica. Tuttavia, il sistema si limitava alla generazione dell'#acronym("AST"), richiedendo l'implementazione separata della trasformazione AST COBOL → AST Java e della successiva generazione del codice. Ad ogni modo il ProLeap #foreign("parser") presentava una architettura modulare che permetteva l'estensione per nuovi costrutti.
 #numbered-figure(
   image("../images/proleap.png",width: 100%),
   caption: "ProLeap COBOL parser",
@@ -245,7 +245,7 @@ Altre soluzioni enterprise che ho preso in analisi erano Micro Focus, Modern Sys
 
 Alla luce di tutte le ricerche, sia open-source che enterprise, ho potuto constatare un vuoto significativo sul tema nel mercato. Le soluzioni open-source, pur essendo accessibili, mancavano di sofisticazione e producevano risultati incompleti che richiedevano estese implementazioni e modifiche manuali. Le soluzioni aziendali, pur essendo potenti, erano inaccessibili per la maggior parte delle organizzazioni a causa dei costi#footnote[I costi delle soluzioni enterprise variano da €100.000 a €1.000.000 per licenza annuale, a seconda della dimensione del deployment].
 
-Questo vuoto mi suggeriva un'opportunità per una soluzione che combinasse l'accessibilità dell'open-source con capacità più sofisticate di comprensione e trasformazione. La recente democratizzazione dell'AI generativa attraverso API accessibili apriva possibilità precedentemente riservate solo a fornitori e clienti con risorse massive.
+Questo vuoto mi suggeriva un'opportunità per una soluzione che combinasse l'accessibilità dell'open-source con capacità più sofisticate di comprensione e trasformazione. La recente democratizzazione dell'#foreign("AI") generativa attraverso API accessibili apriva possibilità precedentemente riservate solo a fornitori e clienti con risorse massive.
 
 Inoltre, l'analisi delle soluzioni esistenti mi ha fatto notare schemi comuni:
 
@@ -257,11 +257,11 @@ Inoltre, l'analisi delle soluzioni esistenti mi ha fatto notare schemi comuni:
 Queste riflessioni hanno formato significativamente gli approcci che avrei adottato nelle fasi successive del progetto, suggerendo che una soluzione efficace avrebbe dovuto combinare "automatizzazione intelligente" con comprensione semantica profonda, preservazione della logica aziendale con modernizzazione dell'implementazione e accessibilità.
 
 
-== Secondo periodo: sviluppo del parser tradizionale <sec:parser-tradizionale>
+== Secondo periodo: sviluppo del #foreign("parser") tradizionale <sec:parser-tradizionale>
 
 Ho intrapreso lo sviluppo di un analizzatore sintattico ibrido che combinasse ProLeap con l'implementazione autonoma di traduzione AST e generazione codice.
 
-=== Implementazione del parser Java <subsec:implementazione-parser>
+=== Implementazione del #foreign("parser") Java <subsec:implementazione-parser>
 
 L'obiettivo era implementare un sistema modulare ed estensibile che potesse crescere incrementalmente man mano che nuovi costrutti COBOL venivano supportati.
 
@@ -355,7 +355,7 @@ L'implementazione è proceduta per divisioni:
 
     - *Preservazione gerarchica*: per strutture complesse o quando la gerarchia aveva significato semantico, utilizzavo classi Java annidate che riflettevano la struttura originale
 
-    La gestione delle *PICTURE clauses* ha richiesto un'attenzione particolare. Queste clausole non definiscono solo tipo e dimensione dei dati, ma anche formattazione, gestione del segno, allineamento decimale e altre caratteristiche di presentazione. Ho sviluppato un mini-parser specializzato per le PICTURE clauses che le decompone in attributi gestibili:
+    La gestione delle *PICTURE clauses* ha richiesto un'attenzione particolare. Queste clausole non definiscono solo tipo e dimensione dei dati, ma anche formattazione, gestione del segno, allineamento decimale e altre caratteristiche di presentazione. Ho sviluppato un mini-#foreign("parser") specializzato per le PICTURE clauses che le decompone in attributi gestibili:
       #figure(
         table(
           columns: (1fr, 1fr, 2fr),
@@ -384,9 +384,9 @@ In una sessione di retrospettiva con la tutor aziendale, Arianna Bellino, abbiam
 
 == Terzo periodo: pivot verso l'intelligenza artificiale <sec:pivot-ai>
 
-La necessità di identificare alternative metodologiche innovative, combinata con l'analisi delle soluzioni enterprise esistenti e le evidenze raccolte durante lo sviluppo del parser tradizionale, ha determinato l'adozione dell'intelligenza artificiale generativa come approccio risolutivo per il problema della migrazione COBOL-Java. L'evoluzione recente delle capacità dei modelli linguistici di grandi dimensioni (#acronym("LLM")) nel dominio della comprensione e generazione del codice ha aperto nuove prospettive per affrontare la complessità intrinseca della traduzione tra paradigmi di programmazione eterogenei.
+La necessità di identificare alternative metodologiche innovative, combinata con l'analisi delle soluzioni enterprise esistenti e le evidenze raccolte durante lo sviluppo del #foreign("parser") tradizionale, ha determinato l'adozione dell'intelligenza artificiale generativa come approccio risolutivo per il problema della migrazione COBOL-Java. L'evoluzione recente delle capacità dei modelli linguistici di grandi dimensioni (#acronym("LLM")) nel dominio della comprensione e generazione del codice ha aperto nuove prospettive per affrontare la complessità intrinseca della traduzione tra paradigmi di programmazione eterogenei.
 
-=== Valutazione delle API di AI generativa <subsec:valutazione-api-ai>
+=== Valutazione delle API di #foreign("AI") generativa <subsec:valutazione-api-ai>
 
 L'organizzazione ospitante, Miriade, disponeva di accesso enterprise all'#acronym("API") di Google Gemini Pro, fattore che ha determinato la scelta tecnologica e permesso di focalizzare l'analisi sulle capacità specifiche del modello per il task di traduzione del codice.
 
@@ -400,7 +400,7 @@ La valutazione delle prestazioni del modello ha comportato test sistematici su t
 
 + *Qualità del codice prodotto*: l'output generato rispettava consistentemente gli standard Java moderni, producendo codice idiomatico che un developer Java considererebbe naturale e manutenibile.
 
-Un aspetto cruciale nella valutazione riguardava la gestione dei limiti di token. I programmi COBOL enterprise possono essere estremamente verbosi, con sezioni di dichiarazione dati che occupano centinaia di righe. Gemini Pro offriva un limite di token sufficientemente elevato per gestire la maggior parte dei programmi senza necessità di segmentazione, caratteristica che semplificava notevolmente l'architettura del sistema eliminando la complessità della gestione di traduzioni parziali e successive riconciliazioni.
+Un aspetto cruciale nella valutazione riguardava la gestione dei limiti di #foreign("stand-up"). I programmi COBOL enterprise possono essere estremamente verbosi, con sezioni di dichiarazione dati che occupano centinaia di righe. Gemini Pro offriva un limite di #foreign("stand-up") sufficientemente elevato per gestire la maggior parte dei programmi senza necessità di segmentazione, caratteristica che semplificava notevolmente l'architettura del sistema eliminando la complessità della gestione di traduzioni parziali e successive riconciliazioni.
 
 === #foreign("Design") del sistema #foreign("AI-powered") <subsec:design-sistema-ai>
 Il sistema segue tre principi architetturali:
@@ -409,12 +409,12 @@ Il sistema segue tre principi architetturali:
 - *Automazione end-to-end*: produzione di progetti completi pronti per deployment
 
 L'applicativo si articola in tre moduli principali, ciascuno con responsabilità ben definite ma interconnesse attraverso interfacce:
-- Il *modulo di traduzione* costituisce il cuore del sistema. La sua architettura interna gestisce la costruzione di prompt ottimizzati che codificano la conoscenza domain-specific necessaria per guidare il modello nella traduzione. Il modulo implementa meccanismi di gestione dell'interazione con l'API, includendo retry logic con #gls("backoff esponenziale") per gestire eventuali limitazioni di rate o errori transitori. La validazione dell'output avviene attraverso parsing del codice Java generato per assicurare completezza sintattica e presenza di tutti gli elementi strutturali attesi.
+- Il *modulo di traduzione* costituisce il cuore del sistema. La sua architettura interna gestisce la costruzione di #foreign("parsing") ottimizzati che codificano la conoscenza domain-specific necessaria per guidare il modello nella traduzione. Il modulo implementa meccanismi di gestione dell'interazione con l'API, includendo retry logic con #gls("backoff esponenziale") per gestire eventuali limitazioni di rate o errori transitori. La validazione dell'output avviene attraverso #foreign("parsing") del codice Java generato per assicurare completezza sintattica e presenza di tutti gli elementi strutturali attesi.
   La configurazione dei parametri generativi ha richiesto una fase di sperimentazione per identificare i valori di generazione ottimali:
   -  La temperatura è stata impostata a 0.1, valore estremamente basso che garantisce output deterministici e consistenti, essenziale per un processo di migrazione che richiede ripetibilità. 
   - Il parametro top-p, configurato a 0.9, e top-k, limitato a 20, sono stati calibrati per bilanciare la capacità del modello di esplorare soluzioni diverse mantenendo al contempo un controllo stretto sulla qualità e coerenza dell'output. 
-  - Il limite di 20.000 token di output era sufficiente per i codici sviluppati nel primo periodo.
-- Il *modulo di packaging* trasforma il codice Java raw in un progetto Maven completo. Il punto di forza del modulo risiede nella sua capacità di analizzare il codice generato per identificare automaticamente le dipendenze necessarie. Utilizzando nuovamente Gemini, il modulo esamina gli import statements e l'uso effettivo delle API per determinare non solo quali librerie sono necessarie ma anche le versioni appropriate basandosi su compatibilità e best practice correnti. La generazione del file pom.xml avviene dinamicamente, producendo configurazioni complete che includono sia le dipendenze che anche la configurazione appropriata dei plugin per compilazione, testing, e packaging.
+  - Il limite di 20.000 #foreign("stand-up") di output era sufficiente per i codici sviluppati nel primo periodo.
+- Il *modulo di packaging* trasforma il codice Java raw in un progetto #foreign("Maven") completo. Il punto di forza del modulo risiede nella sua capacità di analizzare il codice generato per identificare automaticamente le dipendenze necessarie. Utilizzando nuovamente Gemini, il modulo esamina gli import statements e l'uso effettivo delle API per determinare non solo quali librerie sono necessarie ma anche le versioni appropriate basandosi su compatibilità e best practice correnti. La generazione del file pom.xml avviene dinamicamente, producendo configurazioni complete che includono sia le dipendenze che anche la configurazione appropriata dei plugin per compilazione, testing, e packaging.
 - Il *modulo di orchestrazione* fornisce il layer di coordinamento che trasforma i componenti individuali in un sistema coeso. Implementa una pipeline di esecuzione che gestisce il flusso dei dati tra i moduli, monitora il progresso della conversione, e gestisce condizioni di errore con strategie di recovery appropriate. Il logging da terminale strutturato fornisce visibilità completa sul processo di conversione, essenziale per debugging e audit in contesti enterprise.
 Una rappresentazione semplificata e schematica del sistema è mostrata in #ref-figure(<fig:architettura-sistema-ai>).
 #numbered-figure(
@@ -423,21 +423,21 @@ Una rappresentazione semplificata e schematica del sistema è mostrata in #ref-f
 ) <fig:architettura-sistema-ai>
 Il flusso di elaborazione segue una sequenza logica che massimizza le probabilità di successo della conversione. La fase iniziale di acquisizione e validazione assicura che gli input siano completi e ben formati, prevenendo errori downstream. Segue una fase di pre-processamento dove il codice viene normalizzato e preparato per l'analisi, rimuovendo elementi non significativi, preservando struttura e commenti per la comprensione del contesto.
 
-La fase di generazione del prompt rappresenta il momento critico dove la conoscenza sulla migrazione viene codificata in forma processabile dal modello. Il prompt non è una semplice richiesta ma una specifica dettagliata che include il ruolo del modello, il contesto della traduzione, esempi di pattern di trasformazione, e requisiti specifici per l'output. La costruzione del prompt sfrutta template parametrizzati che vengono istanziati con il codice specifico e lo schema database, assicurando consistenza mentre si adatta al contesto specifico.
+La fase di generazione del #foreign("parsing") rappresenta il momento critico dove la conoscenza sulla migrazione viene codificata in forma processabile dal modello. Il #foreign("parsing") non è una semplice richiesta ma una specifica dettagliata che include il ruolo del modello, il contesto della traduzione, esempi di pattern di trasformazione, e requisiti specifici per l'output. La costruzione del #foreign("prompt") sfrutta template parametrizzati che vengono istanziati con il codice specifico e lo schema database, assicurando consistenza mentre si adatta al contesto specifico.
 
-L'elaborazione della risposta del modello richiede parsing e validazione. Il sistema deve estrarre il codice Java dalla risposta del modello, che può includere spiegazioni o metadati aggiuntivi, validare la completezza e correttezza sintattica del codice estratto, e prepararlo per le fasi successive di packaging assicurando che tutti gli elementi necessari siano presenti.
+L'elaborazione della risposta del modello richiede #foreign("parsing") e validazione. Il sistema deve estrarre il codice Java dalla risposta del modello, che può includere spiegazioni o metadati aggiuntivi, validare la completezza e correttezza sintattica del codice estratto, e prepararlo per le fasi successive di packaging assicurando che tutti gli elementi necessari siano presenti.
 
-== Quarto periodo: implementazione della soluzione AI-driven <sec:implementazione-ai>
+== Quarto periodo: implementazione della soluzione #foreign("AI-driven") <sec:implementazione-ai>
 
-L'implementazione operativa del sistema di migrazione basato su intelligenza artificiale ha trasformato il design concettuale in una soluzione funzionale sorprendente, capace di gestire non solo la complessità del codice COBOL autoprodotto ma anche di eventuali necessità enterprise. Questo periodo è stato caratterizzato da un approccio iterativo dove ogni componente veniva sviluppato, testato sui programmi COBOL di esempio creati nella prima fase, e raffinato basandosi sui risultati ottenuti.
+L'implementazione operativa del sistema di migrazione basato su intelligenza artificiale ha trasformato il #foreign("design") concettuale in una soluzione funzionale sorprendente, capace di gestire non solo la complessità del codice COBOL autoprodotto ma anche di eventuali necessità enterprise. Questo periodo è stato caratterizzato da un approccio iterativo dove ogni componente veniva sviluppato, testato sui programmi COBOL di esempio creati nella prima fase, e raffinato basandosi sui risultati ottenuti.
 
-=== Sviluppo del prompt engineering <subsec:prompt-engineering>
+=== Sviluppo del #foreign("parsing") engineering <subsec:prompt-engineering>
 
-Il #gls("prompt engineering") era l'elemento critico per il successo della traduzione #foreign("AI-driven"). Il processo di sviluppo del prompt ha seguito una metodologia empirica basata su cicli di sperimentazione e raffinamento.
+Il #gls("prompt engineering") era l'elemento critico per il successo della traduzione #foreign("AI-driven"). Il processo di sviluppo del #foreign("parsing") ha seguito una metodologia empirica basata su cicli di sperimentazione e raffinamento.
 
-Il prompt doveva stabilire chiaramente il contesto operativo, definendo il modello come un compilatore capace di comprendere non solo sintassi ma semantica e intento aziendale. Questa definizione di ruolo si è dimostrata cruciale per orientare il comportamento del modello verso traduzioni che privilegiassero la preservazione della logica di business rispetto alla traduzione letterale.
+Il #foreign("parsing") doveva stabilire chiaramente il contesto operativo, definendo il modello come un compilatore capace di comprendere non solo sintassi ma semantica e intento aziendale. Questa definizione di ruolo si è dimostrata cruciale per orientare il comportamento del modello verso traduzioni che privilegiassero la preservazione della logica di business rispetto alla traduzione letterale.
 
-Il corpo del prompt, di cui un esempio in #ref-figure(<fig:prompt-example>), include sezioni strutturate che guidano il modello attraverso il processo di traduzione:
+Il corpo del #foreign("parsing"), di cui un esempio in #ref-figure(<fig:prompt-example>), include sezioni strutturate che guidano il modello attraverso il processo di traduzione:
 - La sezione di input fornisce il codice COBOL completo insieme allo schema SQL quando disponibile, permettendo al modello di comprendere il contesto completo dell'applicazione
 - Le istruzioni di traduzione specificano come gestire costrutti specifici, fornendo mappature esplicite per tipi di dato, pattern di trasformazione per strutture di controllo, e linee guida per la gestione di costrutti senza equivalenti diretti in Java.
 
@@ -468,7 +468,7 @@ Il corpo del prompt, di cui un esempio in #ref-figure(<fig:prompt-example>), inc
   caption: "Esempio di prompt per la traduzione COBOL → Java"
 ) <fig:prompt-example>
 
-L'ottimizzazione iterativa del prompt ha richiesto analisi sistematica dei risultati di traduzione. Ogni fallimento o traduzione sub-ottimale forniva informazioni preziose su ambiguità o lacune nelle istruzioni. Pattern comuni di errore includevano:
+L'ottimizzazione iterativa del #foreign("parsing") ha richiesto analisi sistematica dei risultati di traduzione. Ogni fallimento o traduzione sub-ottimale forniva informazioni preziose su ambiguità o lacune nelle istruzioni. Pattern comuni di errore includevano:
 
 - Gestione inadeguata delle transazioni database, inizialmente risolta aggiungendo istruzioni specifiche sulla struttura dei blocchi try-catch e la gestione del rollback
 
@@ -476,9 +476,9 @@ L'ottimizzazione iterativa del prompt ha richiesto analisi sistematica dei risul
 
 - Perdita di informazioni sui tipi di dato durante la conversione, corretta specificando mappature esplicite e regole di inferenza
 
-La gestione dei casi speciali ha richiesto particolare attenzione nella formulazione del prompt. Costrutti COBOL come REDEFINES, che permettono interpretazioni multiple della stessa area di memoria, non hanno equivalenti diretti in Java. Il prompt è stato evoluto per includere strategie specifiche di gestione, suggerendo l'uso di classi wrapper con metodi di conversione espliciti. Similarmente, la gestione delle tabelle COBOL con OCCURS DEPENDING ON ha richiesto istruzioni per la creazione di strutture dati dinamiche appropriate in Java, tipicamente ArrayList o array ridimensionabili.
+La gestione dei casi speciali ha richiesto particolare attenzione nella formulazione del #foreign("parsing"). Costrutti COBOL come REDEFINES, che permettono interpretazioni multiple della stessa area di memoria, non hanno equivalenti diretti in Java. Il #foreign("parsing") è stato evoluto per includere strategie specifiche di gestione, suggerendo l'uso di classi wrapper con metodi di conversione espliciti. Similarmente, la gestione delle tabelle COBOL con OCCURS DEPENDING ON ha richiesto istruzioni per la creazione di strutture dati dinamiche appropriate in Java, tipicamente ArrayList o array ridimensionabili.
 
-Un aspetto innovativo dello sviluppo del prompt è stata l'inclusione di meta-istruzioni che guidano il processo di ragionamento del modello. Invece di fornire solo regole di traduzione meccaniche, il prompt incoraggia il modello a considerare, tramite analisi autonoma, l'intento del codice originale, e produrre soluzioni che un developer Java moderno considererebbe naturali. Questo approccio ha prodotto traduzioni significativamente migliori rispetto a prompt puramente prescrittivi.
+Un aspetto innovativo dello sviluppo del #foreign("parsing") è stata l'inclusione di meta-istruzioni che guidano il processo di ragionamento del modello. Invece di fornire solo regole di traduzione meccaniche, il #foreign("parsing") incoraggia il modello a considerare, tramite analisi autonoma, l'intento del codice originale, e produrre soluzioni che un developer Java moderno considererebbe naturali. Questo approccio ha prodotto traduzioni significativamente migliori rispetto a #foreign("parsing") puramente prescrittivi.
 
 === Implementazione del translator completo <subsec:translator-completo>
 
@@ -555,26 +555,26 @@ Un aspetto critico dell'implementazione riguarda la preservazione della logica d
 ) <lst:section-to-methods>
 Per quanto riguarda la gestione degli errori, COBOL spesso utilizza gestione degli errori implicita attraverso controlli di status code, mentre Java favorisce exception handling esplicito. Il translator aggiunge automaticamente blocchi try-catch appropriati dove necessario, preserva i codici di errore COBOL per compatibilità mentre aggiunge exception handling Java, implementa logging strutturato per facilitare debugging e manutenzione, e crea classi di eccezione custom quando pattern di errore specifici lo richiedono.
 
-=== Generazione automatica di progetti Maven <subsec:generazione-maven>
+=== Generazione automatica di progetti #foreign("Maven") <subsec:generazione-maven>
 
 La fase finale del processo di migrazione trasforma il codice Java generato in un progetto completo pronto per il deployment. Questa fase sfrutta nuovamente le capacità di Gemini per analizzare il codice e determinare tutti i requisiti di progetto.
 
 L'analisi delle dipendenze inizia con l'esame degli import statements nel codice Java generato. Il sistema utilizza Gemini per comprendere non solo quali classi vengono importate ma come vengono utilizzate nel codice. Questa analisi contestuale permette di identificare le librerie necessarie con le versioni appropriate, determinare dipendenze transitive che potrebbero essere richieste, escludere dipendenze non necessarie che potrebbero essere state importate ma non utilizzate, e risolvere potenziali conflitti di versione basandosi su best practice correnti.
 
-La struttura del progetto Maven viene generata seguendo le convenzioni standard. Il sistema crea automaticamente la gerarchia di directory appropriata, posiziona il codice sorgente nelle location corrette secondo il package structure, prepara directory per risorse, configurazioni, e test, e predispone la struttura per facilitare future estensioni e manutenzione.
+La struttura del progetto #foreign("Maven") viene generata seguendo le convenzioni standard. Il sistema crea automaticamente la gerarchia di directory appropriata, posiziona il codice sorgente nelle location corrette secondo il package structure, prepara directory per risorse, configurazioni, e test, e predispone la struttura per facilitare future estensioni e manutenzione.
 
 La generazione del file pom.xml rappresenta un elemento critico del processo. Il sistema produce configurazioni complete che specificano:
 
 - Coordinate del progetto (groupId, artifactId, version) derivate dal nome del programma COBOL originale
 - Proprietà del progetto includendo versioni Java, encoding, e altre configurazioni standard
 - Dipendenze identificate attraverso l'analisi del codice con versioni appropriate
-- Configurazione dei plugin Maven per compilazione, testing, e packaging
+- Configurazione dei plugin #foreign("Maven") per compilazione, testing, e packaging
 - Profili per diversi ambienti di deployment quando identificati dal contesto
 
-La configurazione dei plugin Maven riceve particolare attenzione per assicurare che il progetto possa essere costruito e deployato senza modifiche manuali:
-- Il maven-compiler-plugin viene configurato con la versione Java appropriata basata sulle feature utilizzate nel codice
-- Il maven-jar-plugin include configurazione per generare JAR eseguibili con manifest appropriato
-- Il maven-assembly-plugin viene configurato per creare "fat JARs" che includono tutte le dipendenze, semplificando il deployment, come esemplificato nel #ref-figure(<lst:pom-generated>)
+La configurazione dei plugin #foreign("Maven") riceve particolare attenzione per assicurare che il progetto possa essere costruito e deployato senza modifiche manuali:
+- Il #foreign("maven")-compiler-plugin viene configurato con la versione Java appropriata basata sulle feature utilizzate nel codice
+- Il #foreign("maven")-jar-plugin include configurazione per generare JAR eseguibili con manifest appropriato
+- Il #foreign("maven")-assembly-plugin viene configurato per creare "#foreign("fat JARs")" che includono tutte le dipendenze, semplificando il deployment, come esemplificato nel #ref-figure(<lst:pom-generated>)
   #source-code(
     ```xml
     <dependency>
@@ -595,7 +595,7 @@ La configurazione dei plugin Maven riceve particolare attenzione per assicurare 
     caption: "Esempio di pom.xml generato automaticamente"
   ) <lst:pom-generated>
 
-Il processo di build automatizzato verifica la correttezza della configurazione attraverso l'invocazione di Maven per compilare il codice, risolvere e scaricare tutte le dipendenze, eseguire eventuali test di base generati, e produrre gli artifact finali. Qualsiasi errore in questa fase viene catturato e reportato con suggerimenti per la risoluzione.
+Il processo di #foreign("build") automatizzato verifica la correttezza della configurazione attraverso l'invocazione di #foreign("Maven") per compilare il codice, risolvere e scaricare tutte le dipendenze, eseguire eventuali test di base generati, e produrre gli artifact finali. Qualsiasi errore in questa fase viene catturato e reportato con suggerimenti per la risoluzione.
 
 La generazione della documentazione completa il processo. Il sistema preserva i commenti COBOL originali e li arricchisce con informazioni sulla migrazione. I commenti di intestazione dei programmi COBOL vengono trasformati in JavaDoc comprensivi che includono informazioni sull'origine COBOL, data e versione della migrazione, note su trasformazioni significative applicate, e riferimenti alla documentazione originale quando disponibile.
 
@@ -603,7 +603,7 @@ Il risultato finale del processo è un progetto Java completo, moderno, e immedi
 
 == Risultati raggiunti <sec:risultati-raggiunti>
 
-=== Impatto dell'AI sui tempi di sviluppo <subsec:impatto-ai-tempi>
+=== Impatto dell'#foreign("AI") sui tempi di sviluppo <subsec:impatto-ai-tempi>
 
 L'adozione dell'intelligenza artificiale generativa ha determinato una riduzione significativa dei tempi di sviluppo rispetto all'approccio basato su #foreign("parsing") deterministico, mantenendo il risultato finale sorprendentemente accurato, come mostra la #ref-figure(<fig:esecuzione-gestione-conti>).
 #numbered-figure(
@@ -612,10 +612,10 @@ L'adozione dell'intelligenza artificiale generativa ha determinato una riduzione
 ) <fig:esecuzione-gestione-conti>
 
 Questa riduzione temporale deriva da diversi fattori tecnici.
-- L'approccio tradizionale richiedeva l'implementazione esplicita di regole di trasformazione per ogni costrutto COBOL, con complessità computazionale crescente per le interazioni tra costrutti diversi. L'AI, invece, opera attraverso comprensione contestuale del codice, permettendo di gestire simultaneamente aspetti sintattici e semantici della traduzione. La capacità del modello di interpretare l'intento del codice, oltre alla sua struttura formale, ha eliminato la necessità di codificare manualmente centinaia di eccezioni, casi speciali e specifici.
+- L'approccio tradizionale richiedeva l'implementazione esplicita di regole di trasformazione per ogni costrutto COBOL, con complessità computazionale crescente per le interazioni tra costrutti diversi. L'#foreign("AI"), invece, opera attraverso comprensione contestuale del codice, permettendo di gestire simultaneamente aspetti sintattici e semantici della traduzione. La capacità del modello di interpretare l'intento del codice, oltre alla sua struttura formale, ha eliminato la necessità di codificare manualmente centinaia di eccezioni, casi speciali e specifici.
 - L'accelerazione del processo ha inoltre consentito un approccio iterativo al #foreign("prompt engineering"). Durante lo sviluppo, è stato possibile raffinare progressivamente le istruzioni fornite al modello basandosi sui risultati ottenuti, ottimizzando la qualità delle traduzioni attraverso cicli rapidi di sperimentazione. Questo approccio empirico non sarebbe stato praticabile con tempi di sviluppo nell'ordine dei mesi per ogni iterazione.
 
-Un aspetto rilevante riguarda la consistenza dei risultati. Mentre lo sviluppo manuale tende a introdurre variabilità nelle convenzioni di codifica e negli approcci implementativi man mano che il progetto evolve, l'AI mantiene coerenza stilistica e architettonica attraverso l'intero processo di conversione, applicando uniformemente i pattern di trasformazione identificati.
+Un aspetto rilevante riguarda la consistenza dei risultati. Mentre lo sviluppo manuale tende a introdurre variabilità nelle convenzioni di codifica e negli approcci implementativi man mano che il progetto evolve, l'#foreign("AI") mantiene coerenza stilistica e architettonica attraverso l'intero processo di conversione, applicando uniformemente i pattern di trasformazione identificati.
 
 === Analisi qualitativa dei risultati <subsec:analisi-qualitativa>
 
@@ -625,7 +625,7 @@ L'analisi del codice prodotto rivela caratteristiche qualitative che non si limi
   caption: "Output nel terminale del sistema di migrazione AI-driven",
 ) <fig:cliOutput>
 
-Il sistema ha dimostrato capacità di gestire la complessità semantica della traduzione COBOL-Java. Per le strutture dati gerarchiche, caratteristica distintiva di COBOL, l'AI ha applicato strategie di conversione appropriate al contesto d'uso.
+Il sistema ha dimostrato capacità di gestire la complessità semantica della traduzione COBOL-Java. Per le strutture dati gerarchiche, caratteristica distintiva di COBOL, l'#foreign("AI") ha applicato strategie di conversione appropriate al contesto d'uso.
 
 La gestione dell'#acronym("SQL") embedded ha evidenziato capacità di trasformazione multi-livello. Il sistema ha identificato i blocchi EXEC SQL, estratto le query, e generato codice JDBC idiomatico con gestione appropriata di connessioni, prepared statements e transazioni. La conversione ha mantenuto la semantica transazionale originale adattandola ai pattern Java, includendo gestione delle eccezioni e rilascio delle risorse secondo le #foreign("best practice") del linguaggio target.
 
@@ -662,7 +662,7 @@ Anche gli obiettivi desiderabili sono stati largamente conseguiti:
  - Strutture dati gerarchiche con livelli multipli
  - #acronym("SQL") embedded con transazioni complesse
  - Logiche procedurali articolate e interdipendenti
-- OD03 - Ottimizzazione del codice: Sebbene non implementata come fase separata, il codice prodotto dall'AI risulta intrinsecamente ottimizzato secondo pattern idiomatici Java.
+- OD03 - Ottimizzazione del codice: Sebbene non implementata come fase separata, il codice prodotto dall'#foreign("AI") risulta intrinsecamente ottimizzato secondo pattern idiomatici Java.
 
 *Risultati aggiuntivi non previsti*
 
@@ -676,4 +676,4 @@ Un risultato particolarmente significativo non contemplato negli obiettivi inizi
   image("../images/feedbackConversione.png",width: 80%),
   caption: "Progetto Maven generato automaticamente dal sistema di migrazione",
 ) <fig:maven-project>
-Questi risultati dimostrano come l'approccio basato su AI non solo abbia soddisfatto i requisiti progettuali stabiliti, ma abbia anche aperto possibilità non inizialmente contemplate, trasformando il progetto da prototipo dimostrativo a soluzione potenzialmente applicabile in contesti produttivi reali.
+Questi risultati dimostrano come l'approccio basato su #foreign("AI") non solo abbia soddisfatto i requisiti progettuali stabiliti, ma abbia anche aperto possibilità non inizialmente contemplate, trasformando il progetto da prototipo dimostrativo a soluzione potenzialmente applicabile in contesti produttivi reali.
