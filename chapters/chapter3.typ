@@ -206,14 +206,14 @@ La #ref-table(<tab:costrutti-problematici>) evidenzia costrutti che richiedono r
 
 === Valutazione delle soluzioni esistenti <subsec:valutazione-soluzioni>
 
-==== Soluzioni open-source
+*Soluzioni open-source*
 
 L'analisi del ProLeap COBOL parser, in #ref-figure(<fig:proLeap>), uno dei progetti open-source più maturi nello spazio di GitHub, ha rivelato un'architettura solida basata su #acronym("ANTLR")4 con capacità complete di analisi sintattica. Tuttavia, il sistema si limitava alla generazione dell'#acronym("AST"), richiedendo l'implementazione separata della trasformazione AST COBOL → AST Java e della successiva generazione del codice. Ad ogni modo il ProLeap parser presentava una architettura modulare che permetteva l'estensione per nuovi costrutti.
 #numbered-figure(
   image("../images/proleap.png",width: 100%),
   caption: "ProLeap COBOL parser",
 ) <fig:proLeap>
-==== Soluzioni enterprise
+*Soluzioni enterprise*
 
 Il panorama presentava soluzioni commerciali sofisticate con prezzi corrispondentemente elevati. Essendo soluzioni chiuse al pubblico ho avuto modo di testare tali soluzioni solo in modo limitato, quando prove gratuite o soluzioni demo lo permettevano.
 
@@ -602,13 +602,76 @@ Il risultato finale del processo è un progetto Java completo, moderno, e immedi
 == Risultati raggiunti <sec:risultati-raggiunti>
 
 === Impatto dell'AI sui tempi di sviluppo <subsec:impatto-ai-tempi>
-/*L'automazione end-to-end elimina la necessità di interventi manuali post-conversione, riducendo drasticamente i tempi e i costi della migrazione mentre assicura consistenza e qualità del risultato. Questo livello di automazione e intelligenza nella generazione di progetti completi dimostra il valore trasformativo dell'approccio AI-driven rispetto alle metodologie tradizionali di migrazione del codice legacy.*/
 
-In questa sottosezione quantificherò la riduzione importante dei tempi rispetto all'approccio tradizionale, illustrerò il passaggio da mesi a giorni nel processo di conversione e analizzerò i risultati impossibili senza AI.
+L'adozione dell'intelligenza artificiale generativa ha determinato una riduzione significativa dei tempi di sviluppo rispetto all'approccio basato su #foreign("parsing") deterministico, mantenendo il risultato finale sorprendentemente accurato, come mostra la #ref-figure(<fig:esecuzione-gestione-conti>).
+#numbered-figure(
+  image("../images/outputCLI2.png",width: 70%),
+  caption: "Esecuzione del sistema di gestione conti correnti bancari convertito in Java",
+) <fig:esecuzione-gestione-conti>
+
+Questa riduzione temporale deriva da diversi fattori tecnici.
+- L'approccio tradizionale richiedeva l'implementazione esplicita di regole di trasformazione per ogni costrutto COBOL, con complessità computazionale crescente per le interazioni tra costrutti diversi. L'AI, invece, opera attraverso comprensione contestuale del codice, permettendo di gestire simultaneamente aspetti sintattici e semantici della traduzione. La capacità del modello di interpretare l'intento del codice, oltre alla sua struttura formale, ha eliminato la necessità di codificare manualmente centinaia di eccezioni, casi speciali e specifici.
+- L'accelerazione del processo ha inoltre consentito un approccio iterativo al #foreign("prompt engineering"). Durante lo sviluppo, è stato possibile raffinare progressivamente le istruzioni fornite al modello basandosi sui risultati ottenuti, ottimizzando la qualità delle traduzioni attraverso cicli rapidi di sperimentazione. Questo approccio empirico non sarebbe stato praticabile con tempi di sviluppo nell'ordine dei mesi per ogni iterazione.
+
+Un aspetto rilevante riguarda la consistenza dei risultati. Mentre lo sviluppo manuale tende a introdurre variabilità nelle convenzioni di codifica e negli approcci implementativi man mano che il progetto evolve, l'AI mantiene coerenza stilistica e architettonica attraverso l'intero processo di conversione, applicando uniformemente i pattern di trasformazione identificati.
 
 === Analisi qualitativa dei risultati <subsec:analisi-qualitativa>
 
-In questa sottosezione descriverò il sistema completo di conversione COBOL-Java funzionante, analizzerò il codice Java idiomatico e manutenibile prodotto e illustrerò la documentazione professionale automatizzata.
+L'analisi del codice prodotto rivela caratteristiche qualitative che non si limitano alla correttezza funzionale. L'#ref-figure(<fig:cliOutput>) illustra il processo completo di conversione sul terminale, dalla lettura dei file sorgente alla generazione del progetto #foreign("Maven") finale.
+#numbered-figure(
+  image("../images/terminalOutput.png",width: 70%),
+  caption: "Output nel terminale del sistema di migrazione AI-driven",
+) <fig:cliOutput>
+
+Il sistema ha dimostrato capacità di gestire la complessità semantica della traduzione COBOL-Java. Per le strutture dati gerarchiche, caratteristica distintiva di COBOL, l'AI ha applicato strategie di conversione appropriate al contesto d'uso.
+
+La gestione dell'#acronym("SQL") embedded ha evidenziato capacità di trasformazione multi-livello. Il sistema ha identificato i blocchi EXEC SQL, estratto le query, e generato codice JDBC idiomatico con gestione appropriata di connessioni, prepared statements e transazioni. La conversione ha mantenuto la semantica transazionale originale adattandola ai pattern Java, includendo gestione delle eccezioni e rilascio delle risorse secondo le #foreign("best practice") del linguaggio target.
+
+La documentazione generata attraverso #foreign("JavaDoc") rappresenta un valore aggiunto significativo. Il sistema è in grado di preservare i commenti originali e li contestualizzarli nel nuovo ambiente, aggiungendo metadati sulla migrazione e mappature tra costrutti COBOL e Java. Questa documentazione facilita la manutenzione futura fornendo contesto storico e il valore razionale delle scelte implementative.
 
 === Risultati quantitativi <subsec:risultati-quantitativi>
-Tre progetti convertiti con successo, copertura completa delle funzionalità implementate, oltre 2000 linee di codice Java production-ready generate automaticamente.
+
+I risultati ottenuti possono essere valutati sistematicamente in relazione agli obiettivi definiti nel Capitolo 2, organizzati secondo i tre livelli di priorità stabiliti.
+#linebreak()
+*Obiettivi obbligatori*
+
+Il sistema ha conseguito il pieno raggiungimento di tutti gli obiettivi obbligatori:
+- OO01 - Prodotti tre progetti COBOL completi
+- OO02 - Esplorate strategie di migrazione che prendevano in considerazione diverse tecnologie
+- OO03 - Copertura delle divisioni: Il requisito minimo del 75% è stato superato con una conversione completa (100%) di tutte e quattro le divisioni COBOL fondamentali (#foreign("Identification"), #foreign("Environment"), #foreign("Data"), #foreign("Procedure")).
+- 0004 - Esplorate strategie open-source e commerciali, documentandone le peculiarità
+- OO05 - Progetti migrati: Rispetto all'obiettivo di completare almeno una migrazione funzionante, sono stati convertiti con successo tutti e tre i progetti autoprodotti:
+ - GESTIONE-CONTI: sistema di gestione conti correnti bancari
+ - GESTIONE-PAGHE: sistema di gestione risorse umane e stipendi  
+ - GESTIONE-MAGAZZINO: sistema di logistica e inventario
+- OO06 - Qualità del codice Java: Il codice generato rispetta pienamente le convenzioni Java moderne, includendo:
+ - Struttura standard dei #foreign("package")
+ - Nomenclatura consistente con le convenzioni del linguaggio
+ - Documentazione #foreign("JavaDoc") completa e professionale
+ - Oltre 2000 linee di codice che superano verifiche di analisi statica
+
+- OO08 - Produzione di un #foreign("README") dettagliato e documentazione del processo.
+*Obiettivi desiderabili*
+
+Anche gli obiettivi desiderabili sono stati largamente conseguiti:
+
+- OD01 - Copertura completa: Raggiunto il 100% di conversione automatica del codice COBOL autoprodotto.
+- OD02 - Gestione costrutti complessi: Dimostrata attraverso la conversione efficace di:
+ - Strutture dati gerarchiche con livelli multipli
+ - #acronym("SQL") embedded con transazioni complesse
+ - Logiche procedurali articolate e interdipendenti
+- OD03 - Ottimizzazione del codice: Sebbene non implementata come fase separata, il codice prodotto dall'AI risulta intrinsecamente ottimizzato secondo pattern idiomatici Java.
+
+*Risultati aggiuntivi non previsti*
+
+Un risultato particolarmente significativo non contemplato negli obiettivi iniziali è la generazione automatica di progetti #foreign("Maven") completi, #ref-figure(<fig:maven-project>). Questa funzionalità include:
+- Struttura di progetto standard con directory appropriate
+- File `pom.xml` con gestione completa delle dipendenze
+- Configurazione del #foreign("build") per generazione di JAR eseguibili
+- Integrazione immediata in pipeline CI/CD moderne
+
+#numbered-figure(
+  image("../images/feedbackConversione.png",width: 80%),
+  caption: "Progetto Maven generato automaticamente dal sistema di migrazione",
+) <fig:maven-project>
+Questi risultati dimostrano come l'approccio basato su AI non solo abbia soddisfatto i requisiti progettuali stabiliti, ma abbia anche aperto possibilità non inizialmente contemplate, trasformando il progetto da prototipo dimostrativo a soluzione potenzialmente applicabile in contesti produttivi reali.

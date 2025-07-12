@@ -143,29 +143,29 @@
     "caption": "",
     "label": "<fig:outputCLI>"
   },
-  "proleap.png": {
+  "outputCLI2.png": {
     "id": "img_026",
+    "path": "images\\outputCLI2.png",
+    "caption": "",
+    "label": "<fig:outputCLI2>"
+  },
+  "packageOutput.png": {
+    "id": "img_027",
+    "path": "images\\packageOutput.png",
+    "caption": "",
+    "label": "<fig:packageOutput>"
+  },
+  "proleap.png": {
+    "id": "img_028",
     "path": "images\\proleap.png",
     "caption": "",
     "label": "<fig:proleap>"
   },
   "Schermata del 2025-06-25 10-52-21.png": {
-    "id": "img_027",
+    "id": "img_029",
     "path": "images\\Schermata del 2025-06-25 10-52-21.png",
     "caption": "",
     "label": "<fig:Schermata del 2025-06-25 10-52-21>"
-  },
-  "Schermata del 2025-06-25 12-49-17.png": {
-    "id": "img_028",
-    "path": "images\\Schermata del 2025-06-25 12-49-17.png",
-    "caption": "",
-    "label": "<fig:Schermata del 2025-06-25 12-49-17>"
-  },
-  "Schermata del 2025-06-25 12-49-34.png": {
-    "id": "img_029",
-    "path": "images\\Schermata del 2025-06-25 12-49-34.png",
-    "caption": "",
-    "label": "<fig:Schermata del 2025-06-25 12-49-34>"
   },
   "team.png": {
     "id": "img_030",
@@ -173,26 +173,32 @@
     "caption": "",
     "label": "<fig:team>"
   },
-  "timelineDig.png": {
+  "terminalOutput.png": {
     "id": "img_031",
+    "path": "images\\terminalOutput.png",
+    "caption": "",
+    "label": "<fig:terminalOutput>"
+  },
+  "timelineDig.png": {
+    "id": "img_032",
     "path": "images\\timelineDig.png",
     "caption": "",
     "label": "<fig:timelineDig>"
   },
   "valori-miriade.png": {
-    "id": "img_032",
+    "id": "img_033",
     "path": "images\\valori-miriade.png",
     "caption": "",
     "label": "<fig:valori-miriade>"
   },
   "watsonx.png": {
-    "id": "img_033",
+    "id": "img_034",
     "path": "images\\watsonx.png",
     "caption": "",
     "label": "<fig:watsonx>"
   },
   "watsonxChat.png": {
-    "id": "img_034",
+    "id": "img_035",
     "path": "images\\watsonxChat.png",
     "caption": "",
     "label": "<fig:watsonxChat>"
