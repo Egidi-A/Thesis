@@ -20,7 +20,9 @@ Il percorso di sviluppo del progetto di migrazione COBOL-Java ha attraversato di
 
 == Setup iniziale e metodologia di lavoro <sec:setup-iniziale>
 
-Il progetto ha adottato la metodologia #foreign("Agile") con #foreign("sprint") settimanali e #foreign("stand-up") giornalieri. L'ambiente tecnologico includeva Jira e Confluence per la gestione del progetto, Git e BitBucket per il versionamento del codice con documentazione progressiva.
+Il progetto ha adottato la metodologia #foreign("Agile") già consolidata in Miriade, descritta nella #ref-chapter(<sec:metodologie-tecnologie>), strutturando il lavoro in #foreign("sprint") settimanali con #foreign("stand-up") giornalieri alle 9:05. Come esposto nel capitolo precedente, l'azienda utilizza Jira per la gestione delle attività e Confluence per la documentazione condivisa, strumenti fondamentali per tracciare l'evoluzione del progetto di migrazione.
+
+L'ambiente di sviluppo è stato configurato seguendo gli standard aziendali: Git con BitBucket per il versionamento del codice, con #foreign("branch") dedicati per ogni fase sperimentale del progetto. La documentazione progressiva su Confluence ha permesso di mantenere traccia delle decisioni architetturali e delle problematiche incontrate, facilitando le sessioni di #foreign("review") settimanali con la tutor aziendale Arianna Bellino.
 
 == Primo periodo: immersione nel mondo COBOL <sec:immersione-cobol>
 
@@ -57,7 +59,7 @@ Lo studio ha combinato manuali IBM degli anni '80 con tutorial moderni. La colla
           DECIMAL-POINT IS COMMA.
       ```,
       lang: "cobol",
-      caption: "ENVIRONMENT DIVISION con specifiche hardware"
+      caption: "Esempio di ENVIRONMENT DIVISION con specifiche hardware"
     ) <lst:environment-div>
 - La sezione FILE-CONTROL, con la sua gestione esplicita dell'associazione tra file logici e fisici, richiede un cambio di mentalità significativo rispetto all'astrazione automatica fornita dai moderni sistemi operativi e strutture software.
   Un esempio della sezione FILE-CONTROL è mostrato in #ref-figure(<lst:file-control>).
@@ -72,7 +74,7 @@ Lo studio ha combinato manuali IBM degli anni '80 con tutorial moderni. La colla
             RECORD KEY IS CONTO-ID.
     ```,
     lang: "cobol",
-    caption: "FILE-CONTROL con gestione esplicita dei file"
+    caption: "Esempio di FILE-CONTROL con gestione esplicita dei file"
   ) <lst:file-control>
 #linebreak()
 Ho sviluppato, progressivamente, tre codici applicativi di complessità crescente:
@@ -101,7 +103,7 @@ L'interfacciamento con database relazionali ha rappresentato una sfida particola
   END-EVALUATE.
   ```,
   lang: "cobol",
-  caption: "Gestione degli SQLCODE in COBOL"
+  caption: "Esempio di gestione degli SQLCODE in COBOL"
 ) <lst:sqlcode-handling>
 
 === Mappatura dei pattern e analisi di traducibilità <subsec:mappatura-pattern>
@@ -590,7 +592,7 @@ La configurazione dei plugin Maven riceve particolare attenzione per assicurare 
     </plugin>
     ```,
     lang: "xml",
-    caption: "Estratto del pom.xml generato automaticamente"
+    caption: "Esempio di pom.xml generato automaticamente"
   ) <lst:pom-generated>
 
 Il processo di build automatizzato verifica la correttezza della configurazione attraverso l'invocazione di Maven per compilare il codice, risolvere e scaricare tutte le dipendenze, eseguire eventuali test di base generati, e produrre gli artifact finali. Qualsiasi errore in questa fase viene catturato e reportato con suggerimenti per la risoluzione.
